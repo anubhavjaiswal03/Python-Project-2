@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Minor change to Recommender.py">
-      <change beforePath="$PROJECT_DIR$/.idea/Project 2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project 2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Minor change to Recommender.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

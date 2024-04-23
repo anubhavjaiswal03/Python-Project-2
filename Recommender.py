@@ -4,3 +4,5 @@ class Recommender:
 
     def __str__(self):
         pass
+
+    # Some comment
