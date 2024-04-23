@@ -2,8 +2,9 @@ from Media import Media
 
 
 class Book(Media):
-
-    # bookID, title, authors, average_rating, isbn, isbn13, language_code, num_pages, ratings_count, publication_date, publisher
+    """
+    Describes the Book class derived from the Media Class and it's data members and member functions.
+    """
     def __init__(self, book_id, book_title, book_authors, book_average_rating, isbn_number, isbn13_number,
                  language_code, pages_count,
                  ratings_count, publication_date, publisher):

@@ -2,8 +2,9 @@ from Media import Media
 
 
 class Show(Media):
-
-    # show_id, type,title, director, cast, average_rating, country, date_added, release_year, rating, duration, listed_in, description
+    """
+    Describes the Show class derived from the Media Class and it's data members and member functions.
+    """
     def __init__(self, show_id, show_type, show_title, show_director, cast, average_rating, country_code, date_added,
                  release_year, media_average_rating, duration, genre, description):
         super().__init__(show_id, show_title, average_rating)

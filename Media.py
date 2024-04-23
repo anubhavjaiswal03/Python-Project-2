@@ -1,5 +1,8 @@
 class Media:
-
+    """
+    Base Class for the classes: Show and Book, defining id, title and average_rating Data Members along with their
+    respective accessors and mutators
+    """
     def __init__(self, media_id, media_title, media_average_rating):
         self._media_id = media_id
         self._media_title = media_title
