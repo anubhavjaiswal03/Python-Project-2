@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Media.py" beforeDir="false" afterPath="$PROJECT_DIR$/Media.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,21 +20,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "anubhavjaiswal03"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;anubhavjaiswal03&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/anubhavjaiswal03/Python-Project-2.git",
-    "accountId": "926fe385-a3c5-4c05-b772-64e6505f2c24"
+    "accountId": "fee8d1e5-30f8-4d5e-ac60-926158bc2c1c"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2fTUyuvtGiuMsK9zWjFe8casFM6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,7 +48,7 @@
     "Python.Book.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "Prayash__Das"
   }
 }]]></component>
   <component name="RecentsManager">
