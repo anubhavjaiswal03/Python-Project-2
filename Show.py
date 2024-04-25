@@ -20,7 +20,10 @@ class Show(Media):
         self.__show_description = description
 
     def __str__(self):
-        return f"{self._media_id}, {self.__show_type}, {self._media_title}, {self.__show_director}, {self.__show_cast}, {self._media_average_rating}, {self.__show_country_code}, {self.__show_date_added}, {self.__show_release_year}, {self.__show_media_rating}, {self.__show_genre}, {self.__show_description}"
+        return (f"{self._media_id}, {self.__show_type}, {self._media_title}, {self.__show_director}, "
+                f"{self.__show_cast}, {self._media_average_rating}, {self.__show_country_code}, "
+                f"{self.__show_date_added}, {self.__show_release_year}, {self.__show_media_rating}, "
+                f"{self.__show_genre}, {self.__show_description}")
 
     # Accessor/Mutators:
 
