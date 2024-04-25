@@ -5,6 +5,7 @@ class Book(Media):
     """
     Describes the Book class derived from the Media Class and it's data members and member functions.
     """
+
     def __init__(self, book_id, book_title, book_authors, book_average_rating, isbn_number, isbn13_number,
                  language_code, pages_count,
                  ratings_count, publication_date, publisher):
@@ -27,6 +28,36 @@ class Book(Media):
     # Accessor/Mutators:
     def get_book_id(self):
         return self.get_id()
+
+    def get_book_title(self):
+        return self.get_title()
+
+    def get_book_average_rating(self):
+        return self.get_rating()
+
+    def get_book_author(self):
+        return self.__book_authors
+
+    def get_book_isbn_number(self):
+        return self.__book_isbn_number
+
+    def get_book_isbn13_number(self):
+        return self.__book_isbn13_number
+
+    def get_book_language_code(self):
+        return self.__book_language_code
+
+    def get_book_page_count(self):
+        return self.__book_page_count
+
+    def get_book_rating_count(self):
+        return self.__book_rating_count
+
+    def get_book_publication_date(self):
+        return self.__book_publication_date
+
+    def get_book_publisher(self):
+        return self.__book_publisher
 
 
 if __name__ == '__main__':
