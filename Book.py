@@ -61,7 +61,7 @@ class Book(Media):
 
 
 if __name__ == '__main__':
-    test_file = "Input Files/books10.csv"
+    test_file = "Input Files/books1000.csv"
     books_data = []
     with open(test_file) as book_file:
         line = book_file.readline()
@@ -71,4 +71,4 @@ if __name__ == '__main__':
             line = book_file.readline()
 
     for book in books_data:
-        print(book)
+        print(book,flush=True)

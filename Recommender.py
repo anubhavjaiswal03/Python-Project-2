@@ -1,6 +1,7 @@
 from Book import Book
 from Show import Show
 import timeit
+import tkinter
 
 
 class Recommender:
@@ -43,9 +44,15 @@ class Recommender:
         for (key, value) in self.__associations.items():
             print(f"{key} : {value}")
 
+        # Counting all the associations, it should be 2x the number of lines in the associated****.csv class.
+        count = 0
+        for (o_keys, i_dict) in self.__associations.items():
+            for (i_key, i_values) in i_dict.items():
+                count += i_values
+        print(count)
+
 
 if __name__ == '__main__':
     rec = Recommender()
     execution_time = timeit.timeit(rec.loadAssociations, number=1)
     print("Execution time:", execution_time, "seconds")
-
