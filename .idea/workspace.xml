@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Minor change to Recommender.py" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Project files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,11 +18,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -48,14 +43,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Book.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Show.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Prayash__Das&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Book.executor": "Run",
+    "Python.Show.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "anubhav__branch"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Project Description Files" />
@@ -111,23 +106,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713832001283</updated>
     </task>
-    <task id="LOCAL-00005" summary="Started working on Recommender.py">
+    <task id="LOCAL-00005" summary="Added loadBooks(), loadShows() and loadAssociations().">
       <option name="closed" value="true" />
-      <created>1713836774642</created>
+      <created>1714420057178</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1713836774642</updated>
+      <updated>1714420057178</updated>
     </task>
-    <task id="LOCAL-00006" summary="Minor change to Recommender.py">
+    <task id="LOCAL-00006" summary="minor changes">
       <option name="closed" value="true" />
-      <created>1713836857175</created>
+      <created>1714420092914</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1713836857175</updated>
+      <updated>1714420092914</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Project files">
+      <option name="closed" value="true" />
+      <created>1714420915448</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714420915448</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -149,9 +152,9 @@
     <MESSAGE value="Base Media Class" />
     <MESSAGE value="Modified init files according to input file sequence for Book.py and Show.py" />
     <MESSAGE value="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions" />
-    <MESSAGE value="Started working on Recommender.py" />
-    <MESSAGE value="Add change to Recommender.py" />
-    <MESSAGE value="Minor change to Recommender.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor change to Recommender.py" />
+    <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
+    <MESSAGE value="minor changes" />
+    <MESSAGE value="Project files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project files" />
   </component>
 </project>
