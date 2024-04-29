@@ -1,13 +1,16 @@
+import tkinter.filedialog
+
 from Book import Book
 from Show import Show
 import timeit
-import tkinter
+from tkinter import filedialog as fd
+import os
 
 
 class Recommender:
     def __init__(self):
-        self.__books = []  # Stores all the Book Objects in a List
-        self.__shows = []  # Stores all the Show Objects in a List
+        self.__books = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.
+        self.__shows = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.
         self.__associations = {}  # Stores the relationships/associations.
 
     def __str__(self):
@@ -15,8 +18,13 @@ class Recommender:
 
     def loadAssociations(self):
         # prompt for a file dialog
-        filename = "Input Files/associated10.csv"
-        with (open(filename, 'r') as file):
+        associations_filename = ""
+        while not os.path.exists(associations_filename):
+            book_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if not os.path.exists(associations_filename):
+                print('\033[91;1m%s\033[0m file does not exist!' % associations_filename)
+
+        with (open(associations_filename, 'r') as file):
             line = file.readline()
             while line:
                 id_set = line.strip().split(',')
@@ -51,8 +59,47 @@ class Recommender:
                 count += i_values
         print(count)
 
+    def loadBooks(self):
+        book_filedialog = ""
+        book_filename = ""
+        while not os.path.exists(book_filename):
+            book_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if not os.path.exists(book_filename):
+                print('\033[91;1m%s\033[0m file does not exist!' % book_filename)
+
+        with open(book_filename) as book_file:
+            line = book_file.readline()
+            while line:
+                book_object = Book(*line.strip().split(','))
+                self.__books[book_object.get_book_id()] = book_object
+                line = book_file.readline()
+
+        for book in self.__books.items():
+            print(book[0], book[1])
+
+    def loadShows(self):
+        book_filedialog = ""
+        show_filename = ""
+        while not os.path.exists(show_filename):
+            show_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if not os.path.exists(show_filename):
+                print('\033[91;1m%s\033[0m file does not exist!' % show_filename)
+
+        with open(show_filename) as show_file:
+            line = show_file.readline()
+            while line:
+                show_object = Show(*line.strip().split(','))
+                self.__shows[show_object.get_show_id()] = show_object
+                line = show_file.readline()
+
+        for show in self.__shows.items():
+            print(show[0], show[1], sep=":")
+
 
 if __name__ == '__main__':
     rec = Recommender()
-    execution_time = timeit.timeit(rec.loadAssociations, number=1)
-    print("Execution time:", execution_time, "seconds")
+    rec.loadBooks()
+    rec.loadShows()
+    rec.loadAssociations()
+    # execution_time = timeit.timeit(rec.loadAssociations, number=1)
+    # print("Execution time:", execution_time, "seconds")
