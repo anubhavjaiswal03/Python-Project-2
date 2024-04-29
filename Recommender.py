@@ -1,13 +1,16 @@
+import tkinter.filedialog
+
 from Book import Book
 from Show import Show
 import timeit
-import tkinter
+from tkinter import filedialog as fd
+import os
 
 
 class Recommender:
     def __init__(self):
-        self.__books = []  # Stores all the Book Objects in a List
-        self.__shows = []  # Stores all the Show Objects in a List
+        self.__books = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.
+        self.__shows = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.
         self.__associations = {}  # Stores the relationships/associations.
 
     def __str__(self):
@@ -15,6 +18,7 @@ class Recommender:
 
     def loadAssociations(self):
         # prompt for a file dialog
+        tkinter.messagebox.file
         filename = "Input Files/associated10.csv"
         with (open(filename, 'r') as file):
             line = file.readline()
@@ -51,8 +55,27 @@ class Recommender:
                 count += i_values
         print(count)
 
+    def loadBooks(self):
+        book_filedialog = ""
+        book_filename = ""
+        while not os.path.exists(book_filename):
+            book_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if not os.path.exists(book_filename):
+                print('\033[91;1m%s\033[0m file does not exist!' % book_filename)
+
+        with open(book_filename) as book_file:
+            line = book_file.readline()
+            while line:
+                book_object = Book(*line.strip().split(','))
+                self.__books[book_object.get_book_id()] = book_object
+                line = book_file.readline()
+
+        for book in self.__books.items():
+            print(book[0], book[1])
+
 
 if __name__ == '__main__':
     rec = Recommender()
-    execution_time = timeit.timeit(rec.loadAssociations, number=1)
-    print("Execution time:", execution_time, "seconds")
+    rec.loadBooks()
+    # execution_time = timeit.timeit(rec.loadAssociations, number=1)
+    # print("Execution time:", execution_time, "seconds")
