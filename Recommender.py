@@ -101,5 +101,6 @@ if __name__ == '__main__':
     rec.loadBooks()
     rec.loadShows()
     rec.loadAssociations()
+    print("test")
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
     # print("Execution time:", execution_time, "seconds")
