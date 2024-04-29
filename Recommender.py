@@ -13,6 +13,7 @@ class Recommender:
     def __str__(self):
         pass
 
+
     def loadAssociations(self):
         # prompt for a file dialog
         filename = "Input Files/associated10.csv"
