@@ -68,7 +68,8 @@ class Show(Media):
 
 
 if __name__ == '__main__':
-    test_file = "Input Files/shows10.csv"
+    test_file = "Input Files/shows100.csv"
+
     shows_data = []
     with open(test_file) as show_file:
         line = show_file.readline()
