@@ -99,7 +99,7 @@ class Recommender:
 if __name__ == '__main__':
     rec = Recommender()
     rec.loadBooks()
-    rec.loadShows()
-    rec.loadAssociations()
+    # rec.loadShows()
+    # rec.loadAssociations()
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
     # print("Execution time:", execution_time, "seconds")

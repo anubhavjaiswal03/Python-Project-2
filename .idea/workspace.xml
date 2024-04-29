@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions">
+      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +28,12 @@
     &quot;assignee&quot;: &quot;anubhavjaiswal03&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/anubhavjaiswal03/Python-Project-2.git",
-    "accountId": "fee8d1e5-30f8-4d5e-ac60-926158bc2c1c"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/anubhavjaiswal03/Python-Project-2.git&quot;,
+    &quot;accountId&quot;: &quot;fee8d1e5-30f8-4d5e-ac60-926158bc2c1c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -48,7 +50,7 @@
     "Python.Book.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Prayash__Das"
+    "git-widget-placeholder": "anubhav__branch"
   }
 }]]></component>
   <component name="RecentsManager">
