@@ -95,6 +95,17 @@ class Recommender:
         for show in self.__shows.items():
             print(show[0], show[1], sep=":")
 
+    def getMovieList(self):
+        pass
+
+    def getTVList(self):
+        pass
+
+    def getBookList(self):
+        pass
+
+    def getMovieStats(self):
+        pass
 
 if __name__ == '__main__':
     rec = Recommender()
