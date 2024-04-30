@@ -1,0 +1,63 @@
+Index: Recommender.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter.filedialog\n\nfrom Book import Book\nfrom Show import Show\nimport timeit\nfrom tkinter import filedialog as fd\nimport os\n\n\nclass Recommender:\n    def __init__(self):\n        self.__books = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.\n        self.__shows = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.\n        self.__associations = {}  # Stores the relationships/associations.\n\n    def __str__(self):\n        pass\n\n    def loadAssociations(self):\n        # prompt for a file dialog\n        tkinter.messagebox.file\n        filename = \"Input Files/associated10.csv\"\n        with (open(filename, 'r') as file):\n            line = file.readline()\n            while line:\n                id_set = line.strip().split(',')\n                # Adding Association of the first id:\n                if id_set[0] in self.__associations.keys():\n                    inner_dictionary = self.__associations[id_set[0]]\n                    if id_set[1] in inner_dictionary.keys():\n                        inner_dictionary[id_set[1]] += 1\n                    else:\n                        inner_dictionary.update({id_set[1]: 1})\n                else:\n                    self.__associations.update({id_set[0]: {id_set[1]: 1}})\n\n                # Adding Association of the second id:\n                if id_set[1] in self.__associations.keys():\n                    inner_dictionary = self.__associations[id_set[1]]\n                    if id_set[0] in inner_dictionary.keys():\n                        inner_dictionary[id_set[0]] += 1\n                    else:\n                        inner_dictionary.update({id_set[0]: 1})\n                else:\n                    self.__associations.update({id_set[1]: {id_set[0]: 1}})\n                line = file.readline()\n\n        for (key, value) in self.__associations.items():\n            print(f\"{key} : {value}\")\n\n        # Counting all the associations, it should be 2x the number of lines in the associated****.csv class.\n        count = 0\n        for (o_keys, i_dict) in self.__associations.items():\n            for (i_key, i_values) in i_dict.items():\n                count += i_values\n        print(count)\n\n    def loadBooks(self):\n        book_filedialog = \"\"\n        book_filename = \"\"\n        while not os.path.exists(book_filename):\n            book_filename = fd.askopenfilename(initialdir=os.getcwd())\n            if not os.path.exists(book_filename):\n                print('\\033[91;1m%s\\033[0m file does not exist!' % book_filename)\n\n        with open(book_filename) as book_file:\n            line = book_file.readline()\n            while line:\n                book_object = Book(*line.strip().split(','))\n                self.__books[book_object.get_book_id()] = book_object\n                line = book_file.readline()\n\n        for book in self.__books.items():\n            print(book[0], book[1])\n\n\nif __name__ == '__main__':\n    rec = Recommender()\n    rec.loadBooks()\n    # execution_time = timeit.timeit(rec.loadAssociations, number=1)\n    # print(\"Execution time:\", execution_time, \"seconds\")\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Recommender.py b/Recommender.py
+--- a/Recommender.py	(revision 6582edd594ff9377a9c307f192943642446af1b7)
++++ b/Recommender.py	(date 1714418133211)
+@@ -18,8 +18,12 @@
+ 
+     def loadAssociations(self):
+         # prompt for a file dialog
+-        tkinter.messagebox.file
+-        filename = "Input Files/associated10.csv"
++        filename = ""
++        while not os.path.exists(filename):
++            filename = fd.askopenfilename(initialdir=os.getcwd())
++            if not os.path.exists(filename):
++                print('\033[91;1m%s\033[0m file does not exist!' % filename)
++
+         with (open(filename, 'r') as file):
+             line = file.readline()
+             while line:
+@@ -56,7 +60,6 @@
+         print(count)
+ 
+     def loadBooks(self):
+-        book_filedialog = ""
+         book_filename = ""
+         while not os.path.exists(book_filename):
+             book_filename = fd.askopenfilename(initialdir=os.getcwd())
+@@ -73,9 +76,29 @@
+         for book in self.__books.items():
+             print(book[0], book[1])
+ 
++    def loadShows(self):
++        show_filename = ""
++        while not os.path.exists(show_filename):
++            show_filename = fd.askopenfilename(initialdir=os.getcwd())
++            if not os.path.exists(show_filename):
++                print('\033[91;1m%s\033[0m file does not exist!' % show_filename)
++
++        with open(show_filename) as show_file:
++            line = show_file.readline()
++            while line:
++                show_object = Show(*line.strip().split(','))
++                self.__shows[show_object.get_show_id()] = show_object
++                line = show_file.readline()
++
++        for show in self.__shows.items():
++            print(show[0], show[1])
++
+ 
+ if __name__ == '__main__':
+     rec = Recommender()
+     rec.loadBooks()
++    # rec.loadShows()
++    # rec.loadAssociations()
++
+     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
+     # print("Execution time:", execution_time, "seconds")
