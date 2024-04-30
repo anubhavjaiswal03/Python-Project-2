@@ -96,16 +96,52 @@ class Recommender:
             print(show[0], show[1], sep=":")
 
     def getMovieList(self):
-        pass
+        list=[]
+        formatted='Title        | Runtime\n'
+        for get_id in self.__shows:
+            for object in get_id:
+                if object.get_type()=='movie':
+                    title=object.get_show_title()
+                    duration=object.get_show_duration()
+                    list.append((title,duration))
+                    formatted=formatted+f'{title:<12} | {duration:>8}\n'
+
+        return formatted
 
     def getTVList(self):
-        pass
+        list=[]
+        formatted='Title        | Seasons\n'
+        for get_id in self.__shows:
+            for object in get_id:
+                if object.get_type()=='TV Show':
+                    title=object.get_show_title()
+                    duration=object.get_show_duration()
+                    list.append((title,duration))
+                    formatted=formatted+f'{title:<12} | {duration:>8}\n'
+
+        return formatted
 
     def getBookList(self):
-        pass
+        list=[]
+        formatted='Title        | Authors\n'
+        for book in self.__books:
+            title=book.get_book_title()
+            authors=', '.join(book.get_book_author())
+            list.append((title,authors))
+            formatted=formatted+f'{title:<12} | {authors:>12}\n'
+        return formatted
+
 
     def getMovieStats(self):
-        pass
+        ratings={}
+        total_rating=0
+        total_duration=0
+        count_dir={}
+        count_actor={}
+        count_genre={}
+
+        #for i in self.__shows:
+
 
 if __name__ == '__main__':
     rec = Recommender()
