@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Project files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +46,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Book.executor": "Run",
+    "Python.Recommender.executor": "Run",
     "Python.RecommenderGUI.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -134,7 +132,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714420915448</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
+      <option name="closed" value="true" />
+      <created>1714506155664</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714506155664</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
+      <option name="closed" value="true" />
+      <created>1714506198078</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714506198078</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -159,6 +173,9 @@
     <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Project files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project files" />
+    <MESSAGE value="Added the skeleton functions." />
+    <MESSAGE value="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <MESSAGE value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
   </component>
 </project>
