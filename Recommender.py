@@ -20,7 +20,7 @@ class Recommender:
         # prompt for a file dialog
         associations_filename = ""
         while not os.path.exists(associations_filename):
-            book_filename = fd.askopenfilename(initialdir=os.getcwd())
+            associations_filename = fd.askopenfilename(initialdir=os.getcwd())
             if not os.path.exists(associations_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % associations_filename)
 
@@ -75,7 +75,7 @@ class Recommender:
                 line = book_file.readline()
 
         for book in self.__books.items():
-            print(book[0], book[1])
+            print(book[0], type(book[1]), book[1])
 
     def loadShows(self):
         book_filedialog = ""
@@ -98,8 +98,8 @@ class Recommender:
 
 if __name__ == '__main__':
     rec = Recommender()
-    rec.loadBooks()
-    rec.loadShows()
+    # rec.loadBooks()
+    # rec.loadShows()
     rec.loadAssociations()
     print("test")
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)

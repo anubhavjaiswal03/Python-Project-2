@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Project files" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="minor changes.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +50,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Book.executor": "Run",
+    "Python.Recommender.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "anubhav__branch"
@@ -130,7 +135,39 @@
       <option name="project" value="LOCAL" />
       <updated>1714420915448</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Project file">
+      <option name="closed" value="true" />
+      <created>1714420947832</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714420947832</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Re-implemented Recommender.py">
+      <option name="closed" value="true" />
+      <created>1714421813948</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714421813948</updated>
+    </task>
+    <task id="LOCAL-00010" summary="minor changes.">
+      <option name="closed" value="true" />
+      <created>1714421844916</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714421844916</updated>
+    </task>
+    <task id="LOCAL-00011" summary="minor changes.">
+      <option name="closed" value="true" />
+      <created>1714421871032</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714421871032</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -155,6 +192,9 @@
     <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Project files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project files" />
+    <MESSAGE value="Project file" />
+    <MESSAGE value="Re-implemented Recommender.py" />
+    <MESSAGE value="minor changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes." />
   </component>
 </project>
