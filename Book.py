@@ -19,7 +19,6 @@ class Book(Media):
         self.__book_publication_date = publication_date
         self.__book_publisher = publisher
 
-
     def __str__(self):
         return (f"{self._media_id}, {self._media_title}, {self.__book_authors}, {self._media_average_rating},"
                 f"{self.__book_isbn_number}, {self.__book_isbn13_number}, {self.__book_language_code}, "
@@ -61,7 +60,6 @@ class Book(Media):
         return self.__book_publisher
 
 
-
 if __name__ == '__main__':
     test_file = "Input Files/books1000.csv"
     books_data = []
@@ -73,4 +71,4 @@ if __name__ == '__main__':
             line = book_file.readline()
 
     for book in books_data:
-        print(book,flush=True)
+        print(book, flush=True)
