@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Project files" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,14 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Book.executor": "Run",
-    "Python.Show.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "anubhav__branch"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Book.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Recommender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RecommenderGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Show.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Prayash__Das&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Project Description Files" />
@@ -130,7 +135,95 @@
       <option name="project" value="LOCAL" />
       <updated>1714420915448</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
+      <option name="closed" value="true" />
+      <created>1714506155664</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714506155664</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
+      <option name="closed" value="true" />
+      <created>1714506198078</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714506198078</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Implemented the notebook tabs and buttons of RecommenderGUI class">
+      <option name="closed" value="true" />
+      <created>1714536001877</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714536001877</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538261820</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538261820</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538271832</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538271832</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538299014</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538299014</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538375169</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538375169</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538563985</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538563985</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714539129374</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1714539129374</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <option name="closed" value="true" />
+      <created>1714571988283</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1714571988283</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <option name="closed" value="true" />
+      <created>1714571999329</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1714571999329</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -155,6 +248,29 @@
     <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Project files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project files" />
+    <MESSAGE value="Added the skeleton functions." />
+    <MESSAGE value="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <MESSAGE value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <MESSAGE value="Implemented the notebook tabs and buttons of RecommenderGUI class" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;RecommenderGUI.py" />
+    <MESSAGE value="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions." />
+    <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RecommenderGUI.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RecommenderGUI.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
