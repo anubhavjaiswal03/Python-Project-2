@@ -115,7 +115,7 @@ class RecommenderGUI:
         message=message+f'\nProject Completed On: {completionday}'
 
         messagebox.showinfo('Credit Information',message)
-        #@wwfw
+        #@wwfwc
 
 
 
