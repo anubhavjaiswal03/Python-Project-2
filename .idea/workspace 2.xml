@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="minor changes.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,15 +43,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Book.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Recommender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Show.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;anubhav__branch&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Book.executor": "Run",
+    "Python.Recommender.executor": "Run",
+    "Python.RecommenderGUI.executor": "Run",
+    "Python.Show.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Prayash__Das"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Project Description Files" />
@@ -133,55 +132,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714420915448</updated>
     </task>
-    <task id="LOCAL-00008" summary="Project file">
+    <task id="LOCAL-00008" summary="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
       <option name="closed" value="true" />
-      <created>1714420947832</created>
+      <created>1714506155664</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1714420947832</updated>
+      <updated>1714506155664</updated>
     </task>
-    <task id="LOCAL-00009" summary="Re-implemented Recommender.py">
+    <task id="LOCAL-00009" summary="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
       <option name="closed" value="true" />
-      <created>1714421813948</created>
+      <created>1714506198078</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1714421813948</updated>
+      <updated>1714506198078</updated>
     </task>
-    <task id="LOCAL-00010" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714421844916</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1714421844916</updated>
-    </task>
-    <task id="LOCAL-00011" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714421871032</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1714421871032</updated>
-    </task>
-    <task id="LOCAL-00012" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714506811689</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1714506811690</updated>
-    </task>
-    <task id="LOCAL-00013" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714518803708</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1714518803708</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -206,9 +173,9 @@
     <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Project files" />
-    <MESSAGE value="Project file" />
-    <MESSAGE value="Re-implemented Recommender.py" />
-    <MESSAGE value="minor changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes." />
+    <MESSAGE value="Added the skeleton functions." />
+    <MESSAGE value="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <MESSAGE value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
   </component>
 </project>
