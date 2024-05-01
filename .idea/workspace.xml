@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the notebook tabs and buttons of RecommenderGUI class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +156,47 @@
       <option name="project" value="LOCAL" />
       <updated>1714536001877</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538261820</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538261820</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538271832</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538271832</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538299014</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538299014</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538375169</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538375169</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions.">
+      <option name="closed" value="true" />
+      <created>1714538563985</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1714538563985</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -188,7 +225,9 @@
     <MESSAGE value="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <MESSAGE value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <MESSAGE value="Implemented the notebook tabs and buttons of RecommenderGUI class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented the notebook tabs and buttons of RecommenderGUI class" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;RecommenderGUI.py" />
+    <MESSAGE value="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
