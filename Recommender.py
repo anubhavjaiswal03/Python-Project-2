@@ -97,19 +97,36 @@ class Recommender:
 
     def getMovieList(self):
         list=[]
+        max_title=0
+        max_runtime=0
         formatted='Title        | Runtime\n'
-        for get_id in self.__shows:
+        for get_id in self.__shows.items():
+            for object in get_id:
+                if object.get_type()=='movie':
+                    title=object.get_show_title()
+                    duration=object.get_show_duration()
+                    max_title=max(max_title,len(title))
+                    max_runtime=max(max_runtime,len(str(duration)))
+
+        formatted=formatted+f'{"Title" :<{max_title}} | {"Runtime" :<{max_runtime}}\n'
+        for get_id in self.__shows.items():
             for object in get_id:
                 if object.get_type()=='movie':
                     title=object.get_show_title()
                     duration=object.get_show_duration()
                     list.append((title,duration))
-                    formatted=formatted+f'{title:<12} | {duration:>8}\n'
+                    formatted=formatted+f'{"Title" :<{max_title}} | {"Runtime" :<{max_runtime}}\n'
+
+        return formatted
+
+
 
         return formatted
 
     def getTVList(self):
         list=[]
+        max_title=0
+        max_season=0
         formatted='Title        | Seasons\n'
         for get_id in self.__shows.items():
             for object in get_id:
@@ -117,12 +134,23 @@ class Recommender:
                     title=object.get_show_title()
                     duration=object.get_show_duration()
                     list.append((title,duration))
-                    formatted=formatted+f'{title:<12} | {duration:>8}\n'
+                    formatted = formatted + f'{"Title" :<{max_title}} | {"Runtime" :<{max_season}}\n'
+
+        for get_id in self.__shows.items():
+            for object in get_id:
+                if object.get_type()=='TV Show':
+                    title=object.get_show_title()
+                    duration=object.get_show_duration()
+                    max_title=max(max_title,len(title))
+                    max_season=max(max_season,len(str(duration)))
+                    formatted = formatted + f'{"Title" :<{max_title}} | {"Runtime" :<{max_season}}\n'
 
         return formatted
 
     def getBookList(self):
         list=[]
+        maxtitle=0
+        maxauthors=0
         formatted='Title        | Authors\n'
         for book in self.__books:
             title=book.get_book_title()
