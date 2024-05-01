@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Book.executor": "Run",
-    "Python.Recommender.executor": "Run",
-    "Python.RecommenderGUI.executor": "Run",
-    "Python.Show.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Prayash__Das"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Book.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Recommender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RecommenderGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Show.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Prayash__Das&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Project Description Files" />
@@ -177,5 +180,21 @@
     <MESSAGE value="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <MESSAGE value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <option name="LAST_COMMIT_MESSAGE" value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RecommenderGUI.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RecommenderGUI.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
