@@ -1,5 +1,5 @@
 /Project 2 Input Files/
 /Input Files
 /.idea
-*.pyc
-*.xml
+/__pycache__
+.DS_Store
