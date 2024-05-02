@@ -18,17 +18,20 @@ class Recommender:
         self.__max_tv_season_width = 0
         self.__max_books_title_width = 0
         self.__max_books_authors_width = 0
-        self.__spacing_between_columns = 4
+        self.__spacing_between_columns = 2  # Adds space between 2 columns, Making thigs look pretty
         self.__default_filenames = file_names  # Purely for testing fast.
 
     def __str__(self):
         pass
 
     def loadAssociations(self):
+        self.__associations = {}  # Resetting the association data member before loading new associations.
         # prompt for a file dialog
         associations_filename = "" if self.__default_filenames is None else self.__default_filenames[2]
         while not os.path.exists(associations_filename):
             associations_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if associations_filename is None:
+                return
             if not os.path.exists(associations_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % associations_filename)
 
@@ -73,9 +76,12 @@ class Recommender:
         print(count)
 
     def loadBooks(self):
+        self.__books = {}  # Resetting the books data member before loading books.
         book_filename = "" if self.__default_filenames is None else self.__default_filenames[0]
         while not os.path.exists(book_filename):
             book_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if book_filename == '':
+                return
             if not os.path.exists(book_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % book_filename)
 
@@ -109,9 +115,12 @@ class Recommender:
         print(self.__max_books_title_width, self.__max_books_authors_width)
 
     def loadShows(self):
+        self.__shows = {}  # Resetting the shows data member.
         show_filename = "" if self.__default_filenames is None else self.__default_filenames[1]
         while not os.path.exists(show_filename):
             show_filename = fd.askopenfilename(initialdir=os.getcwd())
+            if show_filename == '':
+                return
             if not os.path.exists(show_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % show_filename)
 
@@ -147,9 +156,10 @@ class Recommender:
               self.__max_movie_runtime_width)
 
     def getMovieList(self):
-
+        if len(self.__shows) == 0:
+            return "No File Selected, Please Select a Show file."
         movielist_header = ["Title", "Runtime"]
-        formatted_movielist = f"\033[1m{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\033[0m\n"
+        formatted_movielist = f"{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\n"
 
         for show_id in self.__shows.keys():
             if self.__shows[show_id].get_show_type() == 'Movie':
@@ -159,9 +169,10 @@ class Recommender:
         return formatted_movielist
 
     def getTVList(self):
-
+        if len(self.__shows) == 0:
+            return "No File Selected, Please Select a Show file."
         tvlist_header = ["Title", "Seasons"]
-        formatted_tvlist = f"\033[1m{tvlist_header[0]:<{self.__max_tv_title_width + self.__spacing_between_columns}}{tvlist_header[1]:<{self.__max_tv_season_width + self.__spacing_between_columns}}\033[0m\n"
+        formatted_tvlist = f"{tvlist_header[0]:<{self.__max_tv_title_width + self.__spacing_between_columns}}{tvlist_header[1]:<{self.__max_tv_season_width + self.__spacing_between_columns}}\n"
 
         for show_id in self.__shows.keys():
             if self.__shows[show_id].get_show_type() == 'TV Show':
@@ -171,9 +182,10 @@ class Recommender:
         return formatted_tvlist
 
     def getBookList(self):
-
+        if len(self.__books) == 0:
+            return "No File Selected, Please Select a Book file."
         booklist_header = ["Title", "Authors"]
-        formatted_booklist = f"\033[1m{booklist_header[0]:<{self.__max_books_title_width + self.__spacing_between_columns}}{booklist_header[1]:<{self.__max_books_authors_width + self.__spacing_between_columns}}\033[0m\n"
+        formatted_booklist = f"{booklist_header[0]:<{self.__max_books_title_width + self.__spacing_between_columns}}{booklist_header[1]:<{self.__max_books_authors_width + self.__spacing_between_columns}}\n"
 
         for book_id in self.__books.keys():
             book_object: Book = self.__books[book_id]
