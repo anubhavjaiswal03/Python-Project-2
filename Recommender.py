@@ -425,6 +425,7 @@ class Recommender:
             print(key,book_dict[key])
 
         return book_dict
+    #
 
 
 
@@ -433,8 +434,8 @@ class Recommender:
 
 
 if __name__ == '__main__':
-    file_paths = ["Input Files/books100.csv",
-                  "Input Files/shows100.csv",
+    file_paths = ["Input Files/books1000.csv",
+                  "Input Files/shows1000.csv",
                   "Input Files/associated10.csv"]
 
     rec = Recommender(file_paths)
