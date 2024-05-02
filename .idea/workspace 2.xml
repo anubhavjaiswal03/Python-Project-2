@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Begin to Clean RecommenderGUI.py:">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,11 +18,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -33,12 +26,12 @@
     &quot;assignee&quot;: &quot;anubhavjaiswal03&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/anubhavjaiswal03/Python-Project-2.git",
-    "accountId": "926fe385-a3c5-4c05-b772-64e6505f2c24"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/anubhavjaiswal03/Python-Project-2.git&quot;,
+    &quot;accountId&quot;: &quot;fee8d1e5-30f8-4d5e-ac60-926158bc2c1c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -53,13 +46,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Book.executor": "Run",
-    "Python.Media.executor": "Run",
     "Python.Recommender.executor": "Run",
     "Python.RecommenderGUI.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "anubhav__branch",
-    "settings.editor.selected.configurable": "Errors"
+    "git-widget-placeholder": "Prayash__Das"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -141,87 +132,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714420915448</updated>
     </task>
-    <task id="LOCAL-00008" summary="Project file">
+    <task id="LOCAL-00008" summary="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
       <option name="closed" value="true" />
-      <created>1714420947832</created>
+      <created>1714506155664</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1714420947832</updated>
+      <updated>1714506155664</updated>
     </task>
-    <task id="LOCAL-00009" summary="Re-implemented Recommender.py">
+    <task id="LOCAL-00009" summary="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function">
       <option name="closed" value="true" />
-      <created>1714421813948</created>
+      <created>1714506198078</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1714421813948</updated>
+      <updated>1714506198078</updated>
     </task>
-    <task id="LOCAL-00010" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714421844916</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1714421844916</updated>
-    </task>
-    <task id="LOCAL-00011" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714421871032</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1714421871032</updated>
-    </task>
-    <task id="LOCAL-00012" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714506811689</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1714506811690</updated>
-    </task>
-    <task id="LOCAL-00013" summary="minor changes.">
-      <option name="closed" value="true" />
-      <created>1714518803708</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1714518803708</updated>
-    </task>
-    <task id="LOCAL-00014" summary=".gitignore changes">
-      <option name="closed" value="true" />
-      <created>1714602889205</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1714602889205</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Fixed Recommender.py: getMovieList(), getTVList(), getBookList().">
-      <option name="closed" value="true" />
-      <created>1714610528354</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1714610528354</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count">
-      <option name="closed" value="true" />
-      <created>1714615765330</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1714615765330</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Begin to Clean RecommenderGUI.py:">
-      <option name="closed" value="true" />
-      <created>1714617082775</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1714617082775</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -246,13 +173,9 @@
     <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Project files" />
-    <MESSAGE value="Project file" />
-    <MESSAGE value="Re-implemented Recommender.py" />
-    <MESSAGE value="minor changes." />
-    <MESSAGE value=".gitignore changes" />
-    <MESSAGE value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
-    <MESSAGE value="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count" />
-    <MESSAGE value="Begin to Clean RecommenderGUI.py:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Begin to Clean RecommenderGUI.py:" />
+    <MESSAGE value="Added the skeleton functions." />
+    <MESSAGE value="Implemented the getMoList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <MESSAGE value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the getMovieList, getTVLIst and getBookList function and partial implementation of getMovieStats function" />
   </component>
 </project>
