@@ -2,7 +2,7 @@ import tkinter
 from tkinter import ttk
 from Recommender import Recommender
 import tkinter.messagebox as messagebox
-class RecommenderGUI:
+class RecommenderGUI(Recommender):
     def __init__(self):
         self._recommend=Recommender()
         self._main_window=tkinter.Toplevel()
@@ -117,7 +117,8 @@ class RecommenderGUI:
         messagebox.showinfo('Credit Information',message)
         #@wwfwc
 
+        self._main_window.mainloop()
 
 
-#classs=RecommenderGUI()
+classs=RecommenderGUI()
 

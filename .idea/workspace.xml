@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented getMovieStats, getTVStats and getBookStats in the Recommender Class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +223,31 @@
       <option name="project" value="LOCAL" />
       <updated>1714571999329</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Implemented getMovieStats, getTVStats and getBookStats in the Recommender Class">
+      <option name="closed" value="true" />
+      <created>1714597176216</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714597176216</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Implemented getMovieStats, getTVStats and getBookStats in the Recommender Class">
+      <option name="closed" value="true" />
+      <created>1714597203433</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714597203433</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Implemented getMovieStats, getTVStats and getBookStats in the Recommender Class">
+      <option name="closed" value="true" />
+      <created>1714598360710</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1714598360710</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -255,20 +279,17 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;RecommenderGUI.py" />
     <MESSAGE value="Implemented the loadBooks,loadShows,loadAssociations, and creditInfoBox functions." />
     <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Modified GetMovieList and GetTVList function" />
+    <MESSAGE value="Implemented getMovieStats, getTVStats and getBookStats in the Recommender Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented getMovieStats, getTVStats and getBookStats in the Recommender Class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/RecommenderGUI.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/RecommenderGUI.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/Recommender.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
