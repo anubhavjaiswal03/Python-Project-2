@@ -182,7 +182,97 @@ class Recommender:
         return formatted_booklist
 
     def getMovieStats(self):
-        pass
+        movie_dict={}
+
+        #Rating
+        rating_count={}
+        total_movies=0
+        for show_id,show_object in self.__shows.items():
+            if show_object.get_show_type()=='Movie':
+                rating=show_object.get_show_content_rating()
+                if rating:
+                    total_movies=total_movies+1
+                    if rating not in rating_count.keys():
+                        rating_count[rating]=1
+                    else:
+                        rating_count[rating]+=1
+
+        rating_distribution={}
+        for rating,count in rating_count.items():
+            percentage=round(count/total_movies*100)
+            rating_distribution[rating]=percentage
+
+        movie_dict['rating_distribution']=rating_distribution
+
+        #Average Movie Duration
+        total_duration=0
+        movie_count=0
+        for show_id,show_object in self.__shows.items():
+            if show_object.get_show_type()=='Movie':
+                duration=show_object.get_show_duration_str()
+                if duration:
+                    try:
+                        duration_value=int(duration.split()[0])
+                        total_duration=total_duration+duration_value
+                        movie_count=movie_count+1
+                    except ValueError:
+                        pass
+
+        #Average Duration
+        if movie_count>0:
+            average_duration=total_duration/movie_count
+        else:
+            average_duration=0
+        movie_dict['average_duration']=f'{average_duration:.2f} minutes'
+
+        #Director most frequency
+        director_count={}
+        for show_id,show_object in self.__shows.items():
+            if show_object.get_show_type()=='Movie':
+                director=show_object.get_show_director()
+                if director not in director_count.keys():
+                    director_count[director]=1
+                else:
+                    director_count[director]=director_count[director]+1
+
+        freq_dir=max(director_count,key=director_count.get) if director_count else None
+        movie_dict['most_movies_director']=freq_dir if freq_dir else 'No director data found'
+
+        #Actor with Most Movies
+        actor_count={}
+        for show_id,show_object in self.__shows.items():
+            if show_object.get_show_type()=='Movie':
+                actors=show_object.get_show_cast()
+                if actors:
+                    for actor in actors.split('/'):
+                        if actor:
+                            if actor not in actor_count.keys():
+                                actor_count[actor]=0
+                            actor_count[actor]=actor_count[actor]+1
+
+        #Actor most frequency
+        freq_actor=max(actor_count,key=actor_count.get) if actor_count else None
+        movie_dict['most_movies_actor']=freq_actor if freq_actor else 'No actor data found'
+
+        #Genre most frequency
+        genre_count={}
+        for show_id,show_object in self.__shows.items():
+            if show_object.get_show_type()=='Movie':
+                genre=show_object.get_show_genre()
+                if genre not in genre_count.keys():
+                    genre_count[genre]=1
+                else:
+                    genre_count[genre]=genre_count[genre]+1
+
+        freq_genre=max(genre_count,key=genre_count.get) if genre_count else None
+        movie_dict['most_movies_genre']=freq_genre if freq_genre else 'No genre data found'
+        print("\n")
+        for key in movie_dict.keys():
+            print(key,movie_dict[key])
+
+        return movie_dict
+
+
 
     def getTVStats(self):
         pass
@@ -193,7 +283,7 @@ class Recommender:
 
 if __name__ == '__main__':
     file_paths = ["Input Files/books10.csv",
-                  "Input Files/shows10.csv",
+                  "Input Files/shows100.csv",
                   "Input Files/associated10.csv"]
 
     rec = Recommender(file_paths)
@@ -207,7 +297,7 @@ if __name__ == '__main__':
     print(rec.getMovieList())
     print(rec.getTVList())
 
-    # print(rec.getMovieStats())
+    rec.getMovieStats()
 
     rec.loadAssociations()
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
