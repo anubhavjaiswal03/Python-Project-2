@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Fixed Recommender.py: getMovieList(), getTVList(), getBookList().">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Book.py" beforeDir="false" afterPath="$PROJECT_DIR$/Book.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Media.py" beforeDir="false" afterPath="$PROJECT_DIR$/Media.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Show.py" beforeDir="false" afterPath="$PROJECT_DIR$/Show.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714610528354</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count">
+      <option name="closed" value="true" />
+      <created>1714615765330</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1714615765330</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -240,6 +245,7 @@
     <MESSAGE value="minor changes." />
     <MESSAGE value=".gitignore changes" />
     <MESSAGE value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
+    <MESSAGE value="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count" />
   </component>
 </project>
