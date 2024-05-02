@@ -3,26 +3,27 @@ class Media:
     Base Class for the classes: Show and Book, defining id, title and average_rating Data Members along with their
     respective accessors and mutators.
     """
+
     def __init__(self, media_id, media_title, media_average_rating):
         self._media_id = media_id
         self._media_title = media_title
-        self._media_average_rating = media_average_rating
+        self._media_average_rating = float(media_average_rating)
 
-    def get_id(self):
+    def get_id(self) -> str:
         """
         Getter/Accessor for the Media id, Eg, book if, TV Show Id, or even film id.
         :return: Media ID
         """
         return self._media_id
 
-    def get_title(self):
+    def get_title(self) -> str:
         """
         Getter/Accessor for the Media title, e.g. the title of a Book or Show or Film.
         :return: Media Title.
         """
         return self._media_title
 
-    def get_rating(self):
+    def get_rating(self) -> float:
         """
         Getter/Accessor for the Average Media Rating, like the Average rating of a book, show or film.
         :return:

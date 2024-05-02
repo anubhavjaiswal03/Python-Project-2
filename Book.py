@@ -14,8 +14,8 @@ class Book(Media):
         self.__book_isbn_number = isbn_number
         self.__book_isbn13_number = isbn13_number
         self.__book_language_code = language_code
-        self.__book_page_count = pages_count
-        self.__book_rating_count = ratings_count
+        self.__book_page_count = int(pages_count)
+        self.__book_rating_count = int(ratings_count)
         self.__book_publication_date = publication_date
         self.__book_publisher = publisher
 

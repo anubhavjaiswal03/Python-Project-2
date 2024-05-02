@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment=".gitignore changes">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Fixed Recommender.py: getMovieList(), getTVList(), getBookList().">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book.py" beforeDir="false" afterPath="$PROJECT_DIR$/Book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Media.py" beforeDir="false" afterPath="$PROJECT_DIR$/Media.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Show.py" beforeDir="false" afterPath="$PROJECT_DIR$/Show.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +58,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Book.executor": "Run",
+    "Python.Media.executor": "Run",
     "Python.Recommender.executor": "Run",
     "Python.RecommenderGUI.executor": "Run",
     "Python.Show.executor": "Run",
@@ -198,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714602889205</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fixed Recommender.py: getMovieList(), getTVList(), getBookList().">
+      <option name="closed" value="true" />
+      <created>1714610528354</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1714610528354</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -227,6 +239,7 @@
     <MESSAGE value="Re-implemented Recommender.py" />
     <MESSAGE value="minor changes." />
     <MESSAGE value=".gitignore changes" />
-    <option name="LAST_COMMIT_MESSAGE" value=".gitignore changes" />
+    <MESSAGE value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
   </component>
 </project>

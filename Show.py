@@ -16,7 +16,8 @@ class Show(Media):
         self.__show_date_added = date_added
         self.__show_release_year = release_year
         self.__show_content_rating = media_rating
-        self.__show_duration = duration
+        self.__show_duration = int(duration.split(" ")[0])
+        self.__show_duration_unit = duration.split(" ")[1]
         self.__show_genre = genre
         self.__show_description = description
 
@@ -24,7 +25,7 @@ class Show(Media):
         return (f"{self._media_id}, {self.__show_type}, {self._media_title}, {self.__show_director}, "
                 f"{self.__show_cast}, {self._media_average_rating}, {self.__show_country_code}, "
                 f"{self.__show_date_added}, {self.__show_release_year}, {self.__show_content_rating}, "
-                f"{self.__show_duration}, {self.__show_genre}, {self.__show_description}")
+                f"{self.get_show_duration_str()}, {self.__show_genre}, {self.__show_description}")
 
     # Accessor/Mutators:
     def get_show_id(self):
@@ -57,7 +58,14 @@ class Show(Media):
     def get_show_content_rating(self):
         return self.__show_content_rating
 
+    def get_show_duration_str(self):
+        """Returns the durations as String constructing from the show duration and duration unit (min or Season)"""
+        return f"{self.__show_duration} {self.__show_duration_unit}"
+
     def get_show_duration(self):
+        """
+        Returns the Number of minutes or seasons as int.
+        """
         return self.__show_duration
 
     def get_show_genre(self):
