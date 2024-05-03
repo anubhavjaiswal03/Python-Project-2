@@ -442,10 +442,6 @@ class Recommender:
             messagebox.showerror("File Not Loaded Error", "Please Load a Show File Before you can perform a search.")
             return "Please Load a Show file before you can perform a search with the \"Load Shows button\"."
 
-        # for key in self.__shows.keys():
-        #     if self.__shows[key].get_show_type() == key_type:
-        #         filtered_show_objects.append(self.__shows[key])
-
         # Filter for key_type
         filtered_show_objects: list[Show] = [self.__shows[key] for key in self.__shows.keys() if
                                              self.__shows[key].get_show_type() == key_type]
