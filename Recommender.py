@@ -143,7 +143,7 @@ class Recommender:
                     if self.__max_movie_runtime_width < duration_width:
                         self.__max_movie_runtime_width = duration_width
 
-                self.__shows[show_object.get_show_id()] = show_object
+                self.__shows[show_object.get_id()] = show_object
                 line = show_file.readline()
 
         for show in self.__shows.items():

@@ -28,12 +28,6 @@ class Show(Media):
                 f"{self.get_show_duration_str()}, {self.__show_genre}, {self.__show_description}")
 
     # Accessor/Mutators:
-    def get_show_id(self):
-        return self.get_id()
-
-    def get_show_title(self):
-        return self.get_title()
-
     def get_show_average_rating(self):
         return self._media_average_rating
 
