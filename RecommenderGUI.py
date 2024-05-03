@@ -87,7 +87,7 @@ class RecommenderGUI:
         self.__shows_genre_label = tkinter.Label(self.__search_shows_tab, text="Genre :")
         self.__shows_type_combo = ttk.Combobox(self.__search_shows_tab,
                                                textvariable=self.__shows_type_str)
-        self.__books_results_text = tkinter.Text(self.__search_shows_tab)
+        self.__shows_results_text = tkinter.Text(self.__search_shows_tab)
 
         self.__shows_type_combo['values'] = ('TV Show', 'Movie')
         self.__shows_title_entry = tkinter.Entry(self.__search_shows_tab, textvariable=self.__shows_title_str, width=40)
@@ -98,14 +98,14 @@ class RecommenderGUI:
         self.__search_show_button = tkinter.Button(self.__search_shows_tab, text="Search", command=self.searchShows)
 
         self.__shows_scrollbar_y = tkinter.Scrollbar(self.__search_shows_tab, orient=tkinter.VERTICAL,
-                                                     command=self.__books_results_text.yview)
+                                                     command=self.__shows_results_text.yview)
         self.__shows_scrollbar_y.grid(row=6, column=3, sticky=tkinter.NS)
-        self.__books_results_text.config(yscrollcommand=self.__shows_scrollbar_y.set)
+        self.__shows_results_text.config(yscrollcommand=self.__shows_scrollbar_y.set)
 
         self.__shows_scrollbar_x = tkinter.Scrollbar(self.__search_shows_tab, orient=tkinter.HORIZONTAL,
-                                                     command=self.__books_results_text.xview)
+                                                     command=self.__shows_results_text.xview)
         self.__shows_scrollbar_x.grid(row=7, column=0, columnspan=3, sticky=tkinter.EW)
-        self.__books_results_text.config(xscrollcommand=self.__shows_scrollbar_x.set)
+        self.__shows_results_text.config(xscrollcommand=self.__shows_scrollbar_x.set)
 
         self.__shows_type_label.grid(row=0, column=0, sticky=tkinter.W)
         self.__shows_title_label.grid(row=1, column=0, sticky=tkinter.W)
@@ -118,13 +118,13 @@ class RecommenderGUI:
         self.__shows_actor_entry.grid(row=3, column=1, sticky=tkinter.W)
         self.__shows_genre_entry.grid(row=4, column=1, sticky=tkinter.W)
         self.__search_show_button.grid(row=5, column=0, sticky=tkinter.EW)
-        self.__books_results_text.grid(row=6, column=0, columnspan=3, sticky=tkinter.NSEW)
+        self.__shows_results_text.grid(row=6, column=0, columnspan=3, sticky=tkinter.NSEW)
 
         self.__search_shows_tab.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
         self.__search_shows_tab.grid_columnconfigure(0, weight=1)
         self.__search_shows_tab.grid_columnconfigure(1, weight=50)
         self.__search_shows_tab.grid_rowconfigure(6, weight=50)
-        self.__mutate_Text_GUI(self.__books_results_text, "Please Search Something to Populate Information here.")
+        self.__mutate_Text_GUI(self.__shows_results_text, "Please Search Something to Populate Information here.")
 
         # Search Books
         self.__search_books_tab = ttk.Frame(self.__notebook)
@@ -270,7 +270,10 @@ class RecommenderGUI:
         self.credit_info_messagebox = messagebox.showinfo(title, message, detail=project_completion)
 
     def searchShows(self):
-        pass
+        temp: str = self.__recommender.searchTVMovies(self.__shows_type_str.get(), self.__shows_title_str.get(),
+                                                      self.__shows_director_str.get(), self.__shows_actor_str.get(),
+                                                      self.__shows_genre_str.get())
+        self.sts
 
     def searchBooks(self):
         pass
