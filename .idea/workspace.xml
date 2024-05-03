@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Added all GUI elements&#10;only creditInfoBox Remains">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Recommender.py: Reverted Change to now continuously ask user to enter a valid file for, Shows, Books and associations.&#10;RecommenderGUI.py: Added Default message for Ratings, and mechanism to clear it when the file is loaded.&#10;Added CreditInfoBox Details">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714694726549</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Recommender.py: Reverted Change to now continuously ask user to enter a valid file for, Shows, Books and associations.&#10;RecommenderGUI.py: Added Default message for Ratings, and mechanism to clear it when the file is loaded.&#10;Added CreditInfoBox Details">
+      <option name="closed" value="true" />
+      <created>1714697697352</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714697697352</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -273,6 +280,7 @@
     <MESSAGE value="Begin to Clean RecommenderGUI.py:" />
     <MESSAGE value="Expanded The RecommenderGUI.py:&#10; - Added all require Functions and most definitions.&#10;&#10;Modified Recommender.py:&#10; - Added a way to reset the main data Memebers holding the loaded Books, Shows and Associations.&#10; - Also Ensured to follow Design logic of Cancel Opeation. May have to revert thia change (cancelling now does not prompt a filedialog)" />
     <MESSAGE value="Added all GUI elements&#10;only creditInfoBox Remains" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all GUI elements&#10;only creditInfoBox Remains" />
+    <MESSAGE value="Recommender.py: Reverted Change to now continuously ask user to enter a valid file for, Shows, Books and associations.&#10;RecommenderGUI.py: Added Default message for Ratings, and mechanism to clear it when the file is loaded.&#10;Added CreditInfoBox Details" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recommender.py: Reverted Change to now continuously ask user to enter a valid file for, Shows, Books and associations.&#10;RecommenderGUI.py: Added Default message for Ratings, and mechanism to clear it when the file is loaded.&#10;Added CreditInfoBox Details" />
   </component>
 </project>

@@ -182,16 +182,19 @@ class RecommenderGUI:
                                                          textvariable=self.__recommendations_type_str)
         self.__recommendations_title_entry = tkinter.Entry(self.__recommendations_tab,
                                                            textvariable=self.__recommendations_title_str, width=40)
-
         self.__recommendations_results_text = tkinter.Text(self.__recommendations_tab)
+        self.__recommendations_scrollbar_y = tkinter.Scrollbar(self.__recommendations_tab, orient=tkinter.VERTICAL,
+                                                               command=self.__recommendations_results_text.yview)
+        self.__recommendations_scrollbar_y.grid(row=3, column=2, sticky=tkinter.NS)
+        self.__recommendations_results_text.config(yscrollcommand=self.__recommendations_scrollbar_y.set)
         self.__recommendations_type_combo['values'] = ('Movie', 'TV Show', 'Book')
-
+        self.__mutate_Text_GUI(self.__recommendations_results_text, "Please Load the Recommendations.")
         self.__recommendations_type_label.grid(row=0, column=0, sticky=tkinter.W)
         self.__recommendations_title_label.grid(row=1, column=0, sticky=tkinter.W)
         self.__recommendations_get_button.grid(row=2, column=0, columnspan=2, sticky=tkinter.W)
         self.__recommendations_type_combo.grid(row=0, column=1, sticky=tkinter.W)
         self.__recommendations_title_entry.grid(row=1, column=1, sticky=tkinter.W)
-        self.__recommendations_results_text.grid(row=3, column=0, columnspan=3, sticky=tkinter.NSEW)
+        self.__recommendations_results_text.grid(row=3, column=0, columnspan=2, sticky=tkinter.NSEW)
 
         self.__recommendations_tab.grid_rowconfigure((0, 1, 2), weight=1)
         self.__recommendations_tab.grid_columnconfigure(0, weight=1)
