@@ -146,8 +146,6 @@ class Recommender:
                 self.__shows[show_object.get_id()] = show_object
                 line = show_file.readline()
 
-        for show in self.__shows.items():
-            print(show[0], show[1], sep=":")
         print("TV title width: ", self.__max_tv_title_width, ", TV seasons width: ", self.__max_tv_season_width)
         print("Movie title width: ", self.__max_movie_title_width, ", Movie duration width: ",
               self.__max_movie_runtime_width)
