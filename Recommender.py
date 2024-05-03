@@ -196,6 +196,15 @@ class Recommender:
     def getBookStats(self):
         pass
 
+    def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
+        pass
+
+    def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
+        pass
+
+    def getRecommendations(self, key_type: str, key_title: str) -> str:
+        pass
+
 
 if __name__ == '__main__':
     file_paths = ["Input Files/books10.csv",
