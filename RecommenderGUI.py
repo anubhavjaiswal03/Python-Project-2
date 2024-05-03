@@ -273,7 +273,7 @@ class RecommenderGUI:
         temp: str = self.__recommender.searchTVMovies(self.__shows_type_str.get(), self.__shows_title_str.get(),
                                                       self.__shows_director_str.get(), self.__shows_actor_str.get(),
                                                       self.__shows_genre_str.get())
-        self.sts
+        self.__mutate_Text_GUI(self.__shows_results_text, temp)
 
     def searchBooks(self):
         pass

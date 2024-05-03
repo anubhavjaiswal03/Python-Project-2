@@ -206,8 +206,12 @@ class Recommender:
 
         if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
             messagebox.showerror("Empty Fields Error",
-                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of these.")
+                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
             return "No Results"
+
+        if not self.__shows:
+            messagebox.showerror("File Not Loaded Error", "Please Load a Show File Before you can perform a search.")
+            return "Please Load a Show file before you can perform a search with the \"Load Shows button\"."
 
         return result
 
