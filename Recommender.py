@@ -521,15 +521,19 @@ class Recommender:
 
         filter_books_objects: list[Book] = [book_object for book_object in self.__books.values()]
 
+        # Filter for Book Titles
         if not len(key_title) == 0:
             filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if book_object.get_title() == key_title]
 
+        # Filter for Book Authors
         if not len(key_author) == 0:
             filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if key_author in book_object.get_book_author().split('\\')]
 
+        # Filter for Book Publishers
         if not len(key_publisher) == 0:
             filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if book_object.get_book_publisher() == key_publisher]
 
+        # Declaring default max field widths.
         max_title_width: int = 0
         max_author_width: int = 0
         max_publisher_width: int = 0
@@ -547,7 +551,7 @@ class Recommender:
                   f"\n\tPublisher\t: '{key_publisher}'"
                   f"\nResults:")
 
-            # Finding the Maximum length of all the fields.
+            # Finding the Maximum length of the required fields.
             for book in filter_books_objects:
                 max_title_width = len(book.get_title()) if max_title_width < len(book.get_title()) else max_title_width
                 max_author_width = len(book.get_book_author()) if max_author_width < len(
