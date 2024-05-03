@@ -4,7 +4,7 @@ from Recommender import Recommender
 import tkinter.messagebox as messagebox
 
 
-class RecommenderGUI:
+class RecommenderGUI():
     def __init__(self):
         self.credit_info_messagebox = None
         self.__recommender = Recommender()
