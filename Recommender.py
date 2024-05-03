@@ -30,8 +30,6 @@ class Recommender:
         associations_filename = "" if self.__default_filenames is None else self.__default_filenames[2]
         while not os.path.exists(associations_filename):
             associations_filename = fd.askopenfilename(initialdir=os.getcwd())
-            if associations_filename is None:
-                return
             if not os.path.exists(associations_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % associations_filename)
 
@@ -80,8 +78,6 @@ class Recommender:
         book_filename = "" if self.__default_filenames is None else self.__default_filenames[0]
         while not os.path.exists(book_filename):
             book_filename = fd.askopenfilename(initialdir=os.getcwd())
-            if book_filename == '':
-                return
             if not os.path.exists(book_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % book_filename)
 
@@ -119,8 +115,6 @@ class Recommender:
         show_filename = "" if self.__default_filenames is None else self.__default_filenames[1]
         while not os.path.exists(show_filename):
             show_filename = fd.askopenfilename(initialdir=os.getcwd())
-            if show_filename == '':
-                return
             if not os.path.exists(show_filename):
                 print('\033[91;1m%s\033[0m file does not exist!' % show_filename)
 

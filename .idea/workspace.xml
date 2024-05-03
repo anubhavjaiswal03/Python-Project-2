@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Expanded The RecommenderGUI.py:&#10; - Added all require Functions and most definitions.&#10;&#10;Modified Recommender.py:&#10; - Added a way to reset the main data Memebers holding the loaded Books, Shows and Associations.&#10; - Also Ensured to follow Design logic of Cancel Opeation. May have to revert thia change (cancelling now does not prompt a filedialog)">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Added all GUI elements&#10;only creditInfoBox Remains">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714690254764</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added all GUI elements&#10;only creditInfoBox Remains">
+      <option name="closed" value="true" />
+      <created>1714694726549</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714694726549</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -263,6 +272,7 @@
     <MESSAGE value="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count" />
     <MESSAGE value="Begin to Clean RecommenderGUI.py:" />
     <MESSAGE value="Expanded The RecommenderGUI.py:&#10; - Added all require Functions and most definitions.&#10;&#10;Modified Recommender.py:&#10; - Added a way to reset the main data Memebers holding the loaded Books, Shows and Associations.&#10; - Also Ensured to follow Design logic of Cancel Opeation. May have to revert thia change (cancelling now does not prompt a filedialog)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Expanded The RecommenderGUI.py:&#10; - Added all require Functions and most definitions.&#10;&#10;Modified Recommender.py:&#10; - Added a way to reset the main data Memebers holding the loaded Books, Shows and Associations.&#10; - Also Ensured to follow Design logic of Cancel Opeation. May have to revert thia change (cancelling now does not prompt a filedialog)" />
+    <MESSAGE value="Added all GUI elements&#10;only creditInfoBox Remains" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all GUI elements&#10;only creditInfoBox Remains" />
   </component>
 </project>

@@ -6,6 +6,7 @@ import tkinter.messagebox as messagebox
 
 class RecommenderGUI:
     def __init__(self):
+        self.credit_info_messagebox = None
         self.__recommender = Recommender()
         self.__main_window = tkinter.Tk()
         self.__main_window.title('Media Recommender')
@@ -200,11 +201,13 @@ class RecommenderGUI:
         # Ratings Tab
         self.__ratings_tab = ttk.Frame(self.__notebook)
         self.__notebook.add(self.__ratings_tab, text="Ratings")
-        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab,)
+        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab, )
         self.__rating_movies_canvas = tkinter.Canvas(self.__ratings_tab)
 
-        self.__rating_shows_label = tkinter.Label(self.__rating_shows_canvas, text="TV Show Ratings")
-        self.__rating_movies_label = tkinter.Label(self.__rating_movies_canvas, text="Movie Ratings")
+        self.__rating_shows_label = tkinter.Label(self.__rating_shows_canvas,
+                                                  text="Please Load a Show File to Populate the Shows Pie-Chart")
+        self.__rating_movies_label = tkinter.Label(self.__rating_movies_canvas,
+                                                   text="Please Load a Show File to Populate the Movie Pie-Chart")
 
         self.__rating_movies_canvas.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True, padx=(0, 5))
         self.__rating_shows_canvas.pack(side=tkinter.RIGHT, fill=tkinter.BOTH, expand=True, padx=(5, 0))
@@ -216,7 +219,8 @@ class RecommenderGUI:
         # Bottom Button Configurations
         self.__load_shows_button = tkinter.Button(self.__button_frame, text='Load Shows', command=self.loadShows)
         self.__load_books_button = tkinter.Button(self.__button_frame, text='Load Books', command=self.loadBooks)
-        self.__load_recommendations_button = tkinter.Button(self.__button_frame, text='Load Recommendations', )
+        self.__load_recommendations_button = tkinter.Button(self.__button_frame, text='Load Recommendations',
+                                                            command=self.loadAssociations)
         self.__info_button = tkinter.Button(self.__button_frame, text='Info', command=self.creditInfoBox)
         self.__quit_button = tkinter.Button(self.__button_frame, text='Quit',
                                             command=self.__main_window.destroy)
@@ -243,6 +247,8 @@ class RecommenderGUI:
         self.__recommender.loadShows()
         self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender.getMovieList())
         self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender.getTVList())
+        self.__rating_shows_label['text'] = "Show Ratings"
+        self.__rating_movies_label['text'] = "Movie Ratings"
 
     def loadBooks(self):  # CHeck Function NAme
         print("Select a Book file")
@@ -255,7 +261,10 @@ class RecommenderGUI:
         pass
 
     def creditInfoBox(self):
-        pass
+        title: str = "Project Information"
+        message: str = "Team: Code Crusaders\nAnubhav Jaiswal\nPrayash Das"
+        project_completion: str = "Project Completion: 03-May-2024"
+        self.credit_info_messagebox = messagebox.showinfo(title, message, detail=project_completion)
 
     def searchShows(self):
         pass
