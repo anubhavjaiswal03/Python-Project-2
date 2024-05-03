@@ -138,8 +138,10 @@ class RecommenderGUI:
         self.__books_results_text = tkinter.Text(self.__search_books_tab)
 
         self.__books_title_entry = tkinter.Entry(self.__search_books_tab, textvariable=self.__books_title_str, width=40)
-        self.__books_author_entry = tkinter.Entry(self.__search_books_tab, textvariable=self.__books_author_str, width=40)
-        self.__books_publisher_entry = tkinter.Entry(self.__search_books_tab, textvariable=self.__books_publisher_str, width=40)
+        self.__books_author_entry = tkinter.Entry(self.__search_books_tab, textvariable=self.__books_author_str,
+                                                  width=40)
+        self.__books_publisher_entry = tkinter.Entry(self.__search_books_tab, textvariable=self.__books_publisher_str,
+                                                     width=40)
         self.__books_search_button = tkinter.Button(self.__search_books_tab, text="Search", command=self.searchBooks)
         self.__books_scrollbar_y = tkinter.Scrollbar(self.__search_books_tab, orient=tkinter.VERTICAL,
                                                      command=self.__books_results_text.yview)
@@ -171,17 +173,45 @@ class RecommenderGUI:
         self.__notebook.add(self.__recommendations_tab, text="Recommendations")
         self.__recommendations_title_str = tkinter.StringVar()
         self.__recommendations_type_str = tkinter.StringVar()
-        self.__r_input_frame = tkinter.Frame(self.__recommendations_tab, height=100, width=800)
-        self.__r_output_frame = tkinter.Frame(self.__recommendations_tab)
 
-        self.__recommendations_type_label = tkinter.Label(self.__r_input_frame, text="Type :")
-        self.__recommendations_title_label = tkinter.Label(self.__r_input_frame, text="Title :")
-        self.__recommendations_get_button = tkinter.Button(self.__r_input_frame, text="Get Recommendations")
-        self._
+        self.__recommendations_type_label = tkinter.Label(self.__recommendations_tab, text="Type :")
+        self.__recommendations_title_label = tkinter.Label(self.__recommendations_tab, text="Title :")
+        self.__recommendations_get_button = tkinter.Button(self.__recommendations_tab, text="Get Recommendations")
+        self.__recommendations_type_combo = ttk.Combobox(self.__recommendations_tab,
+                                                         textvariable=self.__recommendations_type_str)
+        self.__recommendations_title_entry = tkinter.Entry(self.__recommendations_tab,
+                                                           textvariable=self.__recommendations_title_str, width=40)
+
+        self.__recommendations_results_text = tkinter.Text(self.__recommendations_tab)
+        self.__recommendations_type_combo['values'] = ('Movie', 'TV Show', 'Book')
+
+        self.__recommendations_type_label.grid(row=0, column=0, sticky=tkinter.W)
+        self.__recommendations_title_label.grid(row=1, column=0, sticky=tkinter.W)
+        self.__recommendations_get_button.grid(row=2, column=0, columnspan=2, sticky=tkinter.W)
+        self.__recommendations_type_combo.grid(row=0, column=1, sticky=tkinter.W)
+        self.__recommendations_title_entry.grid(row=1, column=1, sticky=tkinter.W)
+        self.__recommendations_results_text.grid(row=3, column=0, columnspan=3, sticky=tkinter.NSEW)
+
+        self.__recommendations_tab.grid_rowconfigure((0, 1, 2), weight=1)
+        self.__recommendations_tab.grid_columnconfigure(0, weight=1)
+        self.__recommendations_tab.grid_columnconfigure(1, weight=50)
+        self.__recommendations_tab.grid_rowconfigure(3, weight=50)
 
         # Ratings Tab
         self.__ratings_tab = ttk.Frame(self.__notebook)
         self.__notebook.add(self.__ratings_tab, text="Ratings")
+        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab,)
+        self.__rating_movies_canvas = tkinter.Canvas(self.__ratings_tab)
+
+        self.__rating_shows_label = tkinter.Label(self.__rating_shows_canvas, text="TV Show Ratings")
+        self.__rating_movies_label = tkinter.Label(self.__rating_movies_canvas, text="Movie Ratings")
+
+        self.__rating_movies_canvas.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True, padx=(0, 5))
+        self.__rating_shows_canvas.pack(side=tkinter.RIGHT, fill=tkinter.BOTH, expand=True, padx=(5, 0))
+        self.__rating_shows_label.pack(side=tkinter.TOP, fill=tkinter.X)
+        self.__rating_movies_label.pack(side=tkinter.TOP, fill=tkinter.X)
+        self.__rating_shows_label.configure(font=("Ariel", 20))
+        self.__rating_movies_label.configure(font=("Ariel", 20))
 
         # Bottom Button Configurations
         self.__load_shows_button = tkinter.Button(self.__button_frame, text='Load Shows', command=self.loadShows)
@@ -221,6 +251,7 @@ class RecommenderGUI:
 
     def loadAssociations(self):
         print("Select an Association file")
+        self.__recommender.loadAssociations()
         pass
 
     def creditInfoBox(self):
