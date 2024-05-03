@@ -5,6 +5,7 @@ from Show import Show
 import timeit
 from tkinter import filedialog as fd
 import os
+import tkinter.messagebox as messagebox
 
 
 class Recommender:
@@ -18,13 +19,14 @@ class Recommender:
         self.__max_tv_season_width = 0
         self.__max_books_title_width = 0
         self.__max_books_authors_width = 0
-        self.__spacing_between_columns = 4
+        self.__spacing_between_columns = 2  # Adds space between 2 columns, Making thigs look pretty
         self.__default_filenames = file_names  # Purely for testing fast.
 
     def __str__(self):
         pass
 
     def loadAssociations(self):
+        self.__associations = {}  # Resetting the association data member before loading new associations.
         # prompt for a file dialog
         associations_filename = "" if self.__default_filenames is None else self.__default_filenames[2]
         while not os.path.exists(associations_filename):
@@ -73,6 +75,7 @@ class Recommender:
         print(count)
 
     def loadBooks(self):
+        self.__books = {}  # Resetting the books data member before loading books.
         book_filename = "" if self.__default_filenames is None else self.__default_filenames[0]
         while not os.path.exists(book_filename):
             book_filename = fd.askopenfilename(initialdir=os.getcwd())
@@ -109,6 +112,7 @@ class Recommender:
         print(self.__max_books_title_width, self.__max_books_authors_width)
 
     def loadShows(self):
+        self.__shows = {}  # Resetting the shows data member.
         show_filename = "" if self.__default_filenames is None else self.__default_filenames[1]
         while not os.path.exists(show_filename):
             show_filename = fd.askopenfilename(initialdir=os.getcwd())
@@ -147,9 +151,10 @@ class Recommender:
               self.__max_movie_runtime_width)
 
     def getMovieList(self):
-
+        if len(self.__shows) == 0:
+            return "No File Selected, Please Select a Show file."
         movielist_header = ["Title", "Runtime"]
-        formatted_movielist = f"\033[1m{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\033[0m\n"
+        formatted_movielist = f"{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\n"
 
         for show_id in self.__shows.keys():
             if self.__shows[show_id].get_show_type() == 'Movie':
@@ -159,9 +164,10 @@ class Recommender:
         return formatted_movielist
 
     def getTVList(self):
-
+        if len(self.__shows) == 0:
+            return "No File Selected, Please Select a Show file."
         tvlist_header = ["Title", "Seasons"]
-        formatted_tvlist = f"\033[1m{tvlist_header[0]:<{self.__max_tv_title_width + self.__spacing_between_columns}}{tvlist_header[1]:<{self.__max_tv_season_width + self.__spacing_between_columns}}\033[0m\n"
+        formatted_tvlist = f"{tvlist_header[0]:<{self.__max_tv_title_width + self.__spacing_between_columns}}{tvlist_header[1]:<{self.__max_tv_season_width + self.__spacing_between_columns}}\n"
 
         for show_id in self.__shows.keys():
             if self.__shows[show_id].get_show_type() == 'TV Show':
@@ -171,9 +177,10 @@ class Recommender:
         return formatted_tvlist
 
     def getBookList(self):
-
+        if len(self.__books) == 0:
+            return "No File Selected, Please Select a Book file."
         booklist_header = ["Title", "Authors"]
-        formatted_booklist = f"\033[1m{booklist_header[0]:<{self.__max_books_title_width + self.__spacing_between_columns}}{booklist_header[1]:<{self.__max_books_authors_width + self.__spacing_between_columns}}\033[0m\n"
+        formatted_booklist = f"{booklist_header[0]:<{self.__max_books_title_width + self.__spacing_between_columns}}{booklist_header[1]:<{self.__max_books_authors_width + self.__spacing_between_columns}}\n"
 
         for book_id in self.__books.keys():
             book_object: Book = self.__books[book_id]
@@ -431,6 +438,30 @@ class Recommender:
 
 
 
+
+    def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
+        result = ""
+        show_types = ["TV Show", "Movie"]
+        if key_type not in show_types:
+            messagebox.showerror("Invalid Show Type", f"Please select either {show_types[0]} or {show_types[1]}")
+            return "No Results"
+
+        if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
+            messagebox.showerror("Empty Fields Error",
+                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
+            return "No Results"
+
+        if not self.__shows:
+            messagebox.showerror("File Not Loaded Error", "Please Load a Show File Before you can perform a search.")
+            return "Please Load a Show file before you can perform a search with the \"Load Shows button\"."
+
+        return result
+
+    def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
+        pass
+
+    def getRecommendations(self, key_type: str, key_title: str) -> str:
+        pass
 
 
 if __name__ == '__main__':
