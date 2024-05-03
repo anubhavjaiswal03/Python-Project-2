@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py">
-      <change afterPath="$PROJECT_DIR$/Bonus.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample.py" afterDir="false" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py&#10;&#10;Implemented the bonus section as well">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714680503454</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py&#10;&#10;Implemented the bonus section as well">
+      <option name="closed" value="true" />
+      <created>1714706283584</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1714706283584</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -309,7 +314,9 @@
     <MESSAGE value="Implemented the getMovieStats function" />
     <MESSAGE value="Implemented the getMovieStats function, getTVStats function" />
     <MESSAGE value="Implemented the getMovieStats function, getTVStats function, getBookStats function and debugged the errors in getMovieStats" />
+    <MESSAGE value="Implemented the Bonus section as well" />
     <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py&#10;&#10;Implemented the bonus section as well" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/Prayash_Das' into Prayash_Das&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Recommender.py&#10;&#10;Implemented the bonus section as well" />
   </component>
 </project>
