@@ -1,8 +1,5 @@
-import tkinter.filedialog
-
 from Book import Book
 from Show import Show
-import timeit
 from tkinter import filedialog as fd
 import os
 import tkinter.messagebox as messagebox
@@ -21,7 +18,7 @@ class Recommender:
         self.__max_tv_season_width = 0
         self.__max_books_title_width = 0
         self.__max_books_authors_width = 0
-        self.__spacing_between_columns = 2  # Adds space between 2 columns, Making thigs look pretty
+        self.__spacing_between_columns = 2  # Adds space between 2 columns, Making things look pretty
         self.__default_filenames = file_names  # Purely for testing fast.
 
     def __str__(self):
@@ -383,8 +380,8 @@ class Recommender:
                 page_value = int(pages)
                 total_pages = total_pages + page_value
                 page_count = page_count + 1
-            except:
-                pass
+            except Exception as exp:
+                print(exp)
 
         # Average Page
         if page_count > 0:
@@ -430,16 +427,16 @@ class Recommender:
         return book_dict
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
-        result = ""
+        result = "No Results"
         show_types = ["TV Show", "Movie"]
         if key_type not in show_types:
             messagebox.showerror("Invalid Show Type", f"Please select either {show_types[0]} or {show_types[1]}")
-            return "No Results"
+            return result
 
         if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
             messagebox.showerror("Empty Fields Error",
                                  f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
-            return "No Results"
+            return result
 
         if not self.__shows:
             messagebox.showerror("File Not Loaded Error", "Please Load a Show File Before you can perform a search.")
@@ -479,7 +476,6 @@ class Recommender:
         max_genre_width: int = 0
 
         if not filtered_show_objects:
-            result = "No Results"
             print(f"\nInput:"
                   f"\n\tType\t\t: '{key_type}'"
                   f"\n\tTitle\t\t: '{key_title}'"
@@ -498,7 +494,6 @@ class Recommender:
 
             # Finding the Maximum length of all the fields.
             for show in filtered_show_objects:
-                result = ""
                 max_title_width = len(show.get_title()) if max_title_width < len(show.get_title()) else max_title_width
                 max_director_width = len(show.get_show_director()) if max_director_width < len(
                     show.get_show_director()) else max_director_width
@@ -518,11 +513,11 @@ class Recommender:
         return result
 
     def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
-        results = ""
+        results = "No Result"
         if len(key_title) + len(key_title) + len(key_author) + len(key_publisher) == 0:
             messagebox.showerror("Empty Fields Error",
                                  f"Please provide input for at least one of the following fields to search: Title, Author or Publisher or any combinations of them.")
-            return "No Result"
+            return results
 
         if not self.__books:
             messagebox.showerror("File Not Loaded Error", "Please load a Book File first.")
@@ -544,12 +539,11 @@ class Recommender:
         max_publisher_width: int = 0
 
         if not filter_books_objects:
-            results = "No Results"
             print(f"\nInput:"
                   f"\n\tTitle\t\t: '{key_title}'"
                   f"\n\tAuthor\t\t: '{key_author}'"
                   f"\n\tPublisher\t: '{key_publisher}'"
-                  f"\nNo Results")
+                  f"\n{results}")
         else:
             print(f"\nInput:"
                   f"\n\tTitle\t\t: '{key_title}'"
@@ -559,7 +553,6 @@ class Recommender:
 
             # Finding the Maximum length of all the fields.
             for book in filter_books_objects:
-                results = ""
                 max_title_width = len(book.get_title()) if max_title_width < len(book.get_title()) else max_title_width
                 max_author_width = len(book.get_book_author()) if max_author_width < len(
                     book.get_book_author()) else max_author_width
