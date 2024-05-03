@@ -191,10 +191,10 @@ class Recommender:
     def getMovieStats(self):
         movie_dict = {}
 
-        #Rating
+        # Rating
         rating_count = {}
         total_movies = 0
-        #print(rating_count)
+        # print(rating_count)
         for show_id, show_object in self.__shows.items():
             if show_object.get_show_type() == 'Movie':
                 rating = show_object.get_show_content_rating()
@@ -206,7 +206,6 @@ class Recommender:
                         rating_count[rating] = rating_count[rating] + 1
                 else:
                     rating_count['None'] = rating_count.get('None', 0) + 1
-        #print(rating_count)
 
         rating_distribution = {}
         for rating, count in rating_count.items():
@@ -217,7 +216,7 @@ class Recommender:
 
         movie_dict['rating_distribution'] = distribution
 
-        #Average Movie Duration
+        # Average Movie Duration
         total_duration = 0
         movie_count = 0
         for show_id, show_object in self.__shows.items():
@@ -231,14 +230,14 @@ class Recommender:
                     except ValueError:
                         pass
 
-        #Average Duration
+        # Average Duration
         if movie_count > 0:
             average_duration = total_duration / movie_count
         else:
             average_duration = 0
         movie_dict['average_duration'] = f'{average_duration:.2f} minutes'
 
-        #Director most frequency
+        # Director most frequency
         director_count = {}
         for show_id, show_object in self.__shows.items():
             if show_object.get_show_type() == 'Movie':
@@ -251,7 +250,7 @@ class Recommender:
         freq_dir = max(director_count, key=director_count.get) if director_count else None
         movie_dict['most_movies_director'] = freq_dir if freq_dir else 'No director data found'
 
-        #Actor with Most Movies
+        # Actor with Most Movies
         actor_count = {}
         for show_id, show_object in self.__shows.items():
             if show_object.get_show_type() == 'Movie':
@@ -263,11 +262,11 @@ class Recommender:
                                 actor_count[actor] = 0
                             actor_count[actor] = actor_count[actor] + 1
 
-        #Actor most frequency
+        # Actor most frequency
         freq_actor = max(actor_count, key=actor_count.get) if actor_count else None
         movie_dict['most_movies_actor'] = freq_actor if freq_actor else 'No actor data found'
 
-        #Genre most frequency
+        # Genre most frequency
         genre_count = {}
         for show_id, show_object in self.__shows.items():
             if show_object.get_show_type() == 'Movie':
@@ -291,7 +290,7 @@ class Recommender:
     def getTVStats(self):
         tv_dict = {}
 
-        #Rating
+        # Rating
         rating_count = {}
         total_shows = 0
         for show_id, show_object in self.__shows.items():
@@ -313,7 +312,7 @@ class Recommender:
 
         tv_dict['rating_distribution'] = distribution
 
-        #Average Seasons
+        # Average Seasons
         total_seasons = 0
         show_count = 0
         for show_id, show_object in self.__shows.items():
@@ -335,7 +334,7 @@ class Recommender:
 
         tv_dict['average seasons'] = f'{average_duration:.2f} seasons'
 
-        #Actor with most TV shows
+        # Actor with most TV shows
         actor_count = {}
         for show_id, show_object in self.__shows.items():
             if show_object.get_show_type() == 'TV Show':
@@ -348,11 +347,11 @@ class Recommender:
                             else:
                                 actor_count[actor] = actor_count[actor] + 1
 
-        #Actor most frequency
+        # Actor most frequency
         freq_actor = max(actor_count, key=actor_count.get) if actor_count else None
         tv_dict['most_tvshows_actor'] = freq_actor if freq_actor else 'No actor data found'
 
-        #Genre Most Frequency
+        # Genre Most Frequency
         genre_count = {}
         for show_id, show_object in self.__shows.items():
             if show_object.get_show_type() == 'TV Show':
@@ -387,7 +386,7 @@ class Recommender:
             except:
                 pass
 
-        #Average Page
+        # Average Page
         if page_count > 0:
             average_page = total_pages / page_count
         else:
@@ -395,7 +394,7 @@ class Recommender:
 
         book_dict['average page'] = f'{average_page:.2f} pages'
 
-        #Author most books
+        # Author most books
         author_count = {}
         for book_id, book_object in self.__books.items():
             authors = book_object.get_book_author()
@@ -407,11 +406,11 @@ class Recommender:
                         else:
                             author_count[author] = author_count[author] + 1
 
-        #Author Most Frequency
+        # Author Most Frequency
         freq_author = max(author_count, key=author_count.get) if author_count else None
         book_dict['most_book_author'] = freq_author if freq_author else 'No author data found'
 
-        #Publisher most books
+        # Publisher most books
         publisher_count = {}
         for book_id, book_object in self.__books.items():
             publishers = book_object.get_book_publisher()
@@ -421,7 +420,7 @@ class Recommender:
                 else:
                     publisher_count[publishers] = publisher_count[publishers] + 1
 
-        #Publisher Most Frequency
+        # Publisher Most Frequency
         freq_publisher = max(publisher_count, key=publisher_count.get) if publisher_count else None
         book_dict['Most_book_publisher'] = freq_publisher if freq_publisher else 'No publisher data found'
         print('\n')
