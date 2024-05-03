@@ -5,6 +5,7 @@ from Show import Show
 import timeit
 from tkinter import filedialog as fd
 import os
+import tkinter.messagebox as messagebox
 
 
 class Recommender:
@@ -197,7 +198,18 @@ class Recommender:
         pass
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
-        pass
+        result = ""
+        show_types = ["TV Show", "Movie"]
+        if key_type not in show_types:
+            messagebox.showerror("Invalid Show Type", f"Please select either {show_types[0]} or {show_types[1]}")
+            return "No Results"
+
+        if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
+            messagebox.showerror("Empty Fields Error",
+                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of these.")
+            return "No Results"
+
+        return result
 
     def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
         pass

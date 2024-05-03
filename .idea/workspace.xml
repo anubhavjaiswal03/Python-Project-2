@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="RecommenderGUI.py: Added Vertical Scroll Bar to Recommender Result Area, and modified the correct spanning columns. for __recommendations_results_text member.">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Recommender.py: Added Search and Filter Function Signatures">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -253,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714699667100</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Recommender.py: Added Search and Filter Function Signatures">
+      <option name="closed" value="true" />
+      <created>1714700495914</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1714700495914</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -289,6 +298,7 @@
     <MESSAGE value="Added all GUI elements&#10;only creditInfoBox Remains" />
     <MESSAGE value="Recommender.py: Reverted Change to now continuously ask user to enter a valid file for, Shows, Books and associations.&#10;RecommenderGUI.py: Added Default message for Ratings, and mechanism to clear it when the file is loaded.&#10;Added CreditInfoBox Details" />
     <MESSAGE value="RecommenderGUI.py: Added Vertical Scroll Bar to Recommender Result Area, and modified the correct spanning columns. for __recommendations_results_text member." />
-    <option name="LAST_COMMIT_MESSAGE" value="RecommenderGUI.py: Added Vertical Scroll Bar to Recommender Result Area, and modified the correct spanning columns. for __recommendations_results_text member." />
+    <MESSAGE value="Recommender.py: Added Search and Filter Function Signatures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recommender.py: Added Search and Filter Function Signatures" />
   </component>
 </project>
