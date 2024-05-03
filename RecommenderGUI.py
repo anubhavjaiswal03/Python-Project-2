@@ -7,7 +7,7 @@ import tkinter.messagebox as messagebox
 class RecommenderGUI():
     def __init__(self):
         self.credit_info_messagebox = None
-        self.__recommender = Recommender()
+        self.__recommender_object = Recommender()
         self.__main_window = tkinter.Tk()
         self.__main_window.title('Media Recommender')
         self.__main_window.geometry('1200x800')
@@ -102,11 +102,6 @@ class RecommenderGUI():
         self.__shows_scrollbar_y.grid(row=6, column=3, sticky=tkinter.NS)
         self.__shows_results_text.config(yscrollcommand=self.__shows_scrollbar_y.set)
 
-        self.__shows_scrollbar_x = tkinter.Scrollbar(self.__search_shows_tab, orient=tkinter.HORIZONTAL,
-                                                     command=self.__shows_results_text.xview)
-        self.__shows_scrollbar_x.grid(row=7, column=0, columnspan=3, sticky=tkinter.EW)
-        self.__shows_results_text.config(xscrollcommand=self.__shows_scrollbar_x.set)
-
         self.__shows_type_label.grid(row=0, column=0, sticky=tkinter.W)
         self.__shows_title_label.grid(row=1, column=0, sticky=tkinter.W)
         self.__shows_director_label.grid(row=2, column=0, sticky=tkinter.W)
@@ -148,10 +143,6 @@ class RecommenderGUI():
                                                      command=self.__books_results_text.yview)
         self.__books_scrollbar_y.grid(row=4, column=3, sticky=tkinter.NS)
         self.__books_results_text.config(yscrollcommand=self.__books_scrollbar_y.set)
-        self.__books_scrollbar_x = tkinter.Scrollbar(self.__search_books_tab, orient=tkinter.HORIZONTAL,
-                                                     command=self.__books_results_text.xview)
-        self.__books_scrollbar_x.grid(row=5, column=0, columnspan=3, sticky=tkinter.EW)
-        self.__books_results_text.config(xscrollcommand=self.__books_scrollbar_x.set)
 
         self.__books_title_label.grid(row=0, column=0, sticky=tkinter.W)
         self.__books_author_label.grid(row=1, column=0, sticky=tkinter.W)
@@ -247,20 +238,20 @@ class RecommenderGUI():
 
     def loadShows(self):  # CHeck Function NAme
         print("Select a Show file")
-        self.__recommender.loadShows()
-        self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender.getMovieList())
-        self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender.getTVList())
+        self.__recommender_object.loadShows()
+        self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender_object.getMovieList())
+        self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender_object.getTVList())
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
 
     def loadBooks(self):  # CHeck Function NAme
         print("Select a Book file")
-        self.__recommender.loadBooks()
-        self.__mutate_Text_GUI(self.__books_list_text, self.__recommender.getBookList())
+        self.__recommender_object.loadBooks()
+        self.__mutate_Text_GUI(self.__books_list_text, self.__recommender_object.getBookList())
 
     def loadAssociations(self):
         print("Select an Association file")
-        self.__recommender.loadAssociations()
+        self.__recommender_object.loadAssociations()
         pass
 
     def creditInfoBox(self):
@@ -270,13 +261,16 @@ class RecommenderGUI():
         self.credit_info_messagebox = messagebox.showinfo(title, message, detail=project_completion)
 
     def searchShows(self):
-        temp: str = self.__recommender.searchTVMovies(self.__shows_type_str.get(), self.__shows_title_str.get(),
-                                                      self.__shows_director_str.get(), self.__shows_actor_str.get(),
-                                                      self.__shows_genre_str.get())
+        temp: str = self.__recommender_object.searchTVMovies(self.__shows_type_str.get(), self.__shows_title_str.get(),
+                                                             self.__shows_director_str.get(),
+                                                             self.__shows_actor_str.get(),
+                                                             self.__shows_genre_str.get())
         self.__mutate_Text_GUI(self.__shows_results_text, temp)
 
     def searchBooks(self):
-        pass
+        temp: str = self.__recommender_object.searchBooks(self.__books_title_str.get(), self.__books_author_str.get(),
+                                                          self.__books_publisher_str.get())
+        self.__mutate_Text_GUI(self.__books_results_text, temp)
 
     def getRecommendations(self):
         pass
