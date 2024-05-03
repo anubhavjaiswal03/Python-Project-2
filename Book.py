@@ -26,15 +26,6 @@ class Book(Media):
                 f"{self.__book_publisher}")
 
     # Accessor/Mutators:
-    def get_book_id(self):
-        return self.get_id()
-
-    def get_book_title(self):
-        return self.get_title()
-
-    def get_book_average_rating(self):
-        return self.get_rating()
-
     def get_book_author(self):
         return self.__book_authors
 

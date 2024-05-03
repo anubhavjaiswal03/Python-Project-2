@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Corrected Incorrect data declaration for __shows_results_text field">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Added the Search Show Functionality, Connected the Search Books Functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book.py" beforeDir="false" afterPath="$PROJECT_DIR$/Book.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714705971102</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added the Search Show Functionality, Connected the Search Books Functionality.">
+      <option name="closed" value="true" />
+      <created>1714770044362</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1714770044362</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -319,6 +326,7 @@
     <MESSAGE value="Recommender.py: Added Search and Filter Function Signatures" />
     <MESSAGE value="Started workign on searchTVMovies" />
     <MESSAGE value="Corrected Incorrect data declaration for __shows_results_text field" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected Incorrect data declaration for __shows_results_text field" />
+    <MESSAGE value="Added the Search Show Functionality, Connected the Search Books Functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the Search Show Functionality, Connected the Search Books Functionality." />
   </component>
 </project>

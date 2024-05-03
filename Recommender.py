@@ -106,7 +106,7 @@ class Recommender:
                 if self.__max_books_authors_width < author_width:
                     self.__max_books_authors_width = author_width
 
-                self.__books[book_object.get_book_id()] = book_object
+                self.__books[book_object.get_id()] = book_object
                 line = book_file.readline()
 
         for book in self.__books.items():
@@ -484,19 +484,19 @@ class Recommender:
         if not filtered_show_objects:
             result = "No Results"
             print(f"\nInput:"
-                  f"\n\tType:\t\t'{key_type}'"
-                  f"\n\tTitle:\t\t'{key_title}'"
-                  f"\n\tDirector:\t'{key_director}'"
-                  f"\n\tActor:\t\t'{key_actor}'"
-                  f"\n\tGenre:\t\t'{key_genre}'"
+                  f"\n\tType\t\t: '{key_type}'"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tDirector\t: '{key_director}'"
+                  f"\n\tActor\t\t: '{key_actor}'"
+                  f"\n\tGenre\t\t: '{key_genre}'"
                   f"\nNo Results")
         else:
             print(f"\nInput:"
-                  f"\n\tType:\t\t'{key_type}'"
-                  f"\n\tTitle:\t\t'{key_title}'"
-                  f"\n\tDirector:\t'{key_director}'"
-                  f"\n\tActor:\t\t'{key_actor}'"
-                  f"\n\tGenre:\t\t'{key_genre}'"
+                  f"\n\tType\t\t: '{key_type}'"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tDirector\t: '{key_director}'"
+                  f"\n\tActor\t\t: '{key_actor}'"
+                  f"\n\tGenre\t\t: '{key_genre}'"
                   f"\nResults:")
 
             # Finding the Maximum length of all the fields.
@@ -505,21 +505,79 @@ class Recommender:
                 max_title_width = len(show.get_title()) if max_title_width < len(show.get_title()) else max_title_width
                 max_director_width = len(show.get_show_director()) if max_director_width < len(
                     show.get_show_director()) else max_director_width
-                max_cast_width = len(show.get_show_cast()) if max_cast_width < len(show.get_show_cast()) else max_cast_width
-                max_genre_width = len(show.get_show_genre()) if max_genre_width < len(show.get_show_genre()) else max_genre_width
+                max_cast_width = len(show.get_show_cast()) if max_cast_width < len(
+                    show.get_show_cast()) else max_cast_width
+                max_genre_width = len(show.get_show_genre()) if max_genre_width < len(
+                    show.get_show_genre()) else max_genre_width
 
             # Building the Result String with correct spacing.
             result_header = ["Title", "Director", "Actor", "Genre"]
             result = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_director_width + self.__spacing_between_columns}}{result_header[2]:<{max_cast_width + self.__spacing_between_columns}}{result_header[3]:<{max_genre_width + self.__spacing_between_columns}}\n"
             for show in filtered_show_objects:
-                result += f"{show.get_title():<{max_title_width + self.__spacing_between_columns}}{show.get_show_director():<{max_director_width + self.__spacing_between_columns}}{show.get_show_cast():<{max_cast_width+self.__spacing_between_columns}}{show.get_show_genre():<{max_genre_width+self.__spacing_between_columns}}\n"
+                result += f"{show.get_title():<{max_title_width + self.__spacing_between_columns}}{show.get_show_director():<{max_director_width + self.__spacing_between_columns}}{show.get_show_cast():<{max_cast_width + self.__spacing_between_columns}}{show.get_show_genre():<{max_genre_width + self.__spacing_between_columns}}\n"
 
             print(result)
 
         return result
 
     def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
-        pass
+        results = ""
+        if len(key_title) + len(key_title) + len(key_author) + len(key_publisher) == 0:
+            messagebox.showerror("Empty Fields Error",
+                                 f"Please provide input for at least one of the following fields to search: Title, Author or Publisher or any combinations of them.")
+            return "No Result"
+
+        if not self.__books:
+            messagebox.showerror("File Not Loaded Error", "Please load a Book File first.")
+            return "Please load a Book file before you can perform a search with the \"Load Books\" button."
+
+        filter_books_objects: list[Book] = [book_object for book_object in self.__books.values()]
+
+        if not len(key_title) == 0:
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if book_object.get_title() == key_title]
+
+        if not len(key_author) == 0:
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if key_author in book_object.get_book_author().split('\\')]
+
+        if not len(key_publisher) == 0:
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if book_object.get_book_publisher() == key_publisher]
+
+        max_title_width: int = 0
+        max_author_width: int = 0
+        max_publisher_width: int = 0
+
+        if not filter_books_objects:
+            results = "No Results"
+            print(f"\nInput:"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tAuthor\t\t: '{key_author}'"
+                  f"\n\tPublisher\t: '{key_publisher}'"
+                  f"\nNo Results")
+        else:
+            print(f"\nInput:"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tAuthor\t\t: '{key_author}'"
+                  f"\n\tPublisher\t: '{key_publisher}'"
+                  f"\nResults:")
+
+            # Finding the Maximum length of all the fields.
+            for book in filter_books_objects:
+                results = ""
+                max_title_width = len(book.get_title()) if max_title_width < len(book.get_title()) else max_title_width
+                max_author_width = len(book.get_book_author()) if max_author_width < len(
+                    book.get_book_author()) else max_author_width
+                max_publisher_width = len(book.get_book_publisher()) if max_publisher_width < len(
+                    book.get_book_publisher()) else max_publisher_width
+
+            # Building the Result String with correct spacing.
+            result_header = ["Title", "Author", "Publisher"]
+            results = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_author_width + self.__spacing_between_columns}}{result_header[2]:<{max_publisher_width + self.__spacing_between_columns}}\n"
+            for book in filter_books_objects:
+                results += f"{book.get_title():<{max_title_width + self.__spacing_between_columns}}{book.get_book_author():<{max_author_width + self.__spacing_between_columns}}{book.get_book_publisher():<{max_publisher_width + self.__spacing_between_columns}}\n"
+
+            print(results)
+
+        return results
 
     def getRecommendations(self, key_type: str, key_title: str) -> str:
         pass
@@ -547,6 +605,9 @@ if __name__ == '__main__':
 
     rec.loadAssociations()
 
-    rec.searchTVMovies("Movie", "", "", "", "Comedy")
+    rec.searchTVMovies("Movie", "Standby", "", "", "Comedy")
+    rec.searchBooks("Twelfth Night", "William Shakespeare", "")
+    rec.searchBooks("", "John Sandford", "")
+
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
     # print("Execution time:", execution_time, "seconds")
