@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Adding minor comments">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Changed the helper function name.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Book.py" beforeDir="false" afterPath="$PROJECT_DIR$/Book.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Project Description Files/Project 2.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Show.py" beforeDir="false" afterPath="$PROJECT_DIR$/Show.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,7 +344,39 @@
       <option name="project" value="LOCAL" />
       <updated>1714773957101</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Book.py +1 Function, Recommender.py +1 Function, RecommenderGUI.py +1 Function">
+      <option name="closed" value="true" />
+      <created>1714792195706</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792195706</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Book.py +1 Function">
+      <option name="closed" value="true" />
+      <created>1714792210339</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792210339</updated>
+    </task>
+    <task id="LOCAL-00035" summary="SHow File Added get_Show_details(self)">
+      <option name="closed" value="true" />
+      <created>1714792790100</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792790100</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Changed the helper function name.">
+      <option name="closed" value="true" />
+      <created>1714792839786</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792839786</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -363,10 +394,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified init files according to input file sequence for Book.py and Show.py" />
-    <MESSAGE value="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions" />
-    <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
-    <MESSAGE value="minor changes" />
     <MESSAGE value="Project files" />
     <MESSAGE value="Project file" />
     <MESSAGE value="Re-implemented Recommender.py" />
@@ -388,6 +415,10 @@
     <MESSAGE value="Cleaned code in Recommender.py" />
     <MESSAGE value="Code cleanup in Recommender.py" />
     <MESSAGE value="Adding minor comments.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding minor comments.py" />
+    <MESSAGE value="Book.py +1 Function, Recommender.py +1 Function, RecommenderGUI.py +1 Function" />
+    <MESSAGE value="Book.py +1 Function" />
+    <MESSAGE value="SHow File Added get_Show_details(self)" />
+    <MESSAGE value="Changed the helper function name." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the helper function name." />
   </component>
 </project>

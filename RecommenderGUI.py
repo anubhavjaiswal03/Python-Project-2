@@ -174,7 +174,7 @@ class RecommenderGUI:
                                                          textvariable=self.__recommendations_type_str)
         self.__recommendations_title_entry = tkinter.Entry(self.__recommendations_tab,
                                                            textvariable=self.__recommendations_title_str, width=40)
-        self.__recommendations_results_text = tkinter.Text(self.__recommendations_tab)
+        self.__recommendations_results_text = tkinter.Text(self.__recommendations_tab, wrap=tkinter.WORD)
         self.__recommendations_scrollbar_y = tkinter.Scrollbar(self.__recommendations_tab, orient=tkinter.VERTICAL,
                                                                command=self.__recommendations_results_text.yview)
         self.__recommendations_scrollbar_y.grid(row=3, column=2, sticky=tkinter.NS)

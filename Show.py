@@ -71,7 +71,7 @@ class Show(Media):
         """
         return (f"Title: {self.get_title()}Type: {self.__show_type}\nDirector: {self.__show_director}"
                 f"\nCsst: {self.get_rating()}"
-                f"\nAverage Rating: {self.a}\nCountry Code: {self.__show_country_code}"
+                f"\nAverage Rating: {self.get_rating()}\nCountry Code: {self.__show_country_code}"
                 f"\nDate Added:{self.__show_date_added}"
                 f"\nRelease Year: {self.__show_release_year}"
                 f"\nMedia Rating: {self.__show_content_rating}"

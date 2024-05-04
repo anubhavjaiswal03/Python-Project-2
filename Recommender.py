@@ -600,18 +600,36 @@ class Recommender:
                         results += "\n" + "-" * self.__max_books_title_width + "\n"  # Since we know the max title width we can use that as a measure of the length of the separating character.
                     except KeyError:
                         messagebox.showwarning("Some Books not found", "Some books are not found! Please load the correct Book file too.")
-                        results += "Information Mismatch, Load the Correct Book File."
+                        results += "Information Mismatch, Load the Correct Files."
                         return results
                 print(results)
-
                 return results
             else:
                 messagebox.showwarning(f"0 Recommendations found",
                                        f"No recommendations found for {key_type} titled '{key_title}'.")
                 return results
-
-        if key_type == media_types[2]:
-            print("book")
+        elif key_type == media_types[2]:
+            key_id_from_title = [book_object.get_id() for book_object in list(self.__books.values()) if
+                                 book_object.get_title() == key_title]  # Using List Comprehension to search through all the show titles and getting the show object id of the correct show.
+            if key_id_from_title:
+                recommendations_dict: dict = self.__associations[
+                    key_id_from_title.pop()]  # We assume that the titles are all unique so the list key_id_from_title only contains 1 item. We can safely pop it out.
+                results = ""  # Reset the results Value
+                for recommendation in recommendations_dict.keys():
+                    try:
+                        results += self.__shows[recommendation].get_details()
+                        results += "\n" + "-" * 50 + "\n"  # Just multiplying the seperator with a fixed number.
+                    except KeyError:
+                        messagebox.showwarning("Some Shows not found",
+                                               "Some shows are not found! Please load the correct Show file.")
+                        results += "Information Mismatch, Load the Correct Files."  # Edge CAse TEst if there are associations which are coross
+                        return results
+                print(results)
+                return results
+            else:
+                messagebox.showwarning(f"0 Recommendations found",
+                                       f"No recommendations found for {key_type} titled '{key_title}'.")
+                return results
 
 
 if __name__ == '__main__':
