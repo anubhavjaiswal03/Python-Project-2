@@ -23,14 +23,11 @@ class Show(Media):
 
     def __str__(self):
         return (f"{self._media_id}, {self.__show_type}, {self._media_title}, {self.__show_director}, "
-                f"{self.__show_cast}, {self._media_average_rating}, {self.__show_country_code}, "
+                f"{self.__show_cast}, {self.get_rating()}, {self.__show_country_code}, "
                 f"{self.__show_date_added}, {self.__show_release_year}, {self.__show_content_rating}, "
                 f"{self.get_show_duration_str()}, {self.__show_genre}, {self.__show_description}")
 
     # Accessor/Mutators:
-    def get_show_average_rating(self):
-        return self._media_average_rating
-
     def get_show_type(self):
         return self.__show_type
 
@@ -67,6 +64,20 @@ class Show(Media):
 
     def get_show_description(self):
         return self.__show_description
+
+    def get_show_details(self):
+        """
+        Helper function that returns a nice block of string that could be used in Recommendations Tab.
+        """
+        return (f"Title: {self.get_title()}Type: {self.__show_type}\nDirector: {self.__show_director}"
+                f"\nCsst: {self.get_rating()}"
+                f"\nAverage Rating: {self.a}\nCountry Code: {self.__show_country_code}"
+                f"\nDate Added:{self.__show_date_added}"
+                f"\nRelease Year: {self.__show_release_year}"
+                f"\nMedia Rating: {self.__show_content_rating}"
+                f"\nDuration: {self.get_show_duration_str()}"
+                f"\nGenre: {self.__show_genre}"
+                f"\nDescription: {self.__show_description}")
 
 
 if __name__ == '__main__':
