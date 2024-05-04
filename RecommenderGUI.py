@@ -245,6 +245,12 @@ class RecommenderGUI:
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
 
+        temp: str = self.__describeRatings(self.__recommender_object.getMovieStats(), "Movie")
+        self.__mutate_Text_GUI(self.__movies_stats_text, temp)
+
+        temp: str = self.__describeRatings(self.__recommender_object.getTVStats(), "TV Show")
+        self.__mutate_Text_GUI(self.__tv_shows_stats_text, temp)
+
     def loadBooks(self):
         print("Select a Book file")
         self.__recommender_object.loadBooks()
@@ -277,10 +283,35 @@ class RecommenderGUI:
                                                                  self.__recommendations_title_str.get())
         self.__mutate_Text_GUI(self.__recommendations_results_text, temp)
 
+    @staticmethod
+    def __describeRatings(ratings: dict, show_type: str) -> str:
+        result = ""
+        for (key, value) in ratings.items():
+            if key == "rating_distribution":
+                result = "Ratings:"
+                for (rating, num) in ratings[key].items():
+                    result += f"\n{rating} {num:0.2f}%"
+                continue
+            result += "\n"
+            if key == "average_duration":
+                if show_type == "Movie":
+                    result += f"\nAverage Movie Duration: {value} minutes"
+                if show_type == "TV Show":
+                    result += f"\nAverage Number of Seasons: {value} seasons"
+                continue
+
+            result += "\n"
+            result += " ".join([k.capitalize() for k in key.split("_")]) + " " + value
+            result += "\n"
+            return result
+
 
 def main():
     recGUI = RecommenderGUI()
     tkinter.mainloop()
+    # abs = "asdf asdf sada"
+    # print(" ".join([k.capitalize() for k in abs.split()]))
+
 
 
 if __name__ == '__main__':

@@ -211,7 +211,7 @@ class Recommender:
 
         distribution = ', '.join([f"{rating}: {percentage:.2f}%" for rating, percentage in rating_distribution.items()])
 
-        movie_dict['rating_distribution'] = distribution
+        movie_dict['rating_distribution'] = rating_distribution
 
         # Average Movie Duration
         total_duration = 0
@@ -232,7 +232,7 @@ class Recommender:
             average_duration = total_duration / movie_count
         else:
             average_duration = 0
-        movie_dict['average_duration'] = f'{average_duration:.2f} minutes'
+        movie_dict['average_movie_duration'] = f'{average_duration:.2f} minutes'
 
         # Director most frequency
         director_count = {}
@@ -245,7 +245,7 @@ class Recommender:
                     director_count[director] = director_count[director] + 1
 
         freq_dir = max(director_count, key=director_count.get) if director_count else None
-        movie_dict['most_movies_director'] = freq_dir if freq_dir else 'No director data found'
+        movie_dict['most_prolific_director'] = freq_dir if freq_dir else 'No director data found'
 
         # Actor with Most Movies
         actor_count = {}
@@ -261,7 +261,7 @@ class Recommender:
 
         # Actor most frequency
         freq_actor = max(actor_count, key=actor_count.get) if actor_count else None
-        movie_dict['most_movies_actor'] = freq_actor if freq_actor else 'No actor data found'
+        movie_dict['most_prolific_actor'] = freq_actor if freq_actor else 'No actor data found'
 
         # Genre most frequency
         genre_count = {}
@@ -277,7 +277,7 @@ class Recommender:
                                 genre_count[genre] = genre_count[genre] + 1
 
         freq_genre = max(genre_count, key=genre_count.get) if genre_count else None
-        movie_dict['most_movies_genre'] = freq_genre if freq_genre else 'No genre data found'
+        movie_dict['most_frequent_genre'] = freq_genre if freq_genre else 'No genre data found'
         print("\n")
         for key in movie_dict.keys():
             print(key, movie_dict[key])
@@ -329,7 +329,7 @@ class Recommender:
         else:
             average_duration = 0
 
-        tv_dict['average seasons'] = f'{average_duration:.2f} seasons'
+        tv_dict['average_seasons'] = f'{average_duration:.2f} seasons'
 
         # Actor with most TV shows
         actor_count = {}
@@ -346,7 +346,7 @@ class Recommender:
 
         # Actor most frequency
         freq_actor = max(actor_count, key=actor_count.get) if actor_count else None
-        tv_dict['most_tvshows_actor'] = freq_actor if freq_actor else 'No actor data found'
+        tv_dict['most_prolific_actor'] = freq_actor if freq_actor else 'No actor data found'
 
         # Genre Most Frequency
         genre_count = {}
@@ -362,7 +362,7 @@ class Recommender:
                                 genre_count[genre] = genre_count[genre] + 1
 
         freq_genre = max(genre_count, key=genre_count.get) if genre_count else None
-        tv_dict['most_tvshows_genre'] = freq_genre if freq_genre else 'No genre data found'
+        tv_dict['most_frequent_genre'] = freq_genre if freq_genre else 'No genre data found'
         print('\n')
         for key in tv_dict.keys():
             print(key, tv_dict[key])
@@ -427,6 +427,9 @@ class Recommender:
         return book_dict
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
+        """
+
+        """
         result = "No Results"
         show_types = ["TV Show", "Movie"]
         if key_type not in show_types:
@@ -654,12 +657,12 @@ if __name__ == '__main__':
 
     rec.loadAssociations()
 
-    rec.searchTVMovies("Movie", "Standby", "", "", "Comedy")
-    rec.searchBooks("", "William Shakespeare", "")
-    rec.searchBooks("", "John Sandford", "")
+    # rec.searchTVMovies("Movie", "Standby", "", "", "Comedy")
+    # rec.searchBooks("", "William Shakespeare", "")
+    # rec.searchBooks("", "John Sandford", "")
 
     # rec.getRecommendations("", "")
-    rec.getRecommendations("Movie", "Stolen")
+    # rec.getRecommendations("Movie", "Stolen")
     # rec.getRecommendations("Movie", "It Might Be You")
     # rec.getRecommendations("TV Show", "")
     # rec.getRecommendations("Book", "")
