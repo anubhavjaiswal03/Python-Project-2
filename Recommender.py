@@ -65,13 +65,6 @@ class Recommender:
 
         for (key, value) in self.__associations.items():
             print(f"{key} : {value}")
-        #
-        # # Counting all the associations, it should be 2x the number of lines in the associated****.csv class.
-        # count = 0
-        # for (o_keys, i_dict) in self.__associations.items():
-        #     for (i_key, i_values) in i_dict.items():
-        #         count += i_values
-        # print(count)
 
     def loadBooks(self):
         self.__books = {}  # Resetting the books data member before loading books.
@@ -82,14 +75,10 @@ class Recommender:
                 print('\033[91;1m%s\033[0m file does not exist!' % book_filename)
 
         with open(book_filename) as book_file:
-            # Called to skip the header
-            book_file.readline()
-
+            book_file.readline()  # Skip the first header line
             line = book_file.readline()
-
-            # Skip the first header line
-            if "id" in line[0]:
-                line = book_file.readline()
+            # if "id" in line[0]:
+            #     line = book_file.readline()
 
             while line:
                 book_object = Book(*line.strip().split(','))
@@ -153,6 +142,7 @@ class Recommender:
         movielist_header = ["Title", "Runtime"]
         formatted_movielist = f"{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\n"
 
+        # Building the formatted string
         for show_id in self.__shows.keys():
             if self.__shows[show_id].get_show_type() == 'Movie':
                 show_object: Show = self.__shows[show_id]

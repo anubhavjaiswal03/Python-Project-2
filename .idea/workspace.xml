@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Implemented Get Recommendation, Added minor fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,18 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Book.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Media.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Recommender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.RecommenderGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Show.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;anubhav__branch&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Book.executor": "Run",
+    "Python.Media.executor": "Run",
+    "Python.Recommender.executor": "Run",
+    "Python.RecommenderGUI.executor": "Run",
+    "Python.Show.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "Errors"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Project Description Files" />
@@ -401,7 +397,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Project file" />
     <MESSAGE value="Re-implemented Recommender.py" />
     <MESSAGE value="minor changes." />
     <MESSAGE value=".gitignore changes" />
@@ -426,6 +421,7 @@
     <MESSAGE value="SHow File Added get_Show_details(self)" />
     <MESSAGE value="Changed the helper function name." />
     <MESSAGE value="Implemented Get Recommendation, Added minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Get Recommendation, Added minor fixes" />
+    <MESSAGE value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
   </component>
 </project>
