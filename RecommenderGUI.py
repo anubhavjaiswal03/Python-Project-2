@@ -4,7 +4,7 @@ from Recommender import Recommender
 import tkinter.messagebox as messagebox
 
 
-class RecommenderGUI():
+class RecommenderGUI:
     def __init__(self):
         self.credit_info_messagebox = None
         self.__recommender_object = Recommender()
@@ -168,7 +168,8 @@ class RecommenderGUI():
 
         self.__recommendations_type_label = tkinter.Label(self.__recommendations_tab, text="Type :")
         self.__recommendations_title_label = tkinter.Label(self.__recommendations_tab, text="Title :")
-        self.__recommendations_get_button = tkinter.Button(self.__recommendations_tab, text="Get Recommendations")
+        self.__recommendations_get_button = tkinter.Button(self.__recommendations_tab, text="Get Recommendations",
+                                                           command=self.getRecommendations)
         self.__recommendations_type_combo = ttk.Combobox(self.__recommendations_tab,
                                                          textvariable=self.__recommendations_type_str)
         self.__recommendations_title_entry = tkinter.Entry(self.__recommendations_tab,
@@ -195,7 +196,7 @@ class RecommenderGUI():
         # Ratings Tab
         self.__ratings_tab = ttk.Frame(self.__notebook)
         self.__notebook.add(self.__ratings_tab, text="Ratings")
-        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab, )
+        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab)
         self.__rating_movies_canvas = tkinter.Canvas(self.__ratings_tab)
 
         self.__rating_shows_label = tkinter.Label(self.__rating_shows_canvas,
@@ -229,14 +230,14 @@ class RecommenderGUI():
     @staticmethod
     def __mutate_Text_GUI(text_GUI: tkinter.Text, text: str):
         """
-        Static method used to alter Text GUI elements.
+        Static method used to mutate/change Text GUI elements.
         """
         text_GUI.configure(state=tkinter.NORMAL)
         text_GUI.delete(0.0, tkinter.END)
         text_GUI.insert(tkinter.INSERT, text)
         text_GUI.configure(state=tkinter.DISABLED)
 
-    def loadShows(self):  # CHeck Function NAme
+    def loadShows(self):
         print("Select a Show file")
         self.__recommender_object.loadShows()
         self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender_object.getMovieList())
@@ -244,7 +245,7 @@ class RecommenderGUI():
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
 
-    def loadBooks(self):  # CHeck Function NAme
+    def loadBooks(self):
         print("Select a Book file")
         self.__recommender_object.loadBooks()
         self.__mutate_Text_GUI(self.__books_list_text, self.__recommender_object.getBookList())
@@ -252,7 +253,6 @@ class RecommenderGUI():
     def loadAssociations(self):
         print("Select an Association file")
         self.__recommender_object.loadAssociations()
-        pass
 
     def creditInfoBox(self):
         title: str = "Project Information"
@@ -273,7 +273,9 @@ class RecommenderGUI():
         self.__mutate_Text_GUI(self.__books_results_text, temp)
 
     def getRecommendations(self):
-        pass
+        temp: str = self.__recommender_object.getRecommendations(self.__recommendations_type_str.get(),
+                                                                 self.__recommendations_title_str.get())
+        self.__mutate_Text_GUI(self.__recommendations_results_text, temp)
 
 
 def main():

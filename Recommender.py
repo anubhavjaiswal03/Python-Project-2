@@ -11,7 +11,7 @@ class Recommender:
             str, Book] = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.
         self.__shows: dict[
             str, Show] = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.
-        self.__associations = {}  # Stores the relationships/associations.
+        self.__associations: dict[str, dict[str, int]] = {}  # Stores the relationships/associations.
         self.__max_movie_title_width = 0
         self.__max_movie_runtime_width = 0
         self.__max_tv_title_width = 0
@@ -439,8 +439,8 @@ class Recommender:
             return result
 
         if not self.__shows:
-            messagebox.showerror("File Not Loaded Error", "Please Load a Show File Before you can perform a search.")
-            return "Please Load a Show file before you can perform a search with the \"Load Shows button\"."
+            messagebox.showwarning("File Not Loaded Error", "Please Load a Show File before you can perform a search.")
+            return "Please Load a Show file before you can perform a search with the \"Load Shows\" button."
 
         # Filter for key_type
         filtered_show_objects: list[Show] = [self.__shows[key] for key in self.__shows.keys() if
@@ -523,15 +523,18 @@ class Recommender:
 
         # Filter for Book Titles
         if not len(key_title) == 0:
-            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if book_object.get_title() == key_title]
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if
+                                                book_object.get_title() == key_title]
 
         # Filter for Book Authors
         if not len(key_author) == 0:
-            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if key_author in book_object.get_book_author().split('\\')]
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if
+                                                key_author in book_object.get_book_author().split('\\')]
 
         # Filter for Book Publishers
         if not len(key_publisher) == 0:
-            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if book_object.get_book_publisher() == key_publisher]
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if
+                                                book_object.get_book_publisher() == key_publisher]
 
         # Declaring default max field widths.
         max_title_width: int = 0
@@ -570,7 +573,45 @@ class Recommender:
         return results
 
     def getRecommendations(self, key_type: str, key_title: str) -> str:
-        pass
+        results = "No Result"
+        media_types = ["Movie", "TV Show", "Book"]
+
+        if not self.__associations:
+            messagebox.showerror("No Associations Loaded",
+                                 "Please load the recommendation file first using, the 'Load Recommendations' button.")
+            return "Please load the recommendation file first using, the 'Load Recommendations' button."
+
+        if key_type not in media_types:
+            messagebox.showerror(
+                f"Invalid Type: {key_type}",
+                "Please ensure to select the correct type from the drop down list."
+            )
+            return results
+        if key_type in media_types[0:2]:
+            key_id_from_title = [show_object.get_id() for show_object in list(self.__shows.values()) if
+                                 show_object.get_title() == key_title]  # Using List Comprehension to search through all the show titles and getting the show object id of the correct show.
+            if key_id_from_title:
+                # print(self.__associations[key_id_from_title.pop()])
+                recommendations_dict: dict = self.__associations[key_id_from_title.pop()]  # We assume that the titles are all unique so the list key_id_from_title only contains 1 item. We can safely pop it out.
+                results = ""  # Reset the results Value
+                for recommendation in recommendations_dict.keys():
+                    try:
+                        results += self.__books[recommendation].get_details()
+                        results += "\n" + "-" * self.__max_books_title_width + "\n"  # Since we know the max title width we can use that as a measure of the length of the separating character.
+                    except KeyError:
+                        messagebox.showwarning("Some Books not found", "Some books are not found! Please load the correct Book file too.")
+                        results += "Information Mismatch, Load the Correct Book File."
+                        return results
+                print(results)
+
+                return results
+            else:
+                messagebox.showwarning(f"0 Recommendations found",
+                                       f"No recommendations found for {key_type} titled '{key_title}'.")
+                return results
+
+        if key_type == media_types[2]:
+            print("book")
 
 
 if __name__ == '__main__':
@@ -596,8 +637,14 @@ if __name__ == '__main__':
     rec.loadAssociations()
 
     rec.searchTVMovies("Movie", "Standby", "", "", "Comedy")
-    rec.searchBooks("Twelfth Night", "William Shakespeare", "")
+    rec.searchBooks("", "William Shakespeare", "")
     rec.searchBooks("", "John Sandford", "")
+
+    # rec.getRecommendations("", "")
+    rec.getRecommendations("Movie", "Stolen")
+    # rec.getRecommendations("Movie", "It Might Be You")
+    # rec.getRecommendations("TV Show", "")
+    # rec.getRecommendations("Book", "")
 
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
     # print("Execution time:", execution_time, "seconds")
