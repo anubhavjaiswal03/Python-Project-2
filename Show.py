@@ -65,7 +65,7 @@ class Show(Media):
     def get_show_description(self):
         return self.__show_description
 
-    def get_show_details(self):
+    def get_details(self):
         """
         Helper function that returns a nice block of string that could be used in Recommendations Tab.
         """
