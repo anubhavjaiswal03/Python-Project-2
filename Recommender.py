@@ -206,10 +206,8 @@ class Recommender:
 
         rating_distribution = {}
         for rating, count in rating_count.items():
-            percentage = round(count / total_movies * 100)
+            percentage = count / total_movies * 100
             rating_distribution[rating] = percentage
-
-        distribution = ', '.join([f"{rating}: {percentage:.2f}%" for rating, percentage in rating_distribution.items()])
 
         movie_dict['rating_distribution'] = rating_distribution
 
@@ -279,8 +277,8 @@ class Recommender:
         freq_genre = max(genre_count, key=genre_count.get) if genre_count else None
         movie_dict['most_frequent_genre'] = freq_genre if freq_genre else 'No genre data found'
         print("\n")
-        for key in movie_dict.keys():
-            print(key, movie_dict[key])
+        for key, value in movie_dict.items():
+            print(key, value)
 
         return movie_dict
 
@@ -302,12 +300,10 @@ class Recommender:
 
         rating_distribution = {}
         for rating, count in rating_count.items():
-            percentage = round(count / total_shows * 100)
+            percentage = count / total_shows * 100
             rating_distribution[rating] = percentage
 
-        distribution = ', '.join([f"{rating}: {percentage:.2f}%" for rating, percentage in rating_distribution.items()])
-
-        tv_dict['rating_distribution'] = distribution
+        tv_dict['rating_distribution'] = rating_distribution
 
         # Average Seasons
         total_seasons = 0
@@ -329,7 +325,7 @@ class Recommender:
         else:
             average_duration = 0
 
-        tv_dict['average_seasons'] = f'{average_duration:.2f} seasons'
+        tv_dict['average_number_of_seasons'] = f'{average_duration:.2f} seasons'
 
         # Actor with most TV shows
         actor_count = {}
@@ -389,7 +385,7 @@ class Recommender:
         else:
             average_page = 0
 
-        book_dict['average page'] = f'{average_page:.2f} pages'
+        book_dict['average_page_count'] = f'{average_page:.2f} pages'
 
         # Author most books
         author_count = {}
@@ -405,7 +401,7 @@ class Recommender:
 
         # Author Most Frequency
         freq_author = max(author_count, key=author_count.get) if author_count else None
-        book_dict['most_book_author'] = freq_author if freq_author else 'No author data found'
+        book_dict['most_prolific_author'] = freq_author if freq_author else 'No author data found'
 
         # Publisher most books
         publisher_count = {}
@@ -419,7 +415,7 @@ class Recommender:
 
         # Publisher Most Frequency
         freq_publisher = max(publisher_count, key=publisher_count.get) if publisher_count else None
-        book_dict['Most_book_publisher'] = freq_publisher if freq_publisher else 'No publisher data found'
+        book_dict['most_prolific_publisher'] = freq_publisher if freq_publisher else 'No publisher data found'
         print('\n')
         for key in book_dict.keys():
             print(key, book_dict[key])

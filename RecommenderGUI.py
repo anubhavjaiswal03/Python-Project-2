@@ -245,16 +245,18 @@ class RecommenderGUI:
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
 
-        temp: str = self.__describeRatings(self.__recommender_object.getMovieStats(), "Movie")
+        temp: str = self.__describeRatings(self.__recommender_object.getMovieStats())
         self.__mutate_Text_GUI(self.__movies_stats_text, temp)
 
-        temp: str = self.__describeRatings(self.__recommender_object.getTVStats(), "TV Show")
+        temp: str = self.__describeRatings(self.__recommender_object.getTVStats())
         self.__mutate_Text_GUI(self.__tv_shows_stats_text, temp)
 
     def loadBooks(self):
         print("Select a Book file")
         self.__recommender_object.loadBooks()
         self.__mutate_Text_GUI(self.__books_list_text, self.__recommender_object.getBookList())
+        temp: str = self.__describeRatings(self.__recommender_object.getBookStats())
+        self.__mutate_Text_GUI(self.__books_stats_text, temp)
 
     def loadAssociations(self):
         print("Select an Association file")
@@ -284,26 +286,18 @@ class RecommenderGUI:
         self.__mutate_Text_GUI(self.__recommendations_results_text, temp)
 
     @staticmethod
-    def __describeRatings(ratings: dict, show_type: str) -> str:
-        result = ""
+    def __describeRatings(ratings: dict) -> str:
+        result = ""  # The string we will build that will populate the respective tv or movie stats tab.
         for (key, value) in ratings.items():
+            # Building the Ratings Stats in the String
             if key == "rating_distribution":
-                result = "Ratings:"
+                result = "Ratings:\n"
                 for (rating, num) in ratings[key].items():
-                    result += f"\n{rating} {num:0.2f}%"
+                    result += f"{rating:>8} : {num:0.2f}%\n"
                 continue
-            result += "\n"
-            if key == "average_duration":
-                if show_type == "Movie":
-                    result += f"\nAverage Movie Duration: {value} minutes"
-                if show_type == "TV Show":
-                    result += f"\nAverage Number of Seasons: {value} seasons"
-                continue
-
-            result += "\n"
-            result += " ".join([k.capitalize() for k in key.split("_")]) + " " + value
-            result += "\n"
-            return result
+            # Building the other Stats in the String
+            result += f"\n{' '.join([key_word.capitalize() for key_word in key.split('_')]):<25} : {value}\n"
+        return result
 
 
 def main():
@@ -311,7 +305,6 @@ def main():
     tkinter.mainloop()
     # abs = "asdf asdf sada"
     # print(" ".join([k.capitalize() for k in abs.split()]))
-
 
 
 if __name__ == '__main__':
