@@ -2,9 +2,11 @@ import tkinter
 from tkinter import ttk
 from Recommender import Recommender
 import tkinter.messagebox as messagebox
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
-class RecommenderGUI():
+class RecommenderGUI:
     def __init__(self):
         self.credit_info_messagebox = None
         self.__recommender = Recommender()
@@ -245,13 +247,28 @@ class RecommenderGUI():
         text_GUI.insert(tkinter.INSERT, text)
         text_GUI.configure(state=tkinter.DISABLED)
 
-    def loadShows(self):  # CHeck Function NAme
+    '''def loadShows(self):  # CHeck Function NAme
         print("Select a Show file")
         self.__recommender.loadShows()
         self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender.getMovieList())
         self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender.getTVList())
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
+        self.displayPie()
+        messagebox.showinfo('Charts Loaded')'''
+
+    def loadShows(self):
+        print("Select a Show file")
+        self.__recommender.loadShows()
+        self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender.getMovieList())
+        self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender.getTVList())
+        self.__rating_shows_label['text'] = "Show Ratings"
+        self.__rating_movies_label['text'] = "Movie Ratings"
+
+        # Display pie charts
+        self.displayPie()
+
+
 
     def loadBooks(self):  # CHeck Function NAme
         print("Select a Book file")
@@ -261,6 +278,8 @@ class RecommenderGUI():
     def loadAssociations(self):
         print("Select an Association file")
         self.__recommender.loadAssociations()
+        '''self.displayPie()
+        messagebox.showinfo('Charts Loaded')'''
         pass
 
     def creditInfoBox(self):
@@ -280,6 +299,46 @@ class RecommenderGUI():
 
     def getRecommendations(self):
         pass
+
+    def displayPie(self):
+        movie_stats = self.__recommender.getMovieStats()
+        tv_stats = self.__recommender.getTVStats()
+
+        movie_ratings = movie_stats.get('ratings', {})
+        tv_ratings = tv_stats.get('ratings', {})
+
+        movie_distribution = {rating: float(info['distribution']) for rating, info in
+                              movie_ratings.items()}
+        tv_distribution = {rating: float(info['distribution']) for rating, info in
+                           tv_ratings.items()}
+
+
+        fig_movie = plt.Figure(figsize=(8, 6), dpi=100)
+        fig_tv = plt.Figure(figsize=(8, 6), dpi=100)
+        ax_movie = fig_movie.add_subplot(111)
+        ax_tv = fig_tv.add_subplot(111)
+
+        ax_movie.pie(movie_distribution.values(), labels=movie_distribution.keys(), autopct='%1.2f%%', startangle=90,
+                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 8})
+        ax_movie.axis('equal')
+        ax_movie.set_title(self.__rating_movies_label['text'])
+
+        ax_tv.pie(tv_distribution.values(), labels=tv_distribution.keys(), autopct='%1.2f%%', startangle=90,
+                  wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 8})
+        ax_tv.axis('equal')
+        ax_tv.set_title(self.__rating_movies_label['text'])
+
+        chart_movies = FigureCanvasTkAgg(fig_movie, master=self.__rating_movies_canvas)
+        chart_tv = FigureCanvasTkAgg(fig_tv, master=self.__rating_shows_canvas)
+        chart_movies.draw()
+        chart_tv.draw()
+        chart_movies.get_tk_widget().pack()
+        chart_tv.get_tk_widget().pack()
+
+
+
+
+
 
 
 def main():

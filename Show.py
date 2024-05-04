@@ -1,3 +1,4 @@
+# Authors: Anubhav Jaiswal, Prayash Das
 # Description: This program inherits from the Media class, containing member variables to store the show type, directors
 # , actors, country code, date the show was added, the year it was released, the rating, the duration, genres, and a
 # description. It also has appropriate constructor taking in an ID, a title, average rating, show type, directors,

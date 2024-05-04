@@ -1,3 +1,4 @@
+# Authors: Anubhav Jaiswal, Prayash Das
 # Description: This file contains the Media class, containing member variables to store ID, title, and an average rating
 # This file also contains constructor function taking in an ID, a title, and an average rating as parameters and assigns
 # those values to the appropriate member variables and appropriate accessor/mutator functions.

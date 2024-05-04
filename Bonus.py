@@ -58,10 +58,12 @@ if isinstance(tv_rating_distribution,str):
     }
 
 
-fig_movie = plt.Figure(figsize=(6, 4), dpi=100)
-fig_tv = plt.Figure(figsize=(6, 4), dpi=100)
-ax_movie = fig_movie.add_subplot(111)
-ax_tv = fig_tv.add_subplot(111)
+
+'''def show_pie(data,title,ax):
+    ax.pie(data.values(),labels=data.keys(),autopct='%1.2f%%',startangle=90,wedgeprops={'linewidth':1,'edgecolor':'black'},textprops={'fontsize':8})
+    ax.axis('equal')
+    ax.set_title(title)'''
+
 
 
 def create_pie_chart(data, title, ax):

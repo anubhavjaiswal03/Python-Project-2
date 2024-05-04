@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Corrected Incorrect data declaration for __shows_results_text field">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bonus.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bonus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book.py" beforeDir="false" afterPath="$PROJECT_DIR$/Book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Media.py" beforeDir="false" afterPath="$PROJECT_DIR$/Media.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recommender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recommender.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Show.py" beforeDir="false" afterPath="$PROJECT_DIR$/Show.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +39,12 @@
     &quot;assignee&quot;: &quot;anubhavjaiswal03&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/anubhavjaiswal03/Python-Project-2.git&quot;,
-    &quot;accountId&quot;: &quot;926fe385-a3c5-4c05-b772-64e6505f2c24&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/anubhavjaiswal03/Python-Project-2.git",
+    "accountId": "fee8d1e5-30f8-4d5e-ac60-926158bc2c1c"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -54,13 +58,14 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.Bonus.executor&quot;: &quot;Run&quot;,
     &quot;Python.Book.executor&quot;: &quot;Run&quot;,
     &quot;Python.Media.executor&quot;: &quot;Run&quot;,
     &quot;Python.Recommender.executor&quot;: &quot;Run&quot;,
     &quot;Python.RecommenderGUI.executor&quot;: &quot;Run&quot;,
     &quot;Python.Show.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;anubhav__branch&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Prayash__Das&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
@@ -318,6 +323,7 @@
     <MESSAGE value="Recommender.py: Added Search and Filter Function Signatures" />
     <MESSAGE value="Started workign on searchTVMovies" />
     <MESSAGE value="Corrected Incorrect data declaration for __shows_results_text field" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected Incorrect data declaration for __shows_results_text field" />
+    <MESSAGE value="Book.py, Media.py, Show.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Book.py, Media.py, Show.py" />
   </component>
 </project>

@@ -1,3 +1,7 @@
+# Authors: Anubhav Jaiswal, Prayash Das
+# Description: This program contains the Recommender class and imports Book and Show module. This program contains all
+# the functionalities required to successfully run the working behind RecommenderGUI program
+
 import tkinter.filedialog
 
 from Book import Book
@@ -10,6 +14,9 @@ import tkinter.messagebox as messagebox
 
 class Recommender:
     def __init__(self, file_names=None):
+        '''
+        Constructor function taking in file_names as parameters
+        '''
         self.__books = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.
         self.__shows = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.
         self.__associations = {}  # Stores the relationships/associations.
@@ -26,6 +33,9 @@ class Recommender:
         pass
 
     def loadAssociations(self):
+        '''
+        Function for loading all the data from an association file
+        '''
         self.__associations = {}  # Resetting the association data member before loading new associations.
         # prompt for a file dialog
         associations_filename = "" if self.__default_filenames is None else self.__default_filenames[2]
@@ -75,6 +85,9 @@ class Recommender:
         print(count)
 
     def loadBooks(self):
+        '''
+        Function for loading all of the data from a book file
+        '''
         self.__books = {}  # Resetting the books data member before loading books.
         book_filename = "" if self.__default_filenames is None else self.__default_filenames[0]
         while not os.path.exists(book_filename):
@@ -112,6 +125,9 @@ class Recommender:
         print(self.__max_books_title_width, self.__max_books_authors_width)
 
     def loadShows(self):
+        '''
+        Function for loading all of the data from a show file
+        '''
         self.__shows = {}  # Resetting the shows data member.
         show_filename = "" if self.__default_filenames is None else self.__default_filenames[1]
         while not os.path.exists(show_filename):
@@ -151,293 +167,288 @@ class Recommender:
               self.__max_movie_runtime_width)
 
     def getMovieList(self):
+        '''
+        Function for returning the Title and Runtime for all of the stored movies
+        '''
         if len(self.__shows) == 0:
             return "No File Selected, Please Select a Show file."
-        movielist_header = ["Title", "Runtime"]
+        movielist_header = ["Title", "Runtime"] # Aligning 'Title' and 'Runtime' columns with respect to their maximum widths and adds spacing between columns.
         formatted_movielist = f"{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\n"
 
         for show_id in self.__shows.keys():
-            if self.__shows[show_id].get_show_type() == 'Movie':
+            if self.__shows[show_id].get_show_type() == 'Movie': # Checking for Movie category
                 show_object: Show = self.__shows[show_id]
                 formatted_movielist = formatted_movielist + f"{show_object.get_title():<{self.__max_movie_title_width + self.__spacing_between_columns}}{show_object.get_show_duration_str():<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\n"
-
+                # Adding title and duration with formatted spacing between columns.
         return formatted_movielist
 
     def getTVList(self):
+        '''
+        Function for returning the Title and Number of Seasons for all of the stored tv shows
+        '''
         if len(self.__shows) == 0:
             return "No File Selected, Please Select a Show file."
-        tvlist_header = ["Title", "Seasons"]
+        tvlist_header = ["Title", "Seasons"] # Aligning 'Title' and 'Seasons' columns with respect to their maximum widths and adds spacing between columns.
         formatted_tvlist = f"{tvlist_header[0]:<{self.__max_tv_title_width + self.__spacing_between_columns}}{tvlist_header[1]:<{self.__max_tv_season_width + self.__spacing_between_columns}}\n"
 
         for show_id in self.__shows.keys():
-            if self.__shows[show_id].get_show_type() == 'TV Show':
+            if self.__shows[show_id].get_show_type() == 'TV Show': # Checking for TV Show category
                 show_object: Show = self.__shows[show_id]
                 formatted_tvlist = formatted_tvlist + f"{show_object.get_title():<{self.__max_tv_title_width + self.__spacing_between_columns}}{show_object.get_show_duration_str():<{self.__max_tv_season_width + self.__spacing_between_columns}}\n"
-
+                # Adding title and duration with formatted spacing between columns.
         return formatted_tvlist
 
     def getBookList(self):
+        '''
+        Function for returning Title and Author(s) for all of the stored books
+        '''
         if len(self.__books) == 0:
             return "No File Selected, Please Select a Book file."
-        booklist_header = ["Title", "Authors"]
+        booklist_header = ["Title", "Authors"] # Aligning 'Title' and 'Authors' columns with respect to their maximum widths and adds spacing between columns.
         formatted_booklist = f"{booklist_header[0]:<{self.__max_books_title_width + self.__spacing_between_columns}}{booklist_header[1]:<{self.__max_books_authors_width + self.__spacing_between_columns}}\n"
 
         for book_id in self.__books.keys():
             book_object: Book = self.__books[book_id]
             formatted_booklist = formatted_booklist + f"{book_object.get_title():<{self.__max_books_title_width + self.__spacing_between_columns}}{book_object.get_book_author():<{self.__max_books_authors_width + self.__spacing_between_columns}}\n"
-
+            # Adding each book's title and authors with formatting spacing between columns
         return formatted_booklist
 
     def getMovieStats(self):
-        movie_dict={}
+        '''
+        Function for returning all the statistics regarding movies such as ratings, average movie duration, director
+        with the most movies, actor with the most movies, most frequent movie genre
+        '''
+        movie_stats = {
+            'movies': [],
+            'ratings': {},
+            'average_duration': 0,
+            'directors': {},
+            'actors': {},
+            'genres': {},
+            'most_frequent_genre': None,
+            'most_frequent_director': None,
+            'most_frequent_actor': None
+        }
 
-        #Rating
-        rating_count={}
-        total_movies=0
-        #print(rating_count)
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='Movie':
-                rating=show_object.get_show_content_rating()
-                total_movies=total_movies+1
-                if rating:
-                    if rating not in rating_count.keys():
-                        rating_count[rating]=1
-                    else:
-                        rating_count[rating]=rating_count[rating]+1
-                else:
-                    rating_count['None']=rating_count.get('None',0)+1
-        #print(rating_count)
+        total_movies = 0
+        max_genre_count = 0
+        max_director_count = 0
+        max_actor_count = 0
+        if len(self.__shows) > 0:
+            for id, show in self.__shows.items():
+                if show.get_show_type() == "Movie":
+                    total_movies += 1
+                    movie = show
+                    title = movie.get_show_title()
+                    rating = movie.get_show_content_rating()
+                    duration_str = movie.get_show_duration_str()
+                    duration_int = movie.get_show_duration()
+                    directors = movie.get_show_director()
+                    actors = movie.get_show_cast()
+                    genres = movie.get_show_genre()
 
-        rating_distribution={}
-        for rating,count in rating_count.items():
-                percentage=round(count/total_movies*100)
-                rating_distribution[rating]=percentage
+                    movie_stats['movies'].append([id, title, rating, duration_str])
 
-        distribution=', '.join([f"{rating}: {percentage:.2f}%" for rating,percentage in rating_distribution.items()])
+                    # Ratings distribution
+                    movie_stats['ratings'][rating] = movie_stats['ratings'].get(rating, {'count': 0})
+                    movie_stats['ratings'][rating]['count'] += 1
 
-        movie_dict['rating_distribution']=distribution
+                    # Average duration
+                    movie_stats['average_duration'] += duration_int
 
-        #Average Movie Duration
-        total_duration=0
-        movie_count=0
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='Movie':
-                duration=show_object.get_show_duration_str()
-                if duration:
-                    try:
-                        duration_value=int(duration.split()[0])
-                        total_duration=total_duration+duration_value
-                        movie_count=movie_count+1
-                    except ValueError:
-                        pass
+                    # Directors
+                    if directors:
+                        for director in directors.split('\\'):
+                            director = director.strip()
+                            if director:
+                                movie_stats['directors'][director] = movie_stats['directors'].get(director,
+                                                                                                  {'count': 0})
+                                movie_stats['directors'][director]['count'] += 1
+                                if movie_stats['directors'][director]['count'] > max_director_count:
+                                    max_director_count = movie_stats['directors'][director]['count']
+                                    movie_stats['most_frequent_director'] = director
 
-        #Average Duration
-        if movie_count>0:
-            average_duration=total_duration/movie_count
+                    # Actors
+                    if actors:
+                        for actor in actors.split('\\'):
+                            actor = actor.strip()
+                            if actor:
+                                movie_stats['actors'][actor] = movie_stats['actors'].get(actor, {'count': 0})
+                                movie_stats['actors'][actor]['count'] += 1
+                                if movie_stats['actors'][actor]['count'] > max_actor_count:
+                                    max_actor_count = movie_stats['actors'][actor]['count']
+                                    movie_stats['most_frequent_actor'] = actor
+
+                    # Genre
+                    if genres:
+                        for genre in genres.split('\\'):
+                            genre = genre.strip()
+                            if genre:
+                                movie_stats['genres'][genre] = movie_stats['genres'].get(genre, {'count': 0})
+                                movie_stats['genres'][genre]['count'] += 1
+                                if movie_stats['genres'][genre]['count'] > max_genre_count:
+                                    max_genre_count = movie_stats['genres'][genre]['count']
+                                    movie_stats['most_frequent_genre'] = genre
+
+            # Calculate average duration
+            if total_movies > 0:
+                movie_stats['average_duration'] = f"{(movie_stats['average_duration'] / total_movies):.2f}"
+
+            # Calculate ratings distribution using the total count of ratings
+            for rating_info in movie_stats['ratings'].values():
+                rating_info['distribution'] = f"{((rating_info['count'] / total_movies) * 100):.2f}"
+
         else:
-            average_duration=0
-        movie_dict['average_duration']=f'{average_duration:.2f} minutes'
+            return "No shows found"
 
-        #Director most frequency
-        director_count={}
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='Movie':
-                director=show_object.get_show_director()
-                if director not in director_count.keys():
-                    director_count[director]=1
-                else:
-                    director_count[director]=director_count[director]+1
-
-        freq_dir=max(director_count,key=director_count.get) if director_count else None
-        movie_dict['most_movies_director']=freq_dir if freq_dir else 'No director data found'
-
-        #Actor with Most Movies
-        actor_count={}
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='Movie':
-                actors=show_object.get_show_cast()
-                if actors:
-                    for actor in actors.split('\\'):
-                        if actor:
-                            if actor not in actor_count.keys():
-                                actor_count[actor]=0
-                            actor_count[actor]=actor_count[actor]+1
-
-        #Actor most frequency
-        freq_actor=max(actor_count,key=actor_count.get) if actor_count else None
-        movie_dict['most_movies_actor']=freq_actor if freq_actor else 'No actor data found'
-
-        #Genre most frequency
-        genre_count={}
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='Movie':
-                genres=show_object.get_show_genre()
-                if genres:
-                    for genre in genres.split('\\'):
-                        if genre:
-                            if genre not in genre_count.keys():
-                                genre_count[genre]=0
-                            else:
-                                genre_count[genre]=genre_count[genre]+1
-
-        freq_genre=max(genre_count,key=genre_count.get) if genre_count else None
-        movie_dict['most_movies_genre']=freq_genre if freq_genre else 'No genre data found'
-        print("\n")
-        for key in movie_dict.keys():
-            print(key,movie_dict[key])
-
-        return movie_dict
-
-
+        for key in movie_stats.keys():
+            print(key, movie_stats[key])
+        return movie_stats
 
     def getTVStats(self):
-        tv_dict={}
+        '''
+        Function for returning statistics regarding TV Shows such as Ratings, average number of seasons, actor with the
+        most number of TV Shows, and the most number of genres for a TV show
+        '''
+        tv_stats = {
+            'shows': [],
+            'ratings': {},
+            'average_seasons': 0,
+            'actors': {},
+            'genres': {},
+            'most_frequent_genre': None,
+            'most_frequent_actor': None
+        }
 
-        #Rating
-        rating_count={}
-        total_shows=0
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='TV Show':
-                rating=show_object.get_show_content_rating()
-                if rating:
-                    total_shows=total_shows+1
-                    if rating not in rating_count.keys():
-                        rating_count[rating]=1
-                    else:
-                        rating_count[rating]=rating_count[rating]+1
+        total_shows = 0
+        max_genre_count = 0
+        max_actor_count = 0
 
-        rating_distribution={}
-        for rating,count in rating_count.items():
-            percentage=round(count/total_shows*100)
-            rating_distribution[rating]=percentage
+        if len(self.__shows) > 0:
+            for id, show in self.__shows.items():
+                if show.get_show_type() == "TV Show":
+                    total_shows += 1
+                    tv_show = show
+                    title = tv_show.get_show_title()
+                    rating = tv_show.get_show_content_rating()
+                    seasons_str = tv_show.get_show_duration_str()
+                    actors = tv_show.get_show_cast()
+                    genres = tv_show.get_show_genre()
 
-        distribution=', '.join([f"{rating}: {percentage:.2f}%" for rating,percentage in rating_distribution.items()])
+                    tv_stats['shows'].append([id, title, rating, seasons_str])
 
-        tv_dict['rating_distribution']=distribution
+                    # Ratings distribution
+                    tv_stats['ratings'][rating] = tv_stats['ratings'].get(rating, {'count': 0})
+                    tv_stats['ratings'][rating]['count'] += 1
 
-        #Average Seasons
-        total_seasons=0
-        show_count=0
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='TV Show':
-                seasons=show_object.get_show_duration_str()
-                if seasons:
+                    # Average seasons
+                    if seasons_str:
+                        try:
+                            seasons_value = int(seasons_str.split()[0])
+                            tv_stats['average_seasons'] += seasons_value
+                        except ValueError:
+                            pass
+
+                    # Actors
+                    if actors:
+                        for actor in actors.split('\\'):
+                            actor = actor.strip()
+                            if actor:
+                                tv_stats['actors'][actor] = tv_stats['actors'].get(actor, {'count': 0})
+                                tv_stats['actors'][actor]['count'] += 1
+                                if tv_stats['actors'][actor]['count'] > max_actor_count:
+                                    max_actor_count = tv_stats['actors'][actor]['count']
+                                    tv_stats['most_frequent_actor'] = actor
+
+                    # Genre
+                    if genres:
+                        for genre in genres.split('\\'):
+                            genre = genre.strip()
+                            if genre:
+                                tv_stats['genres'][genre] = tv_stats['genres'].get(genre, {'count': 0})
+                                tv_stats['genres'][genre]['count'] += 1
+                                if tv_stats['genres'][genre]['count'] > max_genre_count:
+                                    max_genre_count = tv_stats['genres'][genre]['count']
+                                    tv_stats['most_frequent_genre'] = genre
+            # Calculate average seasons
+            if total_shows > 0:
+                tv_stats['average_seasons'] = f"{(tv_stats['average_seasons'] / total_shows):.2f}"
+
+                # Calculate ratings distribution using the total count of ratings
+            for rating_info in tv_stats['ratings'].values():
+                rating_info['distribution'] = f"{(rating_info['count'] / total_shows) * 100:.2f}"
+        else:
+            return "No shows found"
+
+        for key in tv_stats.keys():
+            print(key, tv_stats[key])
+        return tv_stats
+
+    def getBookStats(self):
+        '''
+        Function for returning statistics regarding books such as average page count, author with the most books,
+        and the publisher with the most books.
+        '''
+        book_stats = {
+            'books': [],
+            'authors': {},
+            'publishers': {},
+            'most_frequent_author': None,
+            'most_frequent_publisher': None,
+            'average_page_count': 0
+        }
+
+        total_books = 0
+        total_pages = 0
+        max_author_count = 0
+        max_publisher_count = 0
+
+        if len(self.__books) > 0:
+            for book_id, book_object in self.__books.items():
+                total_books += 1
+                book_title = book_object.get_book_title()
+                author = book_object.get_book_author()
+                publisher = book_object.get_book_publisher()
+                pages = book_object.get_book_page_count()
+
+                book_stats['books'].append([book_id, book_title])
+
+                # Authors
+                if author:
+                    for author_name in author.split('\\'):
+                        author_name = author_name.strip()
+                        if author_name:
+                            book_stats['authors'][author_name] = book_stats['authors'].get(author_name, {'count': 0})
+                            book_stats['authors'][author_name]['count'] += 1
+                            if book_stats['authors'][author_name]['count'] > max_author_count:
+                                max_author_count = book_stats['authors'][author_name]['count']
+                                book_stats['most_frequent_author'] = author_name
+
+                # Publishers
+                if publisher:
+                    book_stats['publishers'][publisher] = book_stats['publishers'].get(publisher, {'count': 0})
+                    book_stats['publishers'][publisher]['count'] += 1
+                    if book_stats['publishers'][publisher]['count'] > max_publisher_count:
+                        max_publisher_count = book_stats['publishers'][publisher]['count']
+                        book_stats['most_frequent_publisher'] = publisher
+
+                # Calculate total pages
+                if pages:
                     try:
-                        duration_value=int(seasons.split()[0])
-                        total_seasons=total_seasons+duration_value
-                        show_count=show_count+1
+                        total_pages += int(pages)
                     except ValueError:
                         pass
 
-        # Average Season duration
-        if show_count>0:
-            average_duration=total_seasons/show_count
+            # Calculate average page count
+            if total_books > 0:
+                book_stats['average_page_count'] = f"{(total_pages / total_books):.2f}"
+
         else:
-            average_duration=0
+            return "No books found"
 
-        tv_dict['average seasons']=f'{average_duration:.2f} seasons'
-
-        #Actor with most TV shows
-        actor_count={}
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='TV Show':
-                actors=show_object.get_show_cast()
-                if actors:
-                    for actor in actors.split('\\'):
-                        if actor:
-                            if actor not in actor_count.keys():
-                                actor_count[actor]=0
-                            else:
-                                actor_count[actor]=actor_count[actor]+1
-
-        #Actor most frequency
-        freq_actor=max(actor_count,key=actor_count.get) if actor_count else None
-        tv_dict['most_tvshows_actor']=freq_actor if freq_actor else 'No actor data found'
-
-        #Genre Most Frequency
-        genre_count={}
-        for show_id,show_object in self.__shows.items():
-            if show_object.get_show_type()=='TV Show':
-                genres=show_object.get_show_genre()
-                if genres:
-                    for genre in genres.split('\\'):
-                        if genre:
-                            if genre not in genre_count.keys():
-                                genre_count[genre]=0
-                            else:
-                                genre_count[genre]=genre_count[genre]+1
-
-        freq_genre=max(genre_count,key=genre_count.get) if genre_count else None
-        tv_dict['most_tvshows_genre']=freq_genre if freq_genre else 'No genre data found'
-        print('\n')
-        for key in tv_dict.keys():
-            print(key,tv_dict[key])
-
-        return tv_dict
-
-
-    def getBookStats(self):
-        book_dict={}
-        # Average Page Count
-        total_pages=0
-        page_count=0
-        for book_id,book_object in self.__books.items():
-            try:
-                pages=book_object.get_book_page_count()
-                page_value=int(pages)
-                total_pages=total_pages+page_value
-                page_count=page_count+1
-            except:
-                pass
-
-        #Average Page
-        if page_count>0:
-            average_page=total_pages/page_count
-        else:
-            average_page=0
-
-        book_dict['average page']=f'{average_page:.2f} pages'
-
-        #Author most books
-        author_count={}
-        for book_id,book_object in self.__books.items():
-            authors=book_object.get_book_author()
-            if authors:
-                for author in authors.split('\\'):
-                    if author:
-                        if author not in author_count.keys():
-                            author_count[author]=0
-                        else:
-                            author_count[author]=author_count[author]+1
-
-        #Author Most Frequency
-        freq_author=max(author_count,key=author_count.get) if author_count else None
-        book_dict['most_book_author']=freq_author if freq_author else 'No author data found'
-
-        #Publisher most books
-        publisher_count={}
-        for book_id,book_object in self.__books.items():
-            publishers=book_object.get_book_publisher()
-            if publishers:
-                if publishers not in publisher_count.keys():
-                    publisher_count[publishers]=0
-                else:
-                    publisher_count[publishers]=publisher_count[publishers]+1
-
-        #Publisher Most Frequency
-        freq_publisher=max(publisher_count,key=publisher_count.get) if publisher_count else None
-        book_dict['Most_book_publisher']=freq_publisher if freq_publisher else 'No publisher data found'
-        print('\n')
-        for key in book_dict.keys():
-            print(key,book_dict[key])
-
-        return book_dict
-    #
-
-
-
-
-
+        for key in book_stats.keys():
+            print(key, book_stats[key])
+        return book_stats
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
         result = ""
@@ -465,8 +476,8 @@ class Recommender:
 
 
 if __name__ == '__main__':
-    file_paths = ["Input Files/books1000.csv",
-                  "Input Files/shows1000.csv",
+    file_paths = ["Input Files/books100.csv",
+                  "Input Files/shows100.csv",
                   "Input Files/associated10.csv"]
 
     rec = Recommender(file_paths)
