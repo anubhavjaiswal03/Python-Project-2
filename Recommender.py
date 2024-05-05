@@ -648,8 +648,10 @@ class Recommender:
                 "Please ensure to select the correct type from the drop down list."
             )
             return results
-        if key_type in media_types[0:2]:
-            key_id_from_title = [show_object.get_id() for show_object in list(self.__shows.values()) if
+        elif key_type in media_types[0:2]:
+            filtered_show_object = [show_object for show_object in list(self.__shows.values()) if
+                                    show_object.get_show_type() == key_type]  # Filtering Movies and TV Show
+            key_id_from_title = [show_object.get_id() for show_object in filtered_show_object if
                                  show_object.get_title() == key_title]  # Using List Comprehension to search through all the show titles and getting the show object id of the correct show.
             if key_id_from_title:
                 # print(self.__associations[key_id_from_title.pop()])
