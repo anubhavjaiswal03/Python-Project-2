@@ -34,7 +34,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/anubhavjaiswal03/Python-Project-2.git",
-    "accountId": "fee8d1e5-30f8-4d5e-ac60-926158bc2c1c"
+    "accountId": "926fe385-a3c5-4c05-b772-64e6505f2c24"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -56,7 +56,7 @@
     "Python.RecommenderGUI.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Prayash__Das",
+    "git-widget-placeholder": "main",
     "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
@@ -395,7 +395,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714888222392</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Code Cleanup">
+      <option name="closed" value="true" />
+      <created>1714933965868</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1714933965868</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Code Cleanup">
+      <option name="closed" value="true" />
+      <created>1714934056608</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1714934056608</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="UnknownFeatures">

@@ -334,11 +334,12 @@ class RecommenderGUI:
         movie_stats = self.__recommender_object.getMovieStats()
         tv_stats = self.__recommender_object.getTVStats()
 
-        movie_ratings = movie_stats.get('rating_distribution', {}) # Extracting rating distribution from the stats
+        movie_ratings = movie_stats.get('rating_distribution', {})  # Extracting rating distribution from the stats
         tv_ratings = tv_stats.get('rating_distribution', {})
 
         movie_distribution = {rating: float(info) for rating, info in movie_ratings.items()}
-        tv_distribution = {rating: float(info) for rating, info in tv_ratings.items()} # Converting the data to float values
+        tv_distribution = {rating: float(info) for rating, info in
+                           tv_ratings.items()}  # Converting the data to float values
 
         fig_movie = plt.Figure(figsize=(5, 5), dpi=100)
         fig_tv = plt.Figure(figsize=(5, 5), dpi=100)
@@ -347,27 +348,26 @@ class RecommenderGUI:
         ax_movie.clear()
         ax_tv.clear()
 
-        movie_colors=plt.cm.Set3.colors # Defining colors for pie chart slices using predefined color maps
-        tv_colors=plt.cm.tab20.colors[:len(tv_distribution)]
+        movie_colors = plt.cm.Set3.colors  # Defining colors for pie chart slices using predefined color maps
+        tv_colors = plt.cm.tab20.colors[:len(tv_distribution)]
 
-        label1=movie_distribution.keys()# Extractinglabels
+        label1 = movie_distribution.keys()  # Extractinglabels
         ax_movie.pie(movie_distribution.values(), labels=label1, autopct='%0.2f%%', startangle=90,
                      wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35}, pctdistance=0.85,
-                     labeldistance=1.15,colors=movie_colors)
-        label2=tv_distribution.keys() # Extracting labels
+                     labeldistance=1.15, colors=movie_colors)
+        label2 = tv_distribution.keys()  # Extracting labels
         ax_tv.pie(tv_distribution.values(), labels=label2, autopct='%0.2f%%', startangle=90,
-                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35},
-                     pctdistance=0.85,
-                     labeldistance=1.15,colors=tv_colors)
-
+                  wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35},
+                  pctdistance=0.85,
+                  labeldistance=1.15, colors=tv_colors)
 
         # Drawing the pie charts onto the canvas widgets and packing the widgets into the GUI
         chart_movies = FigureCanvasTkAgg(fig_movie, master=self.__rating_movies_canvas)
         chart_tv = FigureCanvasTkAgg(fig_tv, master=self.__rating_shows_canvas)
-        chart_movies.draw() #Pie Chart for Movies
-        chart_tv.draw() # Pie Chart for TV Shows
-        chart_movies.get_tk_widget().pack(side=tkinter.TOP,fill=tkinter.BOTH, expand=True)
-        chart_tv.get_tk_widget().pack(side=tkinter.TOP,fill=tkinter.BOTH, expand=True)
+        chart_movies.draw()  # Pie Chart for Movies
+        chart_tv.draw()  # Pie Chart for TV Shows
+        chart_movies.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=True)
+        chart_tv.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=True)
 
     @staticmethod
     def __describeRatings(ratings: dict) -> str:
