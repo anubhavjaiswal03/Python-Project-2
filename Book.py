@@ -38,27 +38,6 @@ class Book(Media):
                 f"{self.__book_publisher}")
 
     # Accessor/Mutators:
-    def get_book_id(self):
-        '''
-        Getter/Accessor for the BookID
-        :return: BookID
-        '''
-        return self.get_id()
-
-    def get_book_title(self):
-        '''
-        Getter/Accessor for the title of the Book
-        :return: Book Title
-        '''
-        return self.get_title()
-
-    def get_book_average_rating(self):
-        '''
-        Getter/Accessor for the Average Book Rating
-        :return: Average Rating of the Book
-        '''
-        return self.get_rating()
-
     def get_book_author(self):
         '''
         Getter/Accessor for the Book Author
@@ -114,6 +93,18 @@ class Book(Media):
         :return: Publisher name
         '''
         return self.__book_publisher
+
+    def get_details(self) -> str:
+        """
+        Helper function that returns a nice block of string that could be used in Recommendations Tab.
+        """
+        return (f"Title: {self.get_title()}\nAuthor: {self.__book_authors}\nAverage Rating: {self.get_rating()}"
+                f"\nISBN: {self.__book_isbn_number}\nISBN13: {self.__book_isbn13_number}"
+                f"\nLanguage Code:{self.__book_language_code}"
+                f"\nPages: {self.__book_page_count}"
+                f"\nRating Count: {self.__book_rating_count}"
+                f"\nPublication Date: {self.__book_publication_date}"
+                f"\nPublisher: {self.__book_publisher}")
 
 
 if __name__ == '__main__':

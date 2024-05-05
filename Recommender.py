@@ -6,7 +6,6 @@ import tkinter.filedialog
 
 from Book import Book
 from Show import Show
-import timeit
 from tkinter import filedialog as fd
 import os
 import tkinter.messagebox as messagebox
@@ -14,19 +13,18 @@ import tkinter.messagebox as messagebox
 
 class Recommender:
     def __init__(self, file_names=None):
-        '''
-        Constructor function taking in file_names as parameters
-        '''
-        self.__books = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.
-        self.__shows = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.
-        self.__associations = {}  # Stores the relationships/associations.
+        self.__books: dict[
+            str, Book] = {}  # Stores all the Book Objects with the book ID as the key and the value as the Book Object.
+        self.__shows: dict[
+            str, Show] = {}  # Stores all the Show Objects with the show ID as the key and the value as the Show Object.
+        self.__associations: dict[str, dict[str, int]] = {}  # Stores the relationships/associations.
         self.__max_movie_title_width = 0
         self.__max_movie_runtime_width = 0
         self.__max_tv_title_width = 0
         self.__max_tv_season_width = 0
         self.__max_books_title_width = 0
         self.__max_books_authors_width = 0
-        self.__spacing_between_columns = 2  # Adds space between 2 columns, Making thigs look pretty
+        self.__spacing_between_columns = 2  # Adds space between 2 columns, Making things look pretty
         self.__default_filenames = file_names  # Purely for testing fast.
 
     def __str__(self):
@@ -77,13 +75,6 @@ class Recommender:
         for (key, value) in self.__associations.items():
             print(f"{key} : {value}")
 
-        # Counting all the associations, it should be 2x the number of lines in the associated****.csv class.
-        count = 0
-        for (o_keys, i_dict) in self.__associations.items():
-            for (i_key, i_values) in i_dict.items():
-                count += i_values
-        print(count)
-
     def loadBooks(self):
         '''
         Function for loading all of the data from a book file
@@ -96,14 +87,10 @@ class Recommender:
                 print('\033[91;1m%s\033[0m file does not exist!' % book_filename)
 
         with open(book_filename) as book_file:
-            # Called to skip the header
-            book_file.readline()
-
+            book_file.readline()  # Skip the first header line
             line = book_file.readline()
-
-            # Skip the first header line
-            if "id" in line[0]:
-                line = book_file.readline()
+            # if "id" in line[0]:
+            #     line = book_file.readline()
 
             while line:
                 book_object = Book(*line.strip().split(','))
@@ -117,7 +104,7 @@ class Recommender:
                 if self.__max_books_authors_width < author_width:
                     self.__max_books_authors_width = author_width
 
-                self.__books[book_object.get_book_id()] = book_object
+                self.__books[book_object.get_id()] = book_object
                 line = book_file.readline()
 
         for book in self.__books.items():
@@ -157,11 +144,9 @@ class Recommender:
                     if self.__max_movie_runtime_width < duration_width:
                         self.__max_movie_runtime_width = duration_width
 
-                self.__shows[show_object.get_show_id()] = show_object
+                self.__shows[show_object.get_id()] = show_object
                 line = show_file.readline()
 
-        for show in self.__shows.items():
-            print(show[0], show[1], sep=":")
         print("TV title width: ", self.__max_tv_title_width, ", TV seasons width: ", self.__max_tv_season_width)
         print("Movie title width: ", self.__max_movie_title_width, ", Movie duration width: ",
               self.__max_movie_runtime_width)
@@ -175,6 +160,7 @@ class Recommender:
         movielist_header = ["Title", "Runtime"] # Aligning 'Title' and 'Runtime' columns with respect to their maximum widths and adds spacing between columns.
         formatted_movielist = f"{movielist_header[0]:<{self.__max_movie_title_width + self.__spacing_between_columns}}{movielist_header[1]:<{self.__max_movie_runtime_width + self.__spacing_between_columns}}\n"
 
+        # Building the formatted string
         for show_id in self.__shows.keys():
             if self.__shows[show_id].get_show_type() == 'Movie': # Checking for Movie category
                 show_object: Show = self.__shows[show_id]
@@ -470,20 +456,87 @@ class Recommender:
         return desired_stats
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
-        result = ""
+        """
+
+        """
+        result = "No Results"
         show_types = ["TV Show", "Movie"]
         if key_type not in show_types:
             messagebox.showerror("Invalid Show Type", f"Please select either {show_types[0]} or {show_types[1]}")
-            return "No Results"
+            return result
 
         if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
             messagebox.showerror("Empty Fields Error",
                                  f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
-            return "No Results"
+            return result
 
         if not self.__shows:
-            messagebox.showerror("File Not Loaded Error", "Please Load a Show File Before you can perform a search.")
-            return "Please Load a Show file before you can perform a search with the \"Load Shows button\"."
+            messagebox.showwarning("File Not Loaded Error", "Please Load a Show File before you can perform a search.")
+            return "Please Load a Show file before you can perform a search with the \"Load Shows\" button."
+
+        # Filter for key_type
+        filtered_show_objects: list[Show] = [self.__shows[key] for key in self.__shows.keys() if
+                                             self.__shows[key].get_show_type() == key_type]
+
+        # Filtering for key_title
+        if not len(key_title) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 show_object.get_title() == key_title]
+
+        # Filtering for key_actor
+        if not len(key_actor) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 key_actor in show_object.get_show_cast().split('\\')]
+
+        # Filtering for key_director
+        if not len(key_director) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 key_director in show_object.get_show_director().split('\\')]
+
+        # Filtering for key_genre
+        if not len(key_genre) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 key_genre in show_object.get_show_genre().split('\\')]
+
+        max_title_width: int = 0
+        max_director_width: int = 0
+        max_cast_width: int = 0
+        max_genre_width: int = 0
+
+        if not filtered_show_objects:
+            print(f"\nInput:"
+                  f"\n\tType\t\t: '{key_type}'"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tDirector\t: '{key_director}'"
+                  f"\n\tActor\t\t: '{key_actor}'"
+                  f"\n\tGenre\t\t: '{key_genre}'"
+                  f"\nNo Results")
+        else:
+            print(f"\nInput:"
+                  f"\n\tType\t\t: '{key_type}'"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tDirector\t: '{key_director}'"
+                  f"\n\tActor\t\t: '{key_actor}'"
+                  f"\n\tGenre\t\t: '{key_genre}'"
+                  f"\nResults:")
+
+            # Finding the Maximum length of all the fields.
+            for show in filtered_show_objects:
+                max_title_width = len(show.get_title()) if max_title_width < len(show.get_title()) else max_title_width
+                max_director_width = len(show.get_show_director()) if max_director_width < len(
+                    show.get_show_director()) else max_director_width
+                max_cast_width = len(show.get_show_cast()) if max_cast_width < len(
+                    show.get_show_cast()) else max_cast_width
+                max_genre_width = len(show.get_show_genre()) if max_genre_width < len(
+                    show.get_show_genre()) else max_genre_width
+
+            # Building the Result String with correct spacing.
+            result_header = ["Title", "Director", "Actor", "Genre"]
+            result = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_director_width + self.__spacing_between_columns}}{result_header[2]:<{max_cast_width + self.__spacing_between_columns}}{result_header[3]:<{max_genre_width + self.__spacing_between_columns}}\n"
+            for show in filtered_show_objects:
+                result += f"{show.get_title():<{max_title_width + self.__spacing_between_columns}}{show.get_show_director():<{max_director_width + self.__spacing_between_columns}}{show.get_show_cast():<{max_cast_width + self.__spacing_between_columns}}{show.get_show_genre():<{max_genre_width + self.__spacing_between_columns}}\n"
+
+            print(result)
 
         return result
 
@@ -656,16 +709,14 @@ class Recommender:
                                  show_object.get_title() == key_title]  # Using List Comprehension to search through all the show titles and getting the show object id of the correct show.
             if key_id_from_title:
                 # print(self.__associations[key_id_from_title.pop()])
-                recommendations_dict: dict = self.__associations[
-                    key_id_from_title.pop()]  # We assume that the titles are all unique so the list key_id_from_title only contains 1 item. We can safely pop it out.
+                recommendations_dict: dict = self.__associations[key_id_from_title.pop()]  # We assume that the titles are all unique so the list key_id_from_title only contains 1 item. We can safely pop it out.
                 results = ""  # Reset the results Value
                 for recommendation in recommendations_dict.keys():
                     try:
                         results += self.__books[recommendation].get_details()
                         results += "\n" + "-" * self.__max_books_title_width + "\n"  # Since we know the max title width we can use that as a measure of the length of the separating character.
                     except KeyError:
-                        messagebox.showwarning("Some Books not found",
-                                               "Some books are not found! Please load the correct Book file too.")
+                        messagebox.showwarning("Some Books not found", "Some books are not found! Please load the correct Book file too.")
                         results += "Information Mismatch, Load the Correct Files."
                         return results
                 print(results)
@@ -701,7 +752,7 @@ class Recommender:
 if __name__ == '__main__':
     file_paths = ["Input Files/books100.csv",
                   "Input Files/shows100.csv",
-                  "Input Files/associated10.csv"]
+                  "Input Files/associated100.csv"]
 
     rec = Recommender(file_paths)
 
@@ -719,5 +770,16 @@ if __name__ == '__main__':
     rec.getBookStats()
 
     rec.loadAssociations()
+
+    # rec.searchTVMovies("Movie", "Standby", "", "", "Comedy")
+    # rec.searchBooks("", "William Shakespeare", "")
+    # rec.searchBooks("", "John Sandford", "")
+
+    # rec.getRecommendations("", "")
+    # rec.getRecommendations("Movie", "Stolen")
+    # rec.getRecommendations("Movie", "It Might Be You")
+    # rec.getRecommendations("TV Show", "")
+    # rec.getRecommendations("Book", "")
+
     # execution_time = timeit.timeit(rec.loadAssociations, number=1)
     # print("Execution time:", execution_time, "seconds")

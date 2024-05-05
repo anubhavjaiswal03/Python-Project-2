@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Major Changes to the Stats function and implemented the Bonus for displaying the pie chart for movie and tv show rating distribution">
-      <change beforePath="$PROJECT_DIR$/Bonus.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bonus.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +34,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/anubhavjaiswal03/Python-Project-2.git&quot;,
-    &quot;accountId&quot;: &quot;fee8d1e5-30f8-4d5e-ac60-926158bc2c1c&quot;
+    &quot;accountId&quot;: &quot;926fe385-a3c5-4c05-b772-64e6505f2c24&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -50,19 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Bonus.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Book.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Media.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Recommender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.RecommenderGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Show.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Prayash__Das&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Book.executor": "Run",
+    "Python.Media.executor": "Run",
+    "Python.Recommender.executor": "Run",
+    "Python.RecommenderGUI.executor": "Run",
+    "Python.Show.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "Errors"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Project Description Files" />
@@ -278,15 +275,111 @@
       <option name="project" value="LOCAL" />
       <updated>1714705971102</updated>
     </task>
-    <task id="LOCAL-00025" summary="Major Changes to the Stats function and implemented the Bonus for displaying the pie chart for movie and tv show rating distribution">
+    <task id="LOCAL-00025" summary="Added the Search Show Functionality, Connected the Search Books Functionality.">
       <option name="closed" value="true" />
-      <created>1714886356088</created>
+      <created>1714770044362</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1714886356088</updated>
+      <updated>1714770044362</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Corrected Book.py &amp; Added Search Book Functionality">
+      <option name="closed" value="true" />
+      <created>1714773005273</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773005273</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Removed redundant code from Show.py and removed redundant code dependency in Recommender.py">
+      <option name="closed" value="true" />
+      <created>1714773142821</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773142821</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Cleaned code in Recommender.py">
+      <option name="closed" value="true" />
+      <created>1714773253408</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773253408</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Cleaned code in Recommender.py">
+      <option name="closed" value="true" />
+      <created>1714773356574</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773356574</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Code cleanup in Recommender.py">
+      <option name="closed" value="true" />
+      <created>1714773744834</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773744834</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Code cleanup in Recommender.py">
+      <option name="closed" value="true" />
+      <created>1714773787156</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773787156</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Adding minor comments.py">
+      <option name="closed" value="true" />
+      <created>1714773957101</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1714773957101</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Book.py +1 Function, Recommender.py +1 Function, RecommenderGUI.py +1 Function">
+      <option name="closed" value="true" />
+      <created>1714792195706</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792195706</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Book.py +1 Function">
+      <option name="closed" value="true" />
+      <created>1714792210339</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792210339</updated>
+    </task>
+    <task id="LOCAL-00035" summary="SHow File Added get_Show_details(self)">
+      <option name="closed" value="true" />
+      <created>1714792790100</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792790100</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Changed the helper function name.">
+      <option name="closed" value="true" />
+      <created>1714792839786</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1714792839786</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Implemented Get Recommendation, Added minor fixes">
+      <option name="closed" value="true" />
+      <created>1714794641203</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1714794641203</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -304,14 +397,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="Base Media Class" />
-    <MESSAGE value="Modified init files according to input file sequence for Book.py and Show.py" />
-    <MESSAGE value="Modified Book.py &amp; Show.py to add a file loading and testing multiple objects code in __main__ to test class functions" />
-    <MESSAGE value="Added loadBooks(), loadShows() and loadAssociations()." />
-    <MESSAGE value="minor changes" />
-    <MESSAGE value="Project files" />
-    <MESSAGE value="Project file" />
     <MESSAGE value="Re-implemented Recommender.py" />
     <MESSAGE value="minor changes." />
     <MESSAGE value=".gitignore changes" />
@@ -325,8 +410,18 @@
     <MESSAGE value="Recommender.py: Added Search and Filter Function Signatures" />
     <MESSAGE value="Started workign on searchTVMovies" />
     <MESSAGE value="Corrected Incorrect data declaration for __shows_results_text field" />
-    <MESSAGE value="Book.py, Media.py, Show.py" />
-    <MESSAGE value="Major Changes to the Stats function and implemented the Bonus for displaying the pie chart for movie and tv show rating distribution" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major Changes to the Stats function and implemented the Bonus for displaying the pie chart for movie and tv show rating distribution" />
+    <MESSAGE value="Added the Search Show Functionality, Connected the Search Books Functionality." />
+    <MESSAGE value="Corrected Book.py &amp; Added Search Book Functionality" />
+    <MESSAGE value="Removed redundant code from Show.py and removed redundant code dependency in Recommender.py" />
+    <MESSAGE value="Cleaned code in Recommender.py" />
+    <MESSAGE value="Code cleanup in Recommender.py" />
+    <MESSAGE value="Adding minor comments.py" />
+    <MESSAGE value="Book.py +1 Function, Recommender.py +1 Function, RecommenderGUI.py +1 Function" />
+    <MESSAGE value="Book.py +1 Function" />
+    <MESSAGE value="SHow File Added get_Show_details(self)" />
+    <MESSAGE value="Changed the helper function name." />
+    <MESSAGE value="Implemented Get Recommendation, Added minor fixes" />
+    <MESSAGE value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
   </component>
 </project>

@@ -4,8 +4,7 @@
 /__pycache__
 .DS_Store
 /Project Description Files
+*.pyc
 __pycache__/Book.cpython-311.pyc
-__pycache__/Media.cpython-311.pyc
 __pycache__/Recommender.cpython-311.pyc
 __pycache__/Show.cpython-311.pyc
-*.pyc
