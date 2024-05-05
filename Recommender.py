@@ -250,8 +250,18 @@ class Recommender:
                     movie_stats['movies'].append([id, title, rating, duration_str])
 
                     # Ratings distribution
-                    movie_stats['ratings'][rating] = movie_stats['ratings'].get(rating, {'count': 0})
-                    movie_stats['ratings'][rating]['count'] += 1
+                    #movie_stats['ratings'][rating] = movie_stats['ratings'].get(rating, {'count': 0})
+                    #movie_stats['ratings'][rating]['count'] += 1
+
+                    # Ratings distribution
+                    if rating is not None:
+                        movie_stats['ratings'][rating] = movie_stats['ratings'].get(rating, {'count': 0})
+                        movie_stats['ratings'][rating]['count'] += 1
+                    else:
+                        movie_stats['ratings']['None'] = movie_stats['ratings'].get('None', {'count': 0})
+                        movie_stats['ratings']['None']['count'] += 1
+
+
 
                     # Average duration
                     movie_stats['average_duration'] += duration_int
@@ -295,16 +305,21 @@ class Recommender:
                 movie_stats['average_duration'] = f"{(movie_stats['average_duration'] / total_movies):.2f}"
 
             # Calculate ratings distribution using the total count of ratings
+
             for rating_info in movie_stats['ratings'].values():
-                rating_info['distribution'] = f"{((rating_info['count'] / total_movies) * 100):.2f}"
+                    rating_info['distribution'] = f"{((rating_info['count'] / total_movies) * 100):.2f}"
 
         else:
             return "No shows found"
 
-        for key in movie_stats.keys():
-            print(key, movie_stats[key])
-        return movie_stats
-
+        desired_stats = {
+            'rating_distribution': {key if key != '' else 'None': float(value['distribution']) for key, value in movie_stats['ratings'].items()},
+            'average_movie_duration': f"{movie_stats['average_duration']} minutes",'most_prolific_director': movie_stats['most_frequent_director'],
+            'most_prolific_actor': movie_stats['most_frequent_actor'],'most_frequent_genre': movie_stats['most_frequent_genre']
+        }
+        for key in desired_stats.keys():
+            print(key,desired_stats[key])
+        return desired_stats
     def getTVStats(self):
         '''
         Function for returning statistics regarding TV Shows such as Ratings, average number of seasons, actor with the
@@ -372,7 +387,7 @@ class Recommender:
                                     tv_stats['most_frequent_genre'] = genre
             # Calculate average seasons
             if total_shows > 0:
-                tv_stats['average_seasons'] = f"{(tv_stats['average_seasons'] / total_shows):.2f}"
+                tv_stats['average_seasons'] = f"{(tv_stats['average_seasons'] / total_shows):.2f} seasons"
 
                 # Calculate ratings distribution using the total count of ratings
             for rating_info in tv_stats['ratings'].values():
@@ -380,9 +395,12 @@ class Recommender:
         else:
             return "No shows found"
 
-        for key in tv_stats.keys():
-            print(key, tv_stats[key])
-        return tv_stats
+        desired_stats={'rating_distribution':{key: float(value['distribution']) for key, value in tv_stats['ratings'].items()},'average_number_of_seasons':tv_stats['average_seasons'],'most_prolific_actor':tv_stats['most_frequent_actor'],
+                       'most_frequent_genre':tv_stats['most_frequent_genre']}
+
+        for key in desired_stats.keys():
+            print(key,desired_stats[key])
+        return desired_stats
 
     def getBookStats(self):
         '''
@@ -441,14 +459,15 @@ class Recommender:
 
             # Calculate average page count
             if total_books > 0:
-                book_stats['average_page_count'] = f"{(total_pages / total_books):.2f}"
+                book_stats['average_page_count'] = f"{(total_pages / total_books):.2f} pages"
 
         else:
             return "No books found"
 
-        for key in book_stats.keys():
-            print(key, book_stats[key])
-        return book_stats
+        desired_stats={'average_page_count':book_stats['average_page_count'],'most_prolific_author':book_stats['most_frequent_author'],'most_prolific_publisher':book_stats['most_frequent_publisher']}
+        for key in desired_stats.keys():
+            print(key,desired_stats[key])
+        return desired_stats
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
         result = ""
@@ -468,11 +487,215 @@ class Recommender:
 
         return result
 
+    def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
+        """
+
+        """
+        result = "No Results"
+        show_types = ["TV Show", "Movie"]
+        if key_type not in show_types:
+            messagebox.showerror("Invalid Show Type", f"Please select either {show_types[0]} or {show_types[1]}")
+            return result
+
+        if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
+            messagebox.showerror("Empty Fields Error",
+                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
+            return result
+
+        if not self.__shows:
+            messagebox.showwarning("File Not Loaded Error", "Please Load a Show File before you can perform a search.")
+            return "Please Load a Show file before you can perform a search with the \"Load Shows\" button."
+
+        # Filter for key_type
+        filtered_show_objects: list[Show] = [self.__shows[key] for key in self.__shows.keys() if
+                                             self.__shows[key].get_show_type() == key_type]
+
+        # Filtering for key_title
+        if not len(key_title) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 show_object.get_title() == key_title]
+
+        # Filtering for key_actor
+        if not len(key_actor) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 key_actor in show_object.get_show_cast().split('\\')]
+
+        # Filtering for key_director
+        if not len(key_director) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 key_director in show_object.get_show_director().split('\\')]
+
+        # Filtering for key_genre
+        if not len(key_genre) == 0:
+            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
+                                                 key_genre in show_object.get_show_genre().split('\\')]
+
+        max_title_width: int = 0
+        max_director_width: int = 0
+        max_cast_width: int = 0
+        max_genre_width: int = 0
+
+        if not filtered_show_objects:
+            print(f"\nInput:"
+                  f"\n\tType\t\t: '{key_type}'"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tDirector\t: '{key_director}'"
+                  f"\n\tActor\t\t: '{key_actor}'"
+                  f"\n\tGenre\t\t: '{key_genre}'"
+                  f"\nNo Results")
+        else:
+            print(f"\nInput:"
+                  f"\n\tType\t\t: '{key_type}'"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tDirector\t: '{key_director}'"
+                  f"\n\tActor\t\t: '{key_actor}'"
+                  f"\n\tGenre\t\t: '{key_genre}'"
+                  f"\nResults:")
+
+            # Finding the Maximum length of all the fields.
+            for show in filtered_show_objects:
+                max_title_width = len(show.get_title()) if max_title_width < len(show.get_title()) else max_title_width
+                max_director_width = len(show.get_show_director()) if max_director_width < len(
+                    show.get_show_director()) else max_director_width
+                max_cast_width = len(show.get_show_cast()) if max_cast_width < len(
+                    show.get_show_cast()) else max_cast_width
+                max_genre_width = len(show.get_show_genre()) if max_genre_width < len(
+                    show.get_show_genre()) else max_genre_width
+
+            # Building the Result String with correct spacing.
+            result_header = ["Title", "Director", "Actor", "Genre"]
+            result = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_director_width + self.__spacing_between_columns}}{result_header[2]:<{max_cast_width + self.__spacing_between_columns}}{result_header[3]:<{max_genre_width + self.__spacing_between_columns}}\n"
+            for show in filtered_show_objects:
+                result += f"{show.get_title():<{max_title_width + self.__spacing_between_columns}}{show.get_show_director():<{max_director_width + self.__spacing_between_columns}}{show.get_show_cast():<{max_cast_width + self.__spacing_between_columns}}{show.get_show_genre():<{max_genre_width + self.__spacing_between_columns}}\n"
+
+            print(result)
+
+        return result
+
     def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
-        pass
+        results = "No Result"
+        if len(key_title) + len(key_title) + len(key_author) + len(key_publisher) == 0:
+            messagebox.showerror("Empty Fields Error",
+                                 f"Please provide input for at least one of the following fields to search: Title, Author or Publisher or any combinations of them.")
+            return results
+
+        if not self.__books:
+            messagebox.showerror("File Not Loaded Error", "Please load a Book File first.")
+            return "Please load a Book file before you can perform a search with the \"Load Books\" button."
+
+        filter_books_objects: list[Book] = [book_object for book_object in self.__books.values()]
+
+        # Filter for Book Titles
+        if not len(key_title) == 0:
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if
+                                                book_object.get_title() == key_title]
+
+        # Filter for Book Authors
+        if not len(key_author) == 0:
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if
+                                                key_author in book_object.get_book_author().split('\\')]
+
+        # Filter for Book Publishers
+        if not len(key_publisher) == 0:
+            filter_books_objects: list[Book] = [book_object for book_object in filter_books_objects if
+                                                book_object.get_book_publisher() == key_publisher]
+
+        # Declaring default max field widths.
+        max_title_width: int = 0
+        max_author_width: int = 0
+        max_publisher_width: int = 0
+
+        if not filter_books_objects:
+            print(f"\nInput:"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tAuthor\t\t: '{key_author}'"
+                  f"\n\tPublisher\t: '{key_publisher}'"
+                  f"\n{results}")
+        else:
+            print(f"\nInput:"
+                  f"\n\tTitle\t\t: '{key_title}'"
+                  f"\n\tAuthor\t\t: '{key_author}'"
+                  f"\n\tPublisher\t: '{key_publisher}'"
+                  f"\nResults:")
+
+            # Finding the Maximum length of the required fields.
+            for book in filter_books_objects:
+                max_title_width = len(book.get_title()) if max_title_width < len(book.get_title()) else max_title_width
+                max_author_width = len(book.get_book_author()) if max_author_width < len(
+                    book.get_book_author()) else max_author_width
+                max_publisher_width = len(book.get_book_publisher()) if max_publisher_width < len(
+                    book.get_book_publisher()) else max_publisher_width
+
+            # Building the Result String with correct spacing.
+            result_header = ["Title", "Author", "Publisher"]
+            results = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_author_width + self.__spacing_between_columns}}{result_header[2]:<{max_publisher_width + self.__spacing_between_columns}}\n"
+            for book in filter_books_objects:
+                results += f"{book.get_title():<{max_title_width + self.__spacing_between_columns}}{book.get_book_author():<{max_author_width + self.__spacing_between_columns}}{book.get_book_publisher():<{max_publisher_width + self.__spacing_between_columns}}\n"
+
+            print(results)
+
+        return results
 
     def getRecommendations(self, key_type: str, key_title: str) -> str:
-        pass
+        results = "No Result"
+        media_types = ["Movie", "TV Show", "Book"]
+
+        if not self.__associations:
+            messagebox.showerror("No Associations Loaded",
+                                 "Please load the recommendation file first using, the 'Load Recommendations' button.")
+            return "Please load the recommendation file first using, the 'Load Recommendations' button."
+
+        if key_type not in media_types:
+            messagebox.showerror(
+                f"Invalid Type: {key_type}",
+                "Please ensure to select the correct type from the drop down list."
+            )
+            return results
+        if key_type in media_types[0:2]:
+            key_id_from_title = [show_object.get_id() for show_object in list(self.__shows.values()) if
+                                 show_object.get_title() == key_title]  # Using List Comprehension to search through all the show titles and getting the show object id of the correct show.
+            if key_id_from_title:
+                # print(self.__associations[key_id_from_title.pop()])
+                recommendations_dict: dict = self.__associations[
+                    key_id_from_title.pop()]  # We assume that the titles are all unique so the list key_id_from_title only contains 1 item. We can safely pop it out.
+                results = ""  # Reset the results Value
+                for recommendation in recommendations_dict.keys():
+                    try:
+                        results += self.__books[recommendation].get_details()
+                        results += "\n" + "-" * self.__max_books_title_width + "\n"  # Since we know the max title width we can use that as a measure of the length of the separating character.
+                    except KeyError:
+                        messagebox.showwarning("Some Books not found",
+                                               "Some books are not found! Please load the correct Book file too.")
+                        results += "Information Mismatch, Load the Correct Files."
+                        return results
+                print(results)
+                return results
+            else:
+                messagebox.showwarning(f"0 Recommendations found",
+                                       f"No recommendations found for {key_type} titled '{key_title}'.")
+                return results
+        elif key_type == media_types[2]:
+            key_id_from_title = [book_object.get_id() for book_object in list(self.__books.values()) if
+                                 book_object.get_title() == key_title]  # Using List Comprehension to search through all the show titles and getting the show object id of the correct show.
+            if key_id_from_title:
+                recommendations_dict: dict = self.__associations[
+                    key_id_from_title.pop()]  # We assume that the titles are all unique so the list key_id_from_title only contains 1 item. We can safely pop it out.
+                results = ""  # Reset the results Value
+                for recommendation in recommendations_dict.keys():
+                    try:
+                        results += self.__shows[recommendation].get_details()
+                        results += "\n" + "-" * 50 + "\n"  # Just multiplying the seperator with a fixed number.
+                    except KeyError:
+                        messagebox.showwarning("Some Shows not found",
+                                               "Some shows are not found! Please load the correct Show file.")
+                        results += "Information Mismatch, Load the Correct Files."  # Edge CAse TEst if there are associations which are coross
+                        return results
+                print(results)
+                return results
+            else:
+                messagebox.showwarning(f"0 Recommendations found",
+                                       f"No recommendations found for {key_type} titled '{key_title}'.")
+                return results
 
 
 if __name__ == '__main__':
