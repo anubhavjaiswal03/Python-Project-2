@@ -2,6 +2,8 @@ import tkinter
 from tkinter import ttk
 from Recommender import Recommender
 import tkinter.messagebox as messagebox
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 class RecommenderGUI:
@@ -196,16 +198,16 @@ class RecommenderGUI:
         # Ratings Tab
         self.__ratings_tab = ttk.Frame(self.__notebook)
         self.__notebook.add(self.__ratings_tab, text="Ratings")
-        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab)
-        self.__rating_movies_canvas = tkinter.Canvas(self.__ratings_tab)
+        self.__rating_shows_canvas = tkinter.Canvas(self.__ratings_tab, width=600)
+        self.__rating_movies_canvas = tkinter.Canvas(self.__ratings_tab, width=600)
 
         self.__rating_shows_label = tkinter.Label(self.__rating_shows_canvas,
                                                   text="Please Load a Show File to Populate the Shows Pie-Chart")
         self.__rating_movies_label = tkinter.Label(self.__rating_movies_canvas,
                                                    text="Please Load a Show File to Populate the Movie Pie-Chart")
 
-        self.__rating_movies_canvas.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True, padx=(0, 5))
-        self.__rating_shows_canvas.pack(side=tkinter.RIGHT, fill=tkinter.BOTH, expand=True, padx=(5, 0))
+        self.__rating_movies_canvas.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True)
+        self.__rating_shows_canvas.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True)
         self.__rating_shows_label.pack(side=tkinter.TOP, fill=tkinter.X)
         self.__rating_movies_label.pack(side=tkinter.TOP, fill=tkinter.X)
         self.__rating_shows_label.configure(font=("Ariel", 20))
@@ -244,12 +246,15 @@ class RecommenderGUI:
         self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender_object.getTVList())
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
+        self.__displayPie()
 
         temp: str = self.__describeRatings(self.__recommender_object.getMovieStats())
         self.__mutate_Text_GUI(self.__movies_stats_text, temp)
 
         temp: str = self.__describeRatings(self.__recommender_object.getTVStats())
         self.__mutate_Text_GUI(self.__tv_shows_stats_text, temp)
+
+        print("Shows loaded and GUI updated")
 
     def loadBooks(self):
         print("Select a Book file")
@@ -284,6 +289,41 @@ class RecommenderGUI:
         temp: str = self.__recommender_object.getRecommendations(self.__recommendations_type_str.get(),
                                                                  self.__recommendations_title_str.get())
         self.__mutate_Text_GUI(self.__recommendations_results_text, temp)
+
+    def __displayPie(self):
+        movie_stats = self.__recommender_object.getMovieStats()
+        tv_stats = self.__recommender_object.getTVStats()
+
+        movie_ratings = movie_stats.get('rating_distribution', {})
+        tv_ratings = tv_stats.get('rating_distribution', {})
+
+        movie_distribution = {rating: float(info) for rating, info in movie_ratings.items()}
+        tv_distribution = {rating: float(info) for rating, info in tv_ratings.items()}
+
+        fig_movie = plt.Figure(figsize=(5, 5), dpi=100) #%0.2f%%
+        fig_tv = plt.Figure(figsize=(5, 5), dpi=100)
+        ax_movie = fig_movie.add_subplot(111)
+        ax_tv = fig_tv.add_subplot(111)
+
+        ax_movie.pie(movie_distribution.values(), labels=movie_distribution.keys(), autopct='0.2f%%', startangle=90,
+                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 12},pctdistance=1.35,labeldistance=1.15)
+        ax_movie.axis('equal')
+        # ax_movie.set_title('Movie Ratings Distribution')
+        #self.__rating_movies_canvas.create_image
+
+        ax_tv.pie(tv_distribution.values(), labels=tv_distribution.keys(), autopct='%0.2f%%', startangle=90,
+                  wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 12},pctdistance=1.35,labeldistance=1.05)
+        ax_tv.axis('equal')
+        # ax_tv.set_title('TV Show Ratings Distribution')
+        plt.legend(loc='best')
+
+
+        chart_movies = FigureCanvasTkAgg(fig_movie, master=self.__rating_movies_canvas)
+        chart_tv = FigureCanvasTkAgg(fig_tv, master=self.__rating_shows_canvas)
+        chart_movies.draw()
+        chart_tv.draw()
+        chart_movies.get_tk_widget().pack(side=tkinter.TOP,fill=tkinter.BOTH, expand=True)
+        chart_tv.get_tk_widget().pack(side=tkinter.TOP,fill=tkinter.BOTH, expand=True)
 
     @staticmethod
     def __describeRatings(ratings: dict) -> str:

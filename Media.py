@@ -1,3 +1,7 @@
+# Authors: Anubhav Jaiswal, Prayash Das
+# Description: This file contains the Media class, containing member variables to store ID, title, and an average rating
+# This file also contains constructor function taking in an ID, a title, and an average rating as parameters and assigns
+# those values to the appropriate member variables and appropriate accessor/mutator functions.
 class Media:
     """
     Base Class for the classes: Show and Book, defining id, title and average_rating Data Members along with their
@@ -5,6 +9,10 @@ class Media:
     """
 
     def __init__(self, media_id, media_title, media_average_rating):
+        '''
+        Constructor Function taking ID,title and average rating as parameters and assigning those values to the
+        appropriate member variables.
+        '''
         self._media_id = media_id
         self._media_title = media_title
         self._media_average_rating = float(media_average_rating)
