@@ -305,7 +305,7 @@ class RecommenderGUI:
         ax_movie = fig_movie.add_subplot(111)
         ax_tv = fig_tv.add_subplot(111)
 
-        ax_movie.pie(movie_distribution.values(), labels=movie_distribution.keys(), autopct='0.2f%%', startangle=90,
+        ax_movie.pie(movie_distribution.values(), labels=movie_distribution.keys(), autopct='%0.2f%%', startangle=90,
                      wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 12},pctdistance=1.35,labeldistance=1.15)
         ax_movie.axis('equal')
         # ax_movie.set_title('Movie Ratings Distribution')
