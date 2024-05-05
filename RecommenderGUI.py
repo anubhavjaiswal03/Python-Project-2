@@ -1,4 +1,5 @@
 # Authors: Anubhav Jaiswal, Prayash Das
+# Date: 04/26/24
 # Description: Driver Program which display the User Interface and import all the required functionalities from the
 # other files and display as per the user's choice
 
@@ -249,8 +250,8 @@ class RecommenderGUI:
 
     def loadShows(self):
         """
-        Function for loading of show data, updating GUI elements with show lists and statistics, printing status
-        messages for user feedback and calling the displayPie function
+        Function for loading of show data, updating GUI elements with show lists and statistics,
+        and calling the displayPie function
         """
         print("Select a Show file")
         self.__recommender_object.loadShows()
@@ -269,6 +270,10 @@ class RecommenderGUI:
         print("Shows loaded and GUI updated")
 
     def loadBooks(self):
+        """
+        Function for initiating the process of loading book into the application, updating GUI elements with book
+        statistics
+        """
         print("Select a Book file")
         self.__recommender_object.loadBooks()
         self.__mutate_Text_GUI(self.__books_list_text, self.__recommender_object.getBookList())
@@ -277,15 +282,26 @@ class RecommenderGUI:
 
     def loadAssociations(self):
         print("Select an Association file")
+        """
+        Function for initiating the process of loading associations into the application
+        """
         self.__recommender_object.loadAssociations()
 
     def creditInfoBox(self):
+        """
+        Function for displaying messagebox with project information such as Team name, Team members, and project
+        completion date
+        """
         title: str = "Project Information"
         message: str = "Team: Code Crusaders\nAnubhav Jaiswal\nPrayash Das"
         project_completion: str = "Project Completion: 03-May-2024"
         self.credit_info_messagebox = messagebox.showinfo(title, message, detail=project_completion)
 
     def searchShows(self):
+        """
+        Function to search for TV Shows or Movies based on User Input criteria such as type, title, director, actor, and
+        genre. Updates the GUI with the search results
+        """
         temp: str = self.__recommender_object.searchTVMovies(self.__shows_type_str.get(), self.__shows_title_str.get(),
                                                              self.__shows_director_str.get(),
                                                              self.__shows_actor_str.get(),
@@ -293,52 +309,72 @@ class RecommenderGUI:
         self.__mutate_Text_GUI(self.__shows_results_text, temp)
 
     def searchBooks(self):
+        """
+        Function to search for Books based on User Input Criteria such as book title, book author, and the book
+        publisher. Updates the GUI with the search results
+        """
         temp: str = self.__recommender_object.searchBooks(self.__books_title_str.get(), self.__books_author_str.get(),
                                                           self.__books_publisher_str.get())
         self.__mutate_Text_GUI(self.__books_results_text, temp)
 
     def getRecommendations(self):
+        """
+        Function to fetch recommendations based on user-provided criteria like type and title. Updates the GUI by
+        displaying the fetched recommendations in '__recommendations_results_text'
+        """
         temp: str = self.__recommender_object.getRecommendations(self.__recommendations_type_str.get(),
                                                                  self.__recommendations_title_str.get())
         self.__mutate_Text_GUI(self.__recommendations_results_text, temp)
 
     def __displayPie(self):
+        """
+        Function for creating and displaying pie charts visualising the ratings distribution for movies and
+        TV shows in the GUI
+        """
         movie_stats = self.__recommender_object.getMovieStats()
         tv_stats = self.__recommender_object.getTVStats()
 
-        movie_ratings = movie_stats.get('rating_distribution', {})
+        movie_ratings = movie_stats.get('rating_distribution', {}) # Extracting rating distribution from the stats
         tv_ratings = tv_stats.get('rating_distribution', {})
 
         movie_distribution = {rating: float(info) for rating, info in movie_ratings.items()}
-        tv_distribution = {rating: float(info) for rating, info in tv_ratings.items()}
+        tv_distribution = {rating: float(info) for rating, info in tv_ratings.items()} # Converting the data to float values
 
-        fig_movie = plt.Figure(figsize=(5, 5), dpi=100) #%0.2f%%
+        fig_movie = plt.Figure(figsize=(5, 5), dpi=100)
         fig_tv = plt.Figure(figsize=(5, 5), dpi=100)
         ax_movie = fig_movie.add_subplot(111)
         ax_tv = fig_tv.add_subplot(111)
+        ax_movie.clear()
+        ax_tv.clear()
 
-        ax_movie.pie(movie_distribution.values(), labels=movie_distribution.keys(), autopct='%0.2f%%', startangle=90,
-                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 12},pctdistance=1.35,labeldistance=1.15)
-        ax_movie.axis('equal')
-        # ax_movie.set_title('Movie Ratings Distribution')
-        #self.__rating_movies_canvas.create_image
+        movie_colors=plt.cm.Set3.colors # Defining colors for pie chart slices using predefined color maps
+        tv_colors=plt.cm.tab20.colors[:len(tv_distribution)]
 
-        ax_tv.pie(tv_distribution.values(), labels=tv_distribution.keys(), autopct='%0.2f%%', startangle=90,
-                  wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 12},pctdistance=1.35,labeldistance=1.05)
-        ax_tv.axis('equal')
-        # ax_tv.set_title('TV Show Ratings Distribution')
-        plt.legend(loc='best')
+        label1=movie_distribution.keys()# Extractinglabels
+        ax_movie.pie(movie_distribution.values(), labels=label1, autopct='%0.2f%%', startangle=90,
+                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35}, pctdistance=0.85,
+                     labeldistance=1.15,colors=movie_colors)
+        label2=tv_distribution.keys() # Extracting labels
+        ax_tv.pie(tv_distribution.values(), labels=label2, autopct='%0.2f%%', startangle=90,
+                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35},
+                     pctdistance=0.85,
+                     labeldistance=1.15,colors=tv_colors)
 
 
+        # Drawing the pie charts onto the canvas widgets and packing the widgets into the GUI
         chart_movies = FigureCanvasTkAgg(fig_movie, master=self.__rating_movies_canvas)
         chart_tv = FigureCanvasTkAgg(fig_tv, master=self.__rating_shows_canvas)
-        chart_movies.draw()
-        chart_tv.draw()
+        chart_movies.draw() #Pie Chart for Movies
+        chart_tv.draw() # Pie Chart for TV Shows
         chart_movies.get_tk_widget().pack(side=tkinter.TOP,fill=tkinter.BOTH, expand=True)
         chart_tv.get_tk_widget().pack(side=tkinter.TOP,fill=tkinter.BOTH, expand=True)
 
     @staticmethod
     def __describeRatings(ratings: dict) -> str:
+        """
+        Function for generating a formatted string with statistics related to ratings, including rating distribution
+        and other relevant stats, based on input dictionary
+        """
         result = ""  # The string we will build that will populate the respective tv or movie stats tab.
         for (key, value) in ratings.items():
             # Building the Ratings Stats in the String
