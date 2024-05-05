@@ -9,10 +9,10 @@ class Media:
     """
 
     def __init__(self, media_id, media_title, media_average_rating):
-        '''
+        """
         Constructor Function taking ID,title and average rating as parameters and assigning those values to the
         appropriate member variables.
-        '''
+        """
         self._media_id = media_id
         self._media_title = media_title
         self._media_average_rating = float(media_average_rating)

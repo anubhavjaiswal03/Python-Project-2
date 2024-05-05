@@ -15,9 +15,9 @@ class Show(Media):
 
     def __init__(self, show_id, show_type, show_title, show_director, cast, average_rating, country_code, date_added,
                  release_year, media_rating, duration, genre, description):
-        '''
+        """
         Constructor Function taking the required parameters
-        '''
+        """
         super().__init__(show_id, show_title, average_rating)
         self.__show_type = show_type
         self.__show_director = show_director
@@ -32,9 +32,9 @@ class Show(Media):
         self.__show_description = description
 
     def __str__(self):
-        '''
+        """
         str function for formatting the output of the class as required
-        '''
+        """
         return (f"{self._media_id}, {self.__show_type}, {self._media_title}, {self.__show_director}, "
                 f"{self.__show_cast}, {self.get_rating()}, {self.__show_country_code}, "
                 f"{self.__show_date_added}, {self.__show_release_year}, {self.__show_content_rating}, "
@@ -42,52 +42,52 @@ class Show(Media):
 
     # Accessor/Mutators:
     def get_show_type(self):
-        '''
+        """
         Getter/Accessor for Show Type
         :return: Show Type
-        '''
+        """
         return self.__show_type
 
     def get_show_director(self):
-        '''
+        """
         Getter/Accessor for Show Director
         :return: Show Director
-        '''
+        """
         return self.__show_director
 
     def get_show_cast(self):
-        '''
+        """
         Getter/Accessor for the Show Cast
         :return: Show Cast
-        '''
+        """
         return self.__show_cast
 
     def get_show_country_code(self):
-        '''
+        """
         Getter/Accessor for country code of the show
         :return: Country Code
-        '''
+        """
         return self.__show_country_code
 
     def get_show_date_added(self):
-        '''
+        """
         Getter/Accessor for the date of the show added
         :return: Date of the show added
-        '''
+        """
         return self.__show_date_added
 
     def get_show_release_year(self):
-        '''
+        """
         Getter/Accessor for the release year of the show
         :return: Year the show was released
-        '''
+        """
         return self.__show_release_year
 
     def get_show_content_rating(self):
-        '''
+        """
         Getter/Accessor for the content rating of the show
         :return: Content Rating
-        '''
+        """
         return self.__show_content_rating
 
     def get_show_duration_str(self):
@@ -101,17 +101,17 @@ class Show(Media):
         return self.__show_duration
 
     def get_show_genre(self):
-        '''
+        """
         Getter/Accessor for the Show genre
         :return: Show genre
-        '''
+        """
         return self.__show_genre
 
     def get_show_description(self):
-        '''
+        """
         Getter/Accessor for the Show Description
         :return: Description of the show
-        '''
+        """
         return self.__show_description
 
     def get_details(self):

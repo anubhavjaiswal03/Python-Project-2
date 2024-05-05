@@ -1,3 +1,8 @@
+# Authors: Anubhav Jaiswal, Prayash Das
+# Description: Driver Program which display the User Interface and import all the required functionalities from the
+# other files and display as per the user's choice
+
+
 import tkinter
 from tkinter import ttk
 from Recommender import Recommender
@@ -8,6 +13,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class RecommenderGUI:
     def __init__(self):
+        """
+        Constructor function containing all the Notebook tabs, Buttons for User Interaction and Quitting the Program
+        """
         self.credit_info_messagebox = None
         self.__recommender_object = Recommender()
         self.__main_window = tkinter.Tk()
@@ -240,6 +248,10 @@ class RecommenderGUI:
         text_GUI.configure(state=tkinter.DISABLED)
 
     def loadShows(self):
+        """
+        Function for loading of show data, updating GUI elements with show lists and statistics, printing status
+        messages for user feedback and calling the displayPie function
+        """
         print("Select a Show file")
         self.__recommender_object.loadShows()
         self.__mutate_Text_GUI(self.__movies_list_text, self.__recommender_object.getMovieList())

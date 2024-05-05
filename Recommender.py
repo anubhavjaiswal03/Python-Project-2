@@ -204,6 +204,7 @@ class Recommender:
         Function for returning all the statistics regarding movies such as ratings, average movie duration, director
         with the most movies, actor with the most movies, most frequent movie genre
         """
+        # Initializing a new dictionary
         movie_stats = {
             'movies': [],
             'ratings': {},
@@ -236,16 +237,13 @@ class Recommender:
                     movie_stats['movies'].append([id, title, rating, duration_str])
 
                     # Ratings distribution
-                    #movie_stats['ratings'][rating] = movie_stats['ratings'].get(rating, {'count': 0})
-                    #movie_stats['ratings'][rating]['count'] += 1
-
-                    # Ratings distribution
                     if rating is not None:
                         movie_stats['ratings'][rating] = movie_stats['ratings'].get(rating, {'count': 0})
                         movie_stats['ratings'][rating]['count'] += 1
                     else:
                         movie_stats['ratings']['None'] = movie_stats['ratings'].get('None', {'count': 0})
-                        movie_stats['ratings']['None']['count'] += 1
+                        movie_stats['ratings']['None']['count'] += 1 # Checking if there are empty spaces in the Rating
+                                                                    # distribution and considering them as 'None'
 
 
 
@@ -254,7 +252,7 @@ class Recommender:
 
                     # Directors
                     if directors:
-                        for director in directors.split('\\'):
+                        for director in directors.split('\\'): # Splitting the director's name
                             director = director.strip()
                             if director:
                                 movie_stats['directors'][director] = movie_stats['directors'].get(director,
@@ -262,29 +260,31 @@ class Recommender:
                                 movie_stats['directors'][director]['count'] += 1
                                 if movie_stats['directors'][director]['count'] > max_director_count:
                                     max_director_count = movie_stats['directors'][director]['count']
-                                    movie_stats['most_frequent_director'] = director
+                                    movie_stats['most_frequent_director'] = director # Calculating for the most frequent
+                                                                                    # director
 
                     # Actors
                     if actors:
-                        for actor in actors.split('\\'):
+                        for actor in actors.split('\\'): # Splitting the actor's name
                             actor = actor.strip()
                             if actor:
                                 movie_stats['actors'][actor] = movie_stats['actors'].get(actor, {'count': 0})
                                 movie_stats['actors'][actor]['count'] += 1
                                 if movie_stats['actors'][actor]['count'] > max_actor_count:
                                     max_actor_count = movie_stats['actors'][actor]['count']
-                                    movie_stats['most_frequent_actor'] = actor
+                                    movie_stats['most_frequent_actor'] = actor # Calculating for the most frequent actor
+                                                                                # in Movies
 
                     # Genre
                     if genres:
-                        for genre in genres.split('\\'):
+                        for genre in genres.split('\\'): # Splitting the genre
                             genre = genre.strip()
                             if genre:
                                 movie_stats['genres'][genre] = movie_stats['genres'].get(genre, {'count': 0})
                                 movie_stats['genres'][genre]['count'] += 1
                                 if movie_stats['genres'][genre]['count'] > max_genre_count:
                                     max_genre_count = movie_stats['genres'][genre]['count']
-                                    movie_stats['most_frequent_genre'] = genre
+                                    movie_stats['most_frequent_genre'] = genre # Calculating for the most frequent genre
 
             # Calculate average duration
             if total_movies > 0:
@@ -297,7 +297,8 @@ class Recommender:
 
         else:
             return "No shows found"
-
+        # Edge Test Case
+        # Getting the desired stats in a new dictionary
         desired_stats = {
             'rating_distribution': {key if key != '' else 'None': float(value['distribution']) for key, value in movie_stats['ratings'].items()},
             'average_movie_duration': f"{movie_stats['average_duration']} minutes",'most_prolific_director': movie_stats['most_frequent_director'],
@@ -312,6 +313,7 @@ class Recommender:
         Function for returning statistics regarding TV Shows such as Ratings, average number of seasons, actor with the
         most number of TV Shows, and the most number of genres for a TV show
         """
+        # Initializing a new dictionary
         tv_stats = {
             'shows': [],
             'ratings': {},
@@ -353,25 +355,26 @@ class Recommender:
 
                     # Actors
                     if actors:
-                        for actor in actors.split('\\'):
+                        for actor in actors.split('\\'): # Splitting the actor's name
                             actor = actor.strip()
                             if actor:
                                 tv_stats['actors'][actor] = tv_stats['actors'].get(actor, {'count': 0})
                                 tv_stats['actors'][actor]['count'] += 1
                                 if tv_stats['actors'][actor]['count'] > max_actor_count:
                                     max_actor_count = tv_stats['actors'][actor]['count']
-                                    tv_stats['most_frequent_actor'] = actor
+                                    tv_stats['most_frequent_actor'] = actor # Calculating for the most frequent actor
 
                     # Genre
                     if genres:
-                        for genre in genres.split('\\'):
+                        for genre in genres.split('\\'): # Splitting the genre
                             genre = genre.strip()
                             if genre:
                                 tv_stats['genres'][genre] = tv_stats['genres'].get(genre, {'count': 0})
                                 tv_stats['genres'][genre]['count'] += 1
                                 if tv_stats['genres'][genre]['count'] > max_genre_count:
                                     max_genre_count = tv_stats['genres'][genre]['count']
-                                    tv_stats['most_frequent_genre'] = genre
+                                    tv_stats['most_frequent_genre'] = genre # Calculating for the most frequent TV show
+                                                                            # genre
             # Calculate average seasons
             if total_shows > 0:
                 tv_stats['average_seasons'] = f"{(tv_stats['average_seasons'] / total_shows):.2f} seasons"
@@ -381,19 +384,22 @@ class Recommender:
                 rating_info['distribution'] = f"{(rating_info['count'] / total_shows) * 100:.2f}"
         else:
             return "No shows found"
-
-        desired_stats={'rating_distribution':{key: float(value['distribution']) for key, value in tv_stats['ratings'].items()},'average_number_of_seasons':tv_stats['average_seasons'],'most_prolific_actor':tv_stats['most_frequent_actor'],
+        # Edge Test Case
+        # Getting the desired stats in a new dictionary
+        desired_stats={'rating_distribution':{key: float(value['distribution']) for key, value in tv_stats['ratings'].items()},
+                       'average_number_of_seasons':tv_stats['average_seasons'],
+                       'most_prolific_actor':tv_stats['most_frequent_actor'],
                        'most_frequent_genre':tv_stats['most_frequent_genre']}
-
         for key in desired_stats.keys():
             print(key,desired_stats[key])
         return desired_stats
 
     def getBookStats(self):
-        '''
+        """
         Function for returning statistics regarding books such as average page count, author with the most books,
         and the publisher with the most books.
-        '''
+        """
+        # Initializing a new dictionary
         book_stats = {
             'books': [],
             'authors': {},
@@ -420,14 +426,14 @@ class Recommender:
 
                 # Authors
                 if author:
-                    for author_name in author.split('\\'):
+                    for author_name in author.split('\\'): # Splitting the Author's name
                         author_name = author_name.strip()
                         if author_name:
                             book_stats['authors'][author_name] = book_stats['authors'].get(author_name, {'count': 0})
                             book_stats['authors'][author_name]['count'] += 1
                             if book_stats['authors'][author_name]['count'] > max_author_count:
                                 max_author_count = book_stats['authors'][author_name]['count']
-                                book_stats['most_frequent_author'] = author_name
+                                book_stats['most_frequent_author'] = author_name # Calculating for the most frequent author
 
                 # Publishers
                 if publisher:
@@ -435,7 +441,7 @@ class Recommender:
                     book_stats['publishers'][publisher]['count'] += 1
                     if book_stats['publishers'][publisher]['count'] > max_publisher_count:
                         max_publisher_count = book_stats['publishers'][publisher]['count']
-                        book_stats['most_frequent_publisher'] = publisher
+                        book_stats['most_frequent_publisher'] = publisher # Calculating for the most frequent publisher
 
                 # Calculate total pages
                 if pages:
@@ -450,15 +456,17 @@ class Recommender:
 
         else:
             return "No books found"
-
-        desired_stats={'average_page_count':book_stats['average_page_count'],'most_prolific_author':book_stats['most_frequent_author'],'most_prolific_publisher':book_stats['most_frequent_publisher']}
+        # Edge Test Case, Getting the desired stats in a new dictionary
+        desired_stats={'average_page_count':book_stats['average_page_count'],'most_prolific_author':book_stats['most_frequent_author'],
+                       'most_prolific_publisher':book_stats['most_frequent_publisher']}
         for key in desired_stats.keys():
             print(key,desired_stats[key])
         return desired_stats
 
     def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
         """
-
+        Function for searching TV shows and movies based on user-defined criteria and returns a formatted result string
+        or error message
         """
         result = "No Results"
         show_types = ["TV Show", "Movie"]
@@ -543,6 +551,10 @@ class Recommender:
         return result
 
     def searchBooks(self, key_title: str, key_author: str, key_publisher: str) -> str:
+        """
+        Function for taking in strings, representing a title, an author,and a publisher, and returns information
+        regarding books
+        """
         results = "No Result"
         if len(key_title) + len(key_title) + len(key_author) + len(key_publisher) == 0:
             messagebox.showerror("Empty Fields Error",
@@ -607,6 +619,10 @@ class Recommender:
         return results
 
     def getRecommendations(self, key_type: str, key_title: str) -> str:
+        """
+        Function for retrieving recommendations based on the specified type(Movie, TV Show, Book) and title, utilizing
+        data from associated objects and displaying the results accordingly.
+        """
         results = "No Result"
         media_types = ["Movie", "TV Show", "Book"]
 

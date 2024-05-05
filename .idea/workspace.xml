@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Code Cleanup" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +31,12 @@
     &quot;assignee&quot;: &quot;anubhavjaiswal03&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/anubhavjaiswal03/Python-Project-2.git&quot;,
-    &quot;accountId&quot;: &quot;926fe385-a3c5-4c05-b772-64e6505f2c24&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/anubhavjaiswal03/Python-Project-2.git",
+    "accountId": "fee8d1e5-30f8-4d5e-ac60-926158bc2c1c"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -56,7 +56,7 @@
     "Python.RecommenderGUI.executor": "Run",
     "Python.Show.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Prayash__Das",
     "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
@@ -379,7 +379,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714794641203</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Code Cleanup">
+      <option name="closed" value="true" />
+      <created>1714887995420</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1714887995420</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Code Cleanup">
+      <option name="closed" value="true" />
+      <created>1714888222392</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1714888222392</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -397,7 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Re-implemented Recommender.py" />
     <MESSAGE value="minor changes." />
     <MESSAGE value=".gitignore changes" />
     <MESSAGE value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
@@ -422,6 +437,7 @@
     <MESSAGE value="Changed the helper function name." />
     <MESSAGE value="Implemented Get Recommendation, Added minor fixes" />
     <MESSAGE value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
+    <MESSAGE value="Code Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Cleanup" />
   </component>
 </project>
