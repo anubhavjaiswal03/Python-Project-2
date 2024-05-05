@@ -31,9 +31,9 @@ class Recommender:
         pass
 
     def loadAssociations(self):
-        '''
+        """
         Function for loading all the data from an association file
-        '''
+        """
         self.__associations = {}  # Resetting the association data member before loading new associations.
         # prompt for a file dialog
         associations_filename = "" if self.__default_filenames is None else self.__default_filenames[2]
@@ -76,9 +76,9 @@ class Recommender:
             print(f"{key} : {value}")
 
     def loadBooks(self):
-        '''
+        """
         Function for loading all of the data from a book file
-        '''
+        """
         self.__books = {}  # Resetting the books data member before loading books.
         book_filename = "" if self.__default_filenames is None else self.__default_filenames[0]
         while not os.path.exists(book_filename):
@@ -112,9 +112,9 @@ class Recommender:
         print(self.__max_books_title_width, self.__max_books_authors_width)
 
     def loadShows(self):
-        '''
+        """
         Function for loading all of the data from a show file
-        '''
+        """
         self.__shows = {}  # Resetting the shows data member.
         show_filename = "" if self.__default_filenames is None else self.__default_filenames[1]
         while not os.path.exists(show_filename):
@@ -152,9 +152,9 @@ class Recommender:
               self.__max_movie_runtime_width)
 
     def getMovieList(self):
-        '''
+        """
         Function for returning the Title and Runtime for all of the stored movies
-        '''
+        """
         if len(self.__shows) == 0:
             return "No File Selected, Please Select a Show file."
         movielist_header = ["Title", "Runtime"] # Aligning 'Title' and 'Runtime' columns with respect to their maximum widths and adds spacing between columns.
@@ -169,9 +169,9 @@ class Recommender:
         return formatted_movielist
 
     def getTVList(self):
-        '''
+        """
         Function for returning the Title and Number of Seasons for all of the stored tv shows
-        '''
+        """
         if len(self.__shows) == 0:
             return "No File Selected, Please Select a Show file."
         tvlist_header = ["Title", "Seasons"] # Aligning 'Title' and 'Seasons' columns with respect to their maximum widths and adds spacing between columns.
@@ -185,9 +185,9 @@ class Recommender:
         return formatted_tvlist
 
     def getBookList(self):
-        '''
+        """
         Function for returning Title and Author(s) for all of the stored books
-        '''
+        """
         if len(self.__books) == 0:
             return "No File Selected, Please Select a Book file."
         booklist_header = ["Title", "Authors"] # Aligning 'Title' and 'Authors' columns with respect to their maximum widths and adds spacing between columns.
@@ -200,10 +200,10 @@ class Recommender:
         return formatted_booklist
 
     def getMovieStats(self):
-        '''
+        """
         Function for returning all the statistics regarding movies such as ratings, average movie duration, director
         with the most movies, actor with the most movies, most frequent movie genre
-        '''
+        """
         movie_stats = {
             'movies': [],
             'ratings': {},
@@ -225,7 +225,7 @@ class Recommender:
                 if show.get_show_type() == "Movie":
                     total_movies += 1
                     movie = show
-                    title = movie.get_show_title()
+                    title = movie.get_title()
                     rating = movie.get_show_content_rating()
                     duration_str = movie.get_show_duration_str()
                     duration_int = movie.get_show_duration()
@@ -306,11 +306,12 @@ class Recommender:
         for key in desired_stats.keys():
             print(key,desired_stats[key])
         return desired_stats
+
     def getTVStats(self):
-        '''
+        """
         Function for returning statistics regarding TV Shows such as Ratings, average number of seasons, actor with the
         most number of TV Shows, and the most number of genres for a TV show
-        '''
+        """
         tv_stats = {
             'shows': [],
             'ratings': {},
@@ -330,7 +331,7 @@ class Recommender:
                 if show.get_show_type() == "TV Show":
                     total_shows += 1
                     tv_show = show
-                    title = tv_show.get_show_title()
+                    title = tv_show.get_title()
                     rating = tv_show.get_show_content_rating()
                     seasons_str = tv_show.get_show_duration_str()
                     actors = tv_show.get_show_cast()
@@ -410,7 +411,7 @@ class Recommender:
         if len(self.__books) > 0:
             for book_id, book_object in self.__books.items():
                 total_books += 1
-                book_title = book_object.get_book_title()
+                book_title = book_object.get_title()
                 author = book_object.get_book_author()
                 publisher = book_object.get_book_publisher()
                 pages = book_object.get_book_page_count()
@@ -467,92 +468,8 @@ class Recommender:
 
         if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
             messagebox.showerror("Empty Fields Error",
-                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
-            return result
-
-        if not self.__shows:
-            messagebox.showwarning("File Not Loaded Error", "Please Load a Show File before you can perform a search.")
-            return "Please Load a Show file before you can perform a search with the \"Load Shows\" button."
-
-        # Filter for key_type
-        filtered_show_objects: list[Show] = [self.__shows[key] for key in self.__shows.keys() if
-                                             self.__shows[key].get_show_type() == key_type]
-
-        # Filtering for key_title
-        if not len(key_title) == 0:
-            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
-                                                 show_object.get_title() == key_title]
-
-        # Filtering for key_actor
-        if not len(key_actor) == 0:
-            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
-                                                 key_actor in show_object.get_show_cast().split('\\')]
-
-        # Filtering for key_director
-        if not len(key_director) == 0:
-            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
-                                                 key_director in show_object.get_show_director().split('\\')]
-
-        # Filtering for key_genre
-        if not len(key_genre) == 0:
-            filtered_show_objects: list[Show] = [show_object for show_object in filtered_show_objects if
-                                                 key_genre in show_object.get_show_genre().split('\\')]
-
-        max_title_width: int = 0
-        max_director_width: int = 0
-        max_cast_width: int = 0
-        max_genre_width: int = 0
-
-        if not filtered_show_objects:
-            print(f"\nInput:"
-                  f"\n\tType\t\t: '{key_type}'"
-                  f"\n\tTitle\t\t: '{key_title}'"
-                  f"\n\tDirector\t: '{key_director}'"
-                  f"\n\tActor\t\t: '{key_actor}'"
-                  f"\n\tGenre\t\t: '{key_genre}'"
-                  f"\nNo Results")
-        else:
-            print(f"\nInput:"
-                  f"\n\tType\t\t: '{key_type}'"
-                  f"\n\tTitle\t\t: '{key_title}'"
-                  f"\n\tDirector\t: '{key_director}'"
-                  f"\n\tActor\t\t: '{key_actor}'"
-                  f"\n\tGenre\t\t: '{key_genre}'"
-                  f"\nResults:")
-
-            # Finding the Maximum length of all the fields.
-            for show in filtered_show_objects:
-                max_title_width = len(show.get_title()) if max_title_width < len(show.get_title()) else max_title_width
-                max_director_width = len(show.get_show_director()) if max_director_width < len(
-                    show.get_show_director()) else max_director_width
-                max_cast_width = len(show.get_show_cast()) if max_cast_width < len(
-                    show.get_show_cast()) else max_cast_width
-                max_genre_width = len(show.get_show_genre()) if max_genre_width < len(
-                    show.get_show_genre()) else max_genre_width
-
-            # Building the Result String with correct spacing.
-            result_header = ["Title", "Director", "Actor", "Genre"]
-            result = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_director_width + self.__spacing_between_columns}}{result_header[2]:<{max_cast_width + self.__spacing_between_columns}}{result_header[3]:<{max_genre_width + self.__spacing_between_columns}}\n"
-            for show in filtered_show_objects:
-                result += f"{show.get_title():<{max_title_width + self.__spacing_between_columns}}{show.get_show_director():<{max_director_width + self.__spacing_between_columns}}{show.get_show_cast():<{max_cast_width + self.__spacing_between_columns}}{show.get_show_genre():<{max_genre_width + self.__spacing_between_columns}}\n"
-
-            print(result)
-
-        return result
-
-    def searchTVMovies(self, key_type: str, key_title: str, key_director: str, key_actor: str, key_genre: str) -> str:
-        """
-
-        """
-        result = "No Results"
-        show_types = ["TV Show", "Movie"]
-        if key_type not in show_types:
-            messagebox.showerror("Invalid Show Type", f"Please select either {show_types[0]} or {show_types[1]}")
-            return result
-
-        if len(key_title) + len(key_director) + len(key_actor) + len(key_genre) == 0:
-            messagebox.showerror("Empty Fields Error",
-                                 f"Please provide input for at least one of the following fields to search: Title, Director, Actor or Genre or any combination of them.")
+                                 f"Please provide input for at least one of the following fields to search: Title, "
+                                 f"Director, Actor or Genre or any combination of them.")
             return result
 
         if not self.__shows:
