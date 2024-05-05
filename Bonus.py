@@ -1,4 +1,4 @@
-import tkinter
+'''import tkinter
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -59,11 +59,10 @@ if isinstance(tv_rating_distribution,str):
 
 
 
-'''def show_pie(data,title,ax):
+def show_pie(data,title,ax):
     ax.pie(data.values(),labels=data.keys(),autopct='%1.2f%%',startangle=90,wedgeprops={'linewidth':1,'edgecolor':'black'},textprops={'fontsize':8})
     ax.axis('equal')
-    ax.set_title(title)'''
-
+    ax.set_title(title)
 
 
 def create_pie_chart(data, title, ax):
@@ -84,4 +83,26 @@ tv_chart = FigureCanvasTkAgg(fig_tv, master=tv_canvas)
 tv_chart.get_tk_widget().pack()
 
 
-main_window.mainloop()
+main_window.mainloop()'''
+
+import matplotlib.pyplot as plt
+
+# Sample dictionary with rating categories and their distribution values
+rating_distribution = {'R': 4.0, 'ALL': 12.0, '18+': 18.0, '7+': 2.0, '13+': 28.0, '16+': 22.0, 'None': 4.0, 'NR': 6.0, 'PG-13': 2.0, 'G': 2.0}
+
+# Extract labels and values from the dictionary
+labels = list(rating_distribution.keys())
+values = list(rating_distribution.values())
+
+# Create the pie chart
+plt.figure(figsize=(5, 5))  # Adjust figure size as needed
+plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=90)  # Display percentages with one decimal place
+plt.axis('equal')  # Ensure a circular shape
+
+# Customize the chart (optional)
+plt.title('Movie Rating Distribution')  # Add a title
+plt.legend(loc='best')  # Add a legend
+
+# Display the chart
+plt.show()
+
