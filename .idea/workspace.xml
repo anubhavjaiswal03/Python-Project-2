@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Code Cleanup">
+    <list default="true" id="2ca76fe2-04ac-4c61-9732-9615e18cfb0e" name="Changes" comment="Fix Recommender.py for TV and Movie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RecommenderGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/RecommenderGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -421,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714934428051</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Fix Recommender.py for TV and Movie">
+      <option name="closed" value="true" />
+      <created>1714935878101</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1714935878101</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -439,7 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="minor changes." />
     <MESSAGE value=".gitignore changes" />
     <MESSAGE value="Fixed Recommender.py: getMovieList(), getTVList(), getBookList()." />
     <MESSAGE value="Recommender.py:&#10; - Fixed Class Loading, Now show_duration has 2 members a get_show_duration_str() that returns the string representation of the original file. and get_show_duration() that returns the int value for time in mins or int value of Seasons.&#10; - Added a way to quickly test builds by adding a private data member called default_filenames. that contains the 3 csv files.&#10; - Removed Buggy Implementation of &#10;     - getMovieStats()&#10;     - getTVStats()&#10;     - getBookStats()&#10;Added&#10;&#10;Media.py:&#10;Also, fixed loading base class members like average media rating is now loaded as float.&#10;&#10;Mentioned the return types for base class accessors.&#10;&#10;Book.py:&#10;Also, converted the page_count and ratings_count" />
@@ -464,6 +472,7 @@
     <MESSAGE value="Implemented Get Recommendation, Added minor fixes" />
     <MESSAGE value="Fixed getMovieStats(), getTVStats(), getBookStats()&#10;&#10;Fixed the __describeRatings() static class method.&#10;&#10;Basic code clean-up on RecommenderGUI.py and Recommender.py" />
     <MESSAGE value="Code Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code Cleanup" />
+    <MESSAGE value="Fix Recommender.py for TV and Movie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Recommender.py for TV and Movie" />
   </component>
 </project>

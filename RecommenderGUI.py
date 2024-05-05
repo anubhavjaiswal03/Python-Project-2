@@ -25,8 +25,8 @@ class RecommenderGUI:
         self.__main_window.minsize(800, 750)
         self.__button_frame = tkinter.Frame(self.__main_window)
         self.__notebook = ttk.Notebook(self.__main_window)
-        self.__notebook.pack(expand=1, fill=tkinter.BOTH)
-        self.__button_frame.pack(side=tkinter.BOTTOM, fill=tkinter.X)
+        self.__notebook.pack(side=tkinter.TOP, expand=1, fill=tkinter.BOTH)
+        self.__button_frame.pack(side=tkinter.TOP, fill=tkinter.X)
 
         # Movies Tab
         self.__movies_tab = ttk.Frame(self.__notebook)
@@ -294,7 +294,7 @@ class RecommenderGUI:
         """
         title: str = "Project Information"
         message: str = "Team: Code Crusaders\nAnubhav Jaiswal\nPrayash Das"
-        project_completion: str = "Project Completion: 03-May-2024"
+        project_completion: str = "Project Completion: 05-May-2024"
         self.credit_info_messagebox = messagebox.showinfo(title, message, detail=project_completion)
 
     def searchShows(self):
