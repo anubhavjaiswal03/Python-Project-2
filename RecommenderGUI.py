@@ -259,13 +259,14 @@ class RecommenderGUI:
         self.__mutate_Text_GUI(self.__tv_shows_list_text, self.__recommender_object.getTVList())
         self.__rating_shows_label['text'] = "Show Ratings"
         self.__rating_movies_label['text'] = "Movie Ratings"
-        self.__displayPie()
 
         temp: str = self.__describeRatings(self.__recommender_object.getMovieStats())
         self.__mutate_Text_GUI(self.__movies_stats_text, temp)
 
         temp: str = self.__describeRatings(self.__recommender_object.getTVStats())
         self.__mutate_Text_GUI(self.__tv_shows_stats_text, temp)
+        # self.__displayPie()
+
 
         print("Shows loaded and GUI updated")
 
@@ -347,9 +348,6 @@ class RecommenderGUI:
         ax_tv = fig_tv.add_subplot(111)
         ax_movie.clear()
         ax_tv.clear()
-
-        movie_colors = plt.cm.Set3.colors  # Defining colors for pie chart slices using predefined color maps
-        tv_colors = plt.cm.tab20.colors[:len(tv_distribution)]
 
         label1 = movie_distribution.keys()  # Extractinglabels
         ax_movie.pie(movie_distribution.values(), labels=label1, autopct='%0.2f%%', startangle=90,

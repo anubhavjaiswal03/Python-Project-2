@@ -553,6 +553,10 @@ class Recommender:
 
             # Building the Result String with correct spacing.
             result_header = ["Title", "Director", "Actor", "Genre"]
+            if max_cast_width == 0:
+                max_cast_width = len("Actor")
+            if max_director_width == 0:
+                max_director_width = len("Director")
             result = f"{result_header[0]:<{max_title_width + self.__spacing_between_columns}}{result_header[1]:<{max_director_width + self.__spacing_between_columns}}{result_header[2]:<{max_cast_width + self.__spacing_between_columns}}{result_header[3]:<{max_genre_width + self.__spacing_between_columns}}\n"
             for show in filtered_show_objects:
                 result += f"{show.get_title():<{max_title_width + self.__spacing_between_columns}}{show.get_show_director():<{max_director_width + self.__spacing_between_columns}}{show.get_show_cast():<{max_cast_width + self.__spacing_between_columns}}{show.get_show_genre():<{max_genre_width + self.__spacing_between_columns}}\n"
