@@ -221,6 +221,10 @@ class RecommenderGUI:
         self.__rating_movies_label.pack(side=tkinter.TOP, fill=tkinter.X)
         self.__rating_shows_label.configure(font=("Ariel", 20))
         self.__rating_movies_label.configure(font=("Ariel", 20))
+        # self.__fig_movie = None
+        # self.__fig_tv = None
+        # self.__ax_movie = None
+        # self.__ax_tv = None
 
         # Bottom Button Configurations
         self.__load_shows_button = tkinter.Button(self.__button_frame, text='Load Shows', command=self.loadShows)
@@ -265,8 +269,7 @@ class RecommenderGUI:
 
         temp: str = self.__describeRatings(self.__recommender_object.getTVStats())
         self.__mutate_Text_GUI(self.__tv_shows_stats_text, temp)
-        # self.__displayPie()
-
+        self.__displayPie()
 
         print("Shows loaded and GUI updated")
 
@@ -332,40 +335,30 @@ class RecommenderGUI:
         Function for creating and displaying pie charts visualising the ratings distribution for movies and
         TV shows in the GUI
         """
-        movie_stats = self.__recommender_object.getMovieStats()
-        tv_stats = self.__recommender_object.getTVStats()
+        movie_ratings = self.__recommender_object.getMovieStats()['rating_distribution']
+        tv_ratings = self.__recommender_object.getTVStats()['rating_distribution']
 
-        movie_ratings = movie_stats.get('rating_distribution', {})  # Extracting rating distribution from the stats
-        tv_ratings = tv_stats.get('rating_distribution', {})
+        fig, ax = plt.subplots(figsize=(6, 6))
 
-        movie_distribution = {rating: float(info) for rating, info in movie_ratings.items()}
-        tv_distribution = {rating: float(info) for rating, info in
-                           tv_ratings.items()}  # Converting the data to float values
+        plt.figure(figsize=(6, 6))
+        plt.pie(movie_ratings.values(), labels=movie_ratings.keys(), autopct='%1.1f%%', )
+        plt.axis('equal')
+        plt.savefig('pie_chart_movie.png', transparent=True)
 
-        fig_movie = plt.Figure(figsize=(5, 5), dpi=100)
-        fig_tv = plt.Figure(figsize=(5, 5), dpi=100)
-        ax_movie = fig_movie.add_subplot(111)
-        ax_tv = fig_tv.add_subplot(111)
-        ax_movie.clear()
-        ax_tv.clear()
+        self.__movie_image = tkinter.PhotoImage(file="pie_chart_movie.png")
+        x = (self.__rating_movies_canvas.winfo_width() - self.__movie_image.width())//2
+        y = (self.__rating_movies_canvas.winfo_height() - self.__movie_image.height())//2
+        self.__rating_movies_canvas.create_image(0, 0, anchor=tkinter.NW, image=self.__movie_image)
 
-        label1 = movie_distribution.keys()  # Extractinglabels
-        ax_movie.pie(movie_distribution.values(), labels=label1, autopct='%0.2f%%', startangle=90,
-                     wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35}, pctdistance=0.85,
-                     labeldistance=1.15, colors=movie_colors)
-        label2 = tv_distribution.keys()  # Extracting labels
-        ax_tv.pie(tv_distribution.values(), labels=label2, autopct='%0.2f%%', startangle=90,
-                  wedgeprops={'linewidth': 1, 'edgecolor': 'black'}, textprops={'fontsize': 7.35},
-                  pctdistance=0.85,
-                  labeldistance=1.15, colors=tv_colors)
+        plt.figure(figsize=(6, 6))
+        plt.pie(tv_ratings.values(), labels=tv_ratings.keys(), autopct='%1.1f%%')
+        plt.axis('equal')
+        plt.savefig('pie_chart_tv.png', transparent=True)
 
-        # Drawing the pie charts onto the canvas widgets and packing the widgets into the GUI
-        chart_movies = FigureCanvasTkAgg(fig_movie, master=self.__rating_movies_canvas)
-        chart_tv = FigureCanvasTkAgg(fig_tv, master=self.__rating_shows_canvas)
-        chart_movies.draw()  # Pie Chart for Movies
-        chart_tv.draw()  # Pie Chart for TV Shows
-        chart_movies.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=True)
-        chart_tv.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=True)
+        self.__tv_image = tkinter.PhotoImage(file="pie_chart_tv.png")
+        x = (self.__rating_shows_canvas.winfo_width() - self.__tv_image.width())//2
+        y = (self.__rating_shows_canvas.winfo_height() - self.__tv_image.height())//2
+        self.__rating_shows_canvas.create_image(0, 0, anchor=tkinter.NW, image=self.__tv_image)
 
     @staticmethod
     def __describeRatings(ratings: dict) -> str:
